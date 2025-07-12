@@ -2,11 +2,12 @@
 /**
  * db.php - Manejo centralizado de la base de datos SQLite
  */
+require_once __DIR__ . '/../config.php'; // Ajusta la ruta si config.php está en otro lugar
 
 class Database {
     private static $instance = null;
     private $db;
-    private $db_file = 'database/mi_app.sqlite';
+    private $db_file = DB_PATH; // Ruta al archivo de base de datos
     
     // Privado para evitar instanciación directa
     private function __construct() {
@@ -23,8 +24,8 @@ class Database {
     private function connect() {
         try {
             // Crear directorio si no existe
-            if (!file_exists('database')) {
-                mkdir('database', 0755, true);
+            if (!file_exists(DB_FOLDER)) {
+                mkdir(DB_FOLDER, 0755, true);
             }
             
             $this->db = new SQLite3($this->db_file);
