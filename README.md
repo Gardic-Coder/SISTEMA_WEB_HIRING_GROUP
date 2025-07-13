@@ -84,13 +84,13 @@ Desarrollar una plataforma web que permita a Hiring Group y sus empresas cliente
 
 ## 🧱 Estado del Desarrollo
 El proyecto se encuentra en fase activa de construcción. Algunas funcionalidades ya están implementadas, mientras que otras están en desarrollo o planificadas para futuras versiones.
-# ✅ Funcionalidades ya implementadas
+### ✅ Funcionalidades ya implementadas
 - Estructura base del proyecto con separación por módulos.
 - Modelos principales: Usuario, Empresa, Banco, CuentaBanco, etc.
 - Pruebas unitarias para algunos modelos.
 - Configuración de base de datos SQLite.
 - Manejo de datos básicos (profesiones, teléfonos, formación académica).
-# 🚧 Funcionalidades en desarrollo
+### 🚧 Funcionalidades en desarrollo
 - Finalización de los modelos restantes.
 - Creación de controladores para modelos que lo requieran.
 - Implementación de vistas web para cada tipo de usuario.
