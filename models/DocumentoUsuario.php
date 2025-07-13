@@ -36,12 +36,12 @@ class DocumentoUsuario {
     /**
      * Sube y registra un nuevo documento
      */
-    public static function uploadAndRegister($userId, $fileData, $tipo) {
+    public static function uploadAndRegister($userId, $fileData, $tipo, $forceCopy = false) {
         self::initialize();
         
         try {
             // Subir el documento
-            $fileInfo = self::$documentHandler->uploadDocument($userId, $fileData, $tipo);
+            $fileInfo = self::$documentHandler->uploadDocument($userId, $fileData, $tipo, $forceCopy);
             
             // Registrar en la base de datos
             $sql = "INSERT INTO DocumentoUsuario 

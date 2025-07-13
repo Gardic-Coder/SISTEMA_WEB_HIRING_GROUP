@@ -1,6 +1,6 @@
 <?php
 /**
- * DocumentHandler.php - Manejador de documentos para usuarios
+ * DocumentHandler.php - Manejador de documentos para usuarios (versión para test y producción)
  */
 
 class DocumentHandler {
@@ -19,19 +19,18 @@ class DocumentHandler {
         
         // Asegurar que el directorio base existe
         if (!file_exists($this->baseUploadPath)) {
-            mkdir($this->baseUploadPath, 0755, true);
+            if (!mkdir($this->baseUploadPath, 0755, true)) {
+                throw new Exception("No se pudo crear el directorio base de documentos.");
+            }
         }
     }
 
     /**
      * Sube un documento para un usuario
-     * 
-     * @param int $userId ID del usuario
-     * @param array $file Datos del archivo ($_FILES['input_name'])
-     * @param string $tipo Tipo de documento (cv, certificado, etc.)
-     * @return array|false Información del archivo subido o false en caso de error
      */
-    public function uploadDocument($userId, $file, $tipo = 'otros') {
+    public function uploadDocument($userId, $file, $tipo = 'otros', $modoTest = false) {
+        echo "📁 Iniciando subida de documento...\n";
+
         // Validaciones básicas
         if ($file['error'] !== UPLOAD_ERR_OK) {
             throw new Exception("Error en la subida del archivo: " . $file['error']);
@@ -46,33 +45,53 @@ class DocumentHandler {
         $mimeType = finfo_file($finfo, $file['tmp_name']);
         finfo_close($finfo);
 
+        echo "🔍 Tipo MIME detectado: $mimeType\n";
+
         if (!array_key_exists($mimeType, $this->allowedMimeTypes)) {
-            throw new Exception("Tipo de archivo no permitido");
+            throw new Exception("Tipo de archivo no permitido: $mimeType");
         }
 
-        // Crear directorio del usuario si no existe
+        // Crear directorio del usuario
         $userDir = $this->baseUploadPath . 'user_' . $userId . '/';
         if (!file_exists($userDir)) {
-            mkdir($userDir, 0755, true);
+            if (!mkdir($userDir, 0755, true)) {
+                throw new Exception("No se pudo crear el directorio del usuario.");
+            }
         }
 
-        // Crear subdirectorio por tipo si no existe
+        // Crear subdirectorio por tipo
         $typeDir = $userDir . $tipo . '/';
         if (!file_exists($typeDir)) {
-            mkdir($typeDir, 0755, true);
+            if (!mkdir($typeDir, 0755, true)) {
+                throw new Exception("No se pudo crear el subdirectorio de tipo.");
+            }
         }
 
-        // Generar nombre único para el archivo
+        // Generar nombre único
         $extension = $this->allowedMimeTypes[$mimeType];
         $filename = uniqid('doc_', true) . '.' . $extension;
         $destination = $typeDir . $filename;
 
-        // Mover el archivo
-        if (!move_uploaded_file($file['tmp_name'], $destination)) {
-            throw new Exception("No se pudo guardar el archivo");
+        echo "📦 Guardando archivo en: $destination\n";
+
+        // Guardar archivo
+        if ($modoTest || php_sapi_name() === 'cli') {
+            if (!copy($file['tmp_name'], $destination)) {
+                throw new Exception("Error al copiar el archivo en modo test.");
+            }
+        } else {
+            if (!move_uploaded_file($file['tmp_name'], $destination)) {
+                throw new Exception("Error al mover el archivo subido.");
+            }
         }
 
-        // Retornar información del archivo
+        if (!file_exists($destination)) {
+            throw new Exception("El archivo no fue guardado correctamente.");
+        }
+
+        echo "✅ Archivo guardado exitosamente\n";
+
+        // Retornar información
         return [
             'nombre_original' => $file['name'],
             'nombre_archivo' => $filename,
@@ -85,52 +104,32 @@ class DocumentHandler {
         ];
     }
 
-    /**
-     * Elimina un documento
-     * 
-     * @param int $userId ID del usuario
-     * @param string $filename Nombre del archivo
-     * @param string $tipo Tipo de documento
-     * @return bool True si se eliminó correctamente
-     */
     public function deleteDocument($userId, $filename, $tipo) {
         $filePath = $this->baseUploadPath . "user_{$userId}/{$tipo}/{$filename}";
-        
         if (file_exists($filePath)) {
             return unlink($filePath);
         }
-        
         return false;
     }
 
-    /**
-     * Obtiene la ruta física de un documento
-     */
     public function getDocumentPath($userId, $filename, $tipo) {
         return $this->baseUploadPath . "user_{$userId}/{$tipo}/{$filename}";
     }
 
-    /**
-     * Obtiene la URL pública de un documento
-     */
     public function getDocumentUrl($userId, $filename, $tipo) {
         return "/uploads/documents/user_{$userId}/{$tipo}/{$filename}";
     }
 
-    /**
-     * Lista todos los documentos de un usuario
-     */
     public function listUserDocuments($userId) {
         $userDir = $this->baseUploadPath . 'user_' . $userId . '/';
         $documents = [];
-        
+
         if (file_exists($userDir)) {
             $types = array_diff(scandir($userDir), ['.', '..']);
-            
             foreach ($types as $type) {
-                if (is_dir($userDir . $type)) {
-                    $files = array_diff(scandir($userDir . $type), ['.', '..']);
-                    
+                $typeDir = $userDir . $type . '/';
+                if (is_dir($typeDir)) {
+                    $files = array_diff(scandir($typeDir), ['.', '..']);
                     foreach ($files as $file) {
                         $documents[] = [
                             'nombre' => $file,
@@ -142,7 +141,7 @@ class DocumentHandler {
                 }
             }
         }
-        
+
         return $documents;
     }
 }
