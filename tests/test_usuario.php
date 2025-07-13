@@ -17,7 +17,7 @@ $datosUsuario = [
     ':nombre_usuario' => 'maria456',
     ':contraseña' => 'miClaveSegura',
     ':correo' => 'maria@example.com',
-    ':tipo_usuario' => 'editor'
+    ':tipo_usuario' => 'admin'
 ];
 
 echo "👤 Insertando usuario...\n";
