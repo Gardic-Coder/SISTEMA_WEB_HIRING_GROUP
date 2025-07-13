@@ -3,7 +3,8 @@
  * UsuarioEmpresa.php - Modelo para relación usuario-empresa
  */
 
-require_once __DIR__ . '/../core/Database.php';
+require_once __DIR__ . '/../utils/config.php';
+require_once CORE_DIR . 'Database.php';
 
 class UsuarioEmpresa {
     /**

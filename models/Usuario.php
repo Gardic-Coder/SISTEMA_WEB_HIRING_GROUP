@@ -3,8 +3,9 @@
  * Usuario.php - Modelo completo para usuarios con manejo seguro de fotos de perfil
  */
 
-require_once __DIR__ . '/../core/Database.php';
-require_once __DIR__ . '/../utils/ImageHandler.php';
+require_once __DIR__ . '/../utils/config.php';
+require_once CORE_DIR . 'Database.php';
+require_once IMAGE_HANDLER_PATH;
 
 class Usuario {
     /**

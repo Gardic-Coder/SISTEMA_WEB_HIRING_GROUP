@@ -3,6 +3,7 @@
  * DocumentHandler.php - Manejador de documentos para usuarios (versión para test y producción)
  */
 
+require_once __DIR__ . '/config.php'; // Asegurar que las constantes están definidas
 class DocumentHandler {
     private $baseUploadPath;
     private $allowedMimeTypes = [
@@ -15,7 +16,7 @@ class DocumentHandler {
     private $maxFileSize = 5 * 1024 * 1024; // 5MB
 
     public function __construct() {
-        $this->baseUploadPath = __DIR__ . '/../public/uploads/documents/';
+        $this->baseUploadPath = DOCUMENTS_DIR;
         
         // Asegurar que el directorio base existe
         if (!file_exists($this->baseUploadPath)) {
@@ -96,7 +97,7 @@ class DocumentHandler {
             'nombre_original' => $file['name'],
             'nombre_archivo' => $filename,
             'ruta' => $destination,
-            'url_relativa' => "/uploads/documents/user_{$userId}/{$tipo}/{$filename}",
+            'url_relativa' => DOCUMENTS_URL . "user_{$userId}/{$tipo}/{$filename}",
             'tipo' => $tipo,
             'tamanio' => $file['size'],
             'mime_type' => $mimeType,
@@ -117,7 +118,7 @@ class DocumentHandler {
     }
 
     public function getDocumentUrl($userId, $filename, $tipo) {
-        return "/uploads/documents/user_{$userId}/{$tipo}/{$filename}";
+        return DOCUMENTS_URL . "user_{$userId}/{$tipo}/{$filename}";
     }
 
     public function listUserDocuments($userId) {
