@@ -3,7 +3,7 @@
  * Usuario.php - Modelo base para todos los usuarios
  */
 
-require_once __DIR__ . '/Database.php';
+require_once __DIR__ . '/../core/Database.php';
 
 class Usuario {
     /**

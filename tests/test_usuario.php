@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../core/Database.php';
-require_once __DIR__ . '/../core/Usuario.php';
+require_once __DIR__ . '/../models/Usuario.php';
 
 echo "🔧 Iniciando prueba de Usuario...\n";
 
