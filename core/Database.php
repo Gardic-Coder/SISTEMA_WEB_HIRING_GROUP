@@ -86,6 +86,21 @@ class Database {
     public function lastInsertId() {
         return $this->db->lastInsertRowID();
     }
+    
+    /**
+     * Ejecuta una consulta SQL sin parámetros
+     * @param string $sql Consulta SQL a ejecutar
+     * @return SQLite3Result|false Resultado de la consulta
+     */
+    public function query($sql) {
+    try {
+        return $this->db->query($sql);
+    } catch (Exception $e) {
+        error_log("Error en query(): " . $e->getMessage());
+        return false;
+    }
+}
+
 }
 
 /**
