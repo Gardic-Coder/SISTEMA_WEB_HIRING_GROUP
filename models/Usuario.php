@@ -138,7 +138,7 @@ class Usuario {
     /**
      * Crea un nuevo usuario
      */
-    public static function insert($userData) {
+    public static function create($userData) {
         $sql = "INSERT INTO usuario (nombre_usuario, contraseña, correo, tipo_usuario)
                 VALUES (:nombre_usuario, :contraseña, :correo, :tipo_usuario)";
 
