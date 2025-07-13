@@ -2,7 +2,7 @@
 /**
  * db.php - Manejo centralizado de la base de datos SQLite
  */
-require_once __DIR__ . '/../config.php'; // Ajusta la ruta si config.php está en otro lugar
+require_once __DIR__ . '/../utils/config.php'; // Ajusta la ruta si config.php está en otro lugar
 
 class Database {
     private static $instance = null;
@@ -78,6 +78,13 @@ class Database {
         if ($this->db) {
             $this->db->close();
         }
+    }
+
+    /**
+     * Obtiene el ID del último registro insertado
+     */
+    public function lastInsertId() {
+        return $this->db->lastInsertRowID();
     }
 }
 
