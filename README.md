@@ -17,13 +17,13 @@ Desarrollar una plataforma web que permita a Hiring Group y sus empresas cliente
 
 ## 👥 Tipos de Usuarios
 
-| Tipo de Usuario         | Funcionalidades principales |
-|-------------------------|-----------------------------|
-| 🛡️ Administrador         | Acceso total al sistema, gestión de usuarios y empresas. |
-| 🏢 Usuario Hiring Group  | Manejo de data básica, nómina, contrataciones. |
-| 🏭 Usuario Empresa       | Publicación y gestión de ofertas laborales. |
-| 👤 Postulante/Candidato  | Registro, aplicación a ofertas, edición de currículum. |
-| 👷 Usuario Contratado    | Acceso a recibos de pago, constancia laboral. |
+| Tipo de Usuario         | Funcionalidades principales                                         |
+|------------------------ |--------------------------------------------------------------------|
+| 🛡️ Administrador        | Acceso total al sistema, gestión de usuarios y empresas.            |
+| 🏢 Usuario Hiring Group | Manejo de data básica, nómina, contrataciones.                     |
+| 🏭 Usuario Empresa      | Publicación y gestión de ofertas laborales.                         |
+| 👤 Postulante/Candidato | Registro, aplicación a ofertas, edición de currículum.              |
+| 👷 Usuario Contratado   | Acceso a recibos de pago, constancia laboral.                       |
 
 ---
 
@@ -49,4 +49,33 @@ Desarrollar una plataforma web que permita a Hiring Group y sus empresas cliente
 
 ## 📁 Estructura del Proyecto
 
-📁 SISTEMA_WEB_HIRING_GROUP/ ├── 📁 core/               # Clases base como Database y Auth │   ├── Database.php │   └── Auth.php ├── 📁 models/             # Modelos de datos │   ├── Banco.php │   ├── CuentaBanco.php │   ├── Empresa.php │   ├── ExperienciaLaboral.php │   ├── FormacionAcademica.php │   ├── ProfesionUsuario.php │   ├── Telefono.php │   ├── Usuario.php │   └── UsuarioEmpresa.php ├── 📁 public/             # Punto de entrada y recursos públicos │   ├── index.php │   └── 📁 assets/ │       ├── css/ │       ├── js/ │       └── docs/ ├── 📁 test/               # Pruebas unitarias │   └── UsuarioTest.php ├── 📁 uploads/            # Archivos subidos por usuarios │   └── perfiles/ ├── 📁 utils/              # Utilidades y configuración │   ├── config.php │   └── ImageHandler.php └── 📄 README.md           # Documentación del proyecto
+```plaintext
+📁SISTEMA_WEB_HIRING_GROUP/
+├── 📁core/                # Clases base como Database y Auth
+│   ├── Database.php
+│   └── Auth.php
+├── 📁models/              # Modelos de datos
+│   ├── Banco.php
+│   ├── CuentaBanco.php
+│   ├── Empresa.php
+│   ├── ExperienciaLaboral.php
+│   ├── FormacionAcademica.php
+│   ├── ProfesionUsuario.php
+│   ├── Telefono.php
+│   ├── Usuario.php
+│   └── UsuarioEmpresa.php
+├── 📁public/              # Punto de entrada y recursos públicos
+│   ├── index.php
+│   └── 📁assets/
+│       ├── 📁css/
+│       ├── 📁js/
+│       └── 📁docs/
+├── 📁test/                # Pruebas unitarias
+│   └── UsuarioTest.php
+├── 📁uploads/             # Archivos subidos por usuarios
+│   └── 📁perfiles/
+├── 📁utils/               # Utilidades y configuración
+│   ├── config.php
+│   └── ImageHandler.php
+└── README.md            # Documentación del proyecto
+```
