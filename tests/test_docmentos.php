@@ -42,7 +42,7 @@ if (!file_exists($testPdfPath)) {
 
 
 // 4. Probar la subida del documento
-/*try {
+try {
     echo "Intentando subir documento: $testFileName\n";
     
     $documentId = DocumentoUsuario::uploadAndRegister($userId, $testFile, 'cv', true);
@@ -72,11 +72,11 @@ if (!file_exists($testPdfPath)) {
     }
 } catch (Exception $e) {
     echo "Error durante la prueba: " . $e->getMessage() . "\n";
-}*/
+}
 
 // 5. Limpieza (opcional)
-//Usuario::delete($userId);
-//echo "Usuario de prueba eliminado\n";
+Usuario::delete($userId);
+echo "Usuario de prueba eliminado\n";
 
 echo "=== Prueba completada ===\n";
 ?>
