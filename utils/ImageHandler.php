@@ -38,7 +38,7 @@ class ImageHandler {
     /**
      * Guarda una imagen y crea versiones redimensionadas
      */
-    public static function saveProfileImage($file) {
+    public static function saveProfileImage($file, $modoTest = false) {
         try {
             $extension = self::validate($file);
             self::ensureDirectoryExists();
@@ -46,8 +46,14 @@ class ImageHandler {
             $filename = uniqid('profile_') . '.' . $extension;
             $fullPath = PROFILE_IMG_DIR . $filename;
 
-            if (!move_uploaded_file($file['tmp_name'], $fullPath)) {
-                throw new Exception("No se pudo mover el archivo subido");
+            if ($modoTest || php_sapi_name() === 'cli') {
+                if (!copy($file['tmp_name'], $fullPath)) {
+                    throw new Exception("No se pudo copiar el archivo en modo test");
+                }
+            } else {
+                if (!move_uploaded_file($file['tmp_name'], $fullPath)) {
+                    throw new Exception("No se pudo mover el archivo subido");
+                }
             }
 
             $versions = self::createResizedVersions($fullPath, $filename);

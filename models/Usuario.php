@@ -3,8 +3,9 @@
  * Usuario.php - Modelo completo para usuarios con manejo seguro de fotos de perfil
  */
 
-require_once __DIR__ . '/../core/Database.php';
-require_once __DIR__ . '/../utils/ImageHandler.php';
+require_once __DIR__ . '/../utils/config.php';
+require_once CORE_DIR . 'Database.php';
+require_once IMAGE_HANDLER_PATH;
 
 class Usuario {
     /**
@@ -200,20 +201,18 @@ class Usuario {
     }
 
     /**
-     * Busca usuario por nombre de usuario
+     * Busca un usuario por cualquier campo (nombre_usuario, correo, id, etc.)
+     * @param string $field El campo por el que buscar (ej: 'nombre_usuario', 'correo', 'id')
+     * @param mixed $value El valor a buscar
+     * @return array|null
      */
-    public static function findByUsername($username) {
-        $sql = "SELECT * FROM usuario WHERE nombre_usuario = :nombre_usuario";
-        $result = Database::getInstance()->preparedQuery($sql, [':nombre_usuario' => $username]);
-        return $result ? $result->fetchArray(SQLITE3_ASSOC) : null;
-    }
-
-    /**
-     * Obtiene un usuario por correo electrónico
-     */
-    public static function getByEmail($email) {
-        $sql = "SELECT * FROM usuario WHERE correo = :correo";
-        $result = Database::getInstance()->preparedQuery($sql, [':correo' => $email]);
+    public static function findBy($field, $value) {
+        $allowedFields = ['id', 'nombre_usuario', 'correo'];
+        if (!in_array($field, $allowedFields)) {
+            throw new InvalidArgumentException("Campo de búsqueda no permitido");
+        }
+        $sql = "SELECT * FROM usuario WHERE $field = :value";
+        $result = Database::getInstance()->preparedQuery($sql, [':value' => $value]);
         return $result ? $result->fetchArray(SQLITE3_ASSOC) : null;
     }
 

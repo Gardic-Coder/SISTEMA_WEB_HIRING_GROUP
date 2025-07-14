@@ -2,7 +2,7 @@
 /**
  * db.php - Manejo centralizado de la base de datos SQLite
  */
-require_once __DIR__ . '/../utils/config.php'; // Ajusta la ruta si config.php está en otro lugar
+require_once __DIR__ . '/../utils/config.php'; 
 
 class Database {
     private static $instance = null;
