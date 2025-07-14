@@ -77,13 +77,6 @@ class Empresa {
      * Elimina una empresa
      */
     public static function delete($id) {
-        // Primero eliminamos los usuarios asociados (implementación alternativa)
-        $usuariosAsociados = UsuarioEmpresa::getUsuariosByEmpresa($id);
-        foreach ($usuariosAsociados as $usuario) {
-            Usuario::delete($usuario['id']);
-        }
-    
-        // Luego eliminamos la empresa
         $sql = "DELETE FROM Empresa WHERE id = :id";
         return Database::getInstance()->preparedQuery($sql, [':id' => $id]);
     }
