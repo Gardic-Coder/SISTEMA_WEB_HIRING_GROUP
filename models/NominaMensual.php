@@ -25,19 +25,18 @@ class NominaMensual{
      *   Crea una nueva nomina
      */
     public static function create($data){
-        $sql = "INSERT NominaMensual (empresa_id, mes, año)
+        $sql = "INSERT INTO NominaMensual (empresa_id, mes, año)
                 VALUES (:empresa_id, :mes, :año)";
         
         $params = [
             ':empresa_id' => $data['empresa_id'],
             ':mes' => $data['mes'],
-            ':año' => $data
+            ':año' => $data['año']
         ];
 
         $db = Database::getInstance();
         if ($db->preparedQuery($sql, $params)){
             return $db->lastInsertId();
-
         }
         return false;
     }
@@ -99,8 +98,8 @@ class NominaMensual{
      * Eliminar todas las nominas de una empresa
      */
     public static function deleteByCompany($empresaId){
-        $sql = "DELETE FROM NominaMensual WHERE empresaId = :empresaId";
-        return Database::getInstance()->preparedQuery($sql, [':empresaId' => $empresaId]);
+        $sql = "DELETE FROM NominaMensual WHERE empresa_Id = :empresa_Id";
+        return Database::getInstance()->preparedQuery($sql, [':empresa_Id' => $empresaId]);
     }
 
 }
