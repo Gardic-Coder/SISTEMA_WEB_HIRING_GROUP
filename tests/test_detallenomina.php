@@ -1,8 +1,9 @@
 <?php
-
-require_once '../models/DetalleNomina.php';
-require_once '../models/Nomina.php';
-require_once '../models/Usuario.php';
+require_once __DIR__ . '/../models/DetalleNomina.php';
+require_once __DIR__ . '/../models/NominaMensual.php';
+require_once __DIR__ . '/../models/Usuario.php';
+require_once __DIR__ . '/../models/Empresa.php';
+require_once __DIR__ . '/../models/UsuarioPostulante.php';
 
 echo "== Prueba completa de los detalles de nomina ==\n";
 
@@ -13,21 +14,41 @@ echo "Tabla creada";
 // Crear tablas necesarias
 NominaMensual::createTable();
 Usuario::createTable();
-echo "🗃️ Tablas Nomina y Usuario creadas\n";
+Empresa::createTable();
+UsuarioPostulante::createTable();
+echo "🗃️ Tablas Nomina, Usuario, Postulante y Empresa creadas\n";
 
 // Crear usuario de prueba
-$usuarioId = Usuario::create([  
-    'nombre' => 'Carlos Gómez',
-    'email' => 'carlosperez@example.com',
-    'telefono' => '0412-3456789',
-    'direccion' => 'Calle Falsa 123',
-    'fecha_ingreso' => '2023-01-01',
-    'cargo' => 'Desarrollador',
-    'salario' => 1000,   
-    ]);
+$usuarioId = Usuario::create([
+    'nombre_usuario' => 'test_user',
+    'contraseña' => password_hash('test123', PASSWORD_BCRYPT),
+    'correo' => 'carlosperez@example.com',
+    'tipo_usuario' => 'postulante',
+]);
+$usuarioId = UsuarioPostulante::add([
+    'usuario_id' => $usuarioId,
+    'nombre' => 'Carlos',
+    'apellido' => 'Pérez',
+    'cedula' => '12345678',
+    'estado_residencia' => 'Miranda',
+    'ciudad_residencia' => 'Los Teques',
+    'contratado' => false,
+    'tipo_sangre' => 'O+',
+    'fecha_nacimiento' => '1990-01-01',
+    'genero' => 'masculino'
+]);
 if (!$usuarioId) {
-    die("❌ Error al crear usuario de prueba\n");
-}
+    die("❌ Error al crear usuario postulante de prueba\n");
+} 
+
+$empresaId = Empresa::create([
+    'nombre' => 'Empresa de Prueba',
+    'razon_social' => 'Empresa de Prueba C.A.',
+    'sector' => 'Tecnología',
+    'RIF' => 'J-12345678-9',
+    'persona_contacto' => 'Juan Pérez'
+]);
+    
 echo "Usuario creada con ID: $usuarioId\n";
 
 // Crear nomina de prueba
@@ -43,8 +64,8 @@ echo "Nomina creada con ID: $nominaId\n";
 
 // Insertar registro
 $data = [
-    'nomina_id' => 1,
     'usuario_id' => 1,
+    'nomina_id' => 1,
     'salario_base' => 1000,
     'descuento_ivss' => 50,
     'descuento_inces' => 20,

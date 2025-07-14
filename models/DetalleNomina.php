@@ -47,7 +47,7 @@ class DetalleNomina{
 
         $db = Database::getInstance();
         if($db->preparedQuery($sql, $params)){
-            $db -> lastInsertId();
+            return $db -> lastInsertId();
         }
         return false;
     }
@@ -56,8 +56,8 @@ class DetalleNomina{
      * Obtiene los detalles por ID
      */
     public static function getById($nominaId){
-        $sql = "SELECT * FROM DetallesNomina WHERE id = :id";
-        $result = Database::getInstance()->preparedQuery($sql, [':id' = $nominaId]);
+        $sql = "SELECT * FROM DetalleNomina WHERE id = :id";
+        $result = Database::getInstance()->preparedQuery($sql, [':id' => $nominaId]);
         return $result ? $result->fetchArray(SQLITE3_ASSOC) : null;
     }
 
@@ -80,7 +80,7 @@ class DetalleNomina{
     public static function deleteById($id) {
         $sql = "DELETE FROM DetalleNomina WHERE id = :id";
         $params = [':id' => $id];
-        return Database::getInstance()->execQuery($sql, $params);
+        return Database::getInstance()->preparedQuery($sql, $params);
     }
 
     /**
@@ -89,7 +89,7 @@ class DetalleNomina{
     public static function deleteByNomina($nominaId) {
         $sql = "DELETE FROM DetalleNomina WHERE nomina_id = :nomina_id";
         $params = [':nomina_id' => $nominaId];
-        return Database::getInstance()->execQuery($sql, $params);
+        return Database::getInstance()->preparedQuery($sql, $params);
     }
 
     /**
@@ -98,7 +98,7 @@ class DetalleNomina{
     public static function deleteByUsuario($usuarioId) {
         $sql = "DELETE FROM DetalleNomina WHERE usuario_id = :usuario_id";
         $params = [':usuario_id' => $usuarioId];
-        return Database::getInstance()->execQuery($sql, $params);
+        return Database::getInstance()->preparedQuery($sql, $params);
     }
 
     /**
