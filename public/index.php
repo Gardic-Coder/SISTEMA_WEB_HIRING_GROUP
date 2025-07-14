@@ -1,45 +1,28 @@
 <?php
+session_start();
 require_once __DIR__ . '/../utils/config.php';
-require_once MODELS_DIR . 'Usuario.php';
-require_once MODELS_DIR . 'UsuarioPostulante.php';
-require_once MODELS_DIR . 'Empresa.php';
-require_once MODELS_DIR . 'OfertaLaboral.php';
-require_once MODELS_DIR . 'Postulacion.php';
-require_once MODELS_DIR . 'Contratacion.php';
-require_once MODELS_DIR . 'Categoria.php';
-require_once MODELS_DIR . 'CategoriaOfertaLaboral.php';
-require_once MODELS_DIR . 'Telefono.php';
-require_once MODELS_DIR . 'FormacionAcademica.php';
-require_once MODELS_DIR . 'DocumentoUsuario.php';
-require_once MODELS_DIR . 'CuentaBancaria.php';
-require_once MODELS_DIR . 'Banco.php';
-require_once MODELS_DIR . 'ExperienciaLaboral.php';
-require_once MODELS_DIR . 'RegistroInicioSesion.php';
-require_once MODELS_DIR . 'ReporteActividad.php';
-require_once MODELS_DIR . 'NominaMensual.php';
-require_once MODELS_DIR . 'DetalleNomina.php';
-require_once MODELS_DIR . 'ProfesionUsuario.php';
+require_once CORE_DIR . 'setup.php';
+require_once CORE_DIR . 'Auth.php';
 
-function crearTablas() {
-    Usuario::createTable();
-    UsuarioPostulante::createTable();
-    Empresa::createTable();
-    OfertaLaboral::createTable();
-    Postulacion::createTable();
-    Contratacion::createTable();
-    Categoria::createTable();
-    CategoriaOfertaLaboral::createTable();
-    Telefono::createTable();
-    FormacionAcademica::createTable();
-    DocumentoUsuario::createTable();
-    CuentaBancaria::createTable();
-    Banco::createTable();
-    ExperienciaLaboral::createTable();
-    RegistroInicioSesion::createTable();
-    ReporteActividad::createTable();
-    NominaMensual::createTable();
-    DetalleNomina::createTable();
-    ProfesionUsuario::createTable();
+// Crear tablas si no existen
+crearTablas();
+
+// Redirigir según sesión
+if (Auth::isLoggedIn()) {
+    $rol = Auth::getCurrentUserRole();
+    switch ($rol) {
+        case 'administrador':
+            header('Location: /views/admin/dashboard.php'); break;
+        case 'empresa':
+            header('Location: /views/empresa/panel.php'); break;
+        case 'postulante':
+            header('Location: /views/postulante/perfil.php'); break;
+        case 'hiring_group':
+            header('Location: /views/hiring/dashboard.php'); break;
+        default:
+            header('Location: /views/login.php');
+    }
+} else {
+    header('Location: /views/login.php');
 }
-
-?>
+exit;
