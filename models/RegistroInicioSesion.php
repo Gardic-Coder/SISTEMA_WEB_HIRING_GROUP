@@ -3,7 +3,7 @@
  * RegistroInicioSesion.php - Modelo para registros de inicio de sesión
  */
 
-require_once __DIR__ . '/../util/Config.php';
+require_once __DIR__ . '/../utils/Config.php';
 require_once CORE_DIR . 'Database.php';
 
 class RegistroInicioSesion {
