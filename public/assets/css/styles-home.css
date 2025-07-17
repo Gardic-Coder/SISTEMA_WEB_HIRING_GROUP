@@ -1,0 +1,73 @@
+
+@font-face {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    src: url(fonts/Roboto.zip);
+}
+
+html{
+  overflow-x: hidden;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;   
+}
+
+/*---------------------Body--------------------*/
+
+.btn-outline-blueviolet{
+    color: blueviolet !important;
+    border: 2px solid blueviolet !important;
+    background-color: transparent !important;
+}
+
+.btn-outline-blueviolet:hover {
+    color: white !important;
+    background-color: blueviolet !important;
+    border-color: blueviolet !important;
+}
+
+.textocentral{
+    color: blueviolet !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    font-weight: 800 !important;
+    text-shadow: 2px 4px 4px rgba(0,0,0,0.5) !important;
+}
+
+.parrafocentral{
+    color: rgb(238, 238, 238) !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    text-shadow: 2px 4px 4px rgba(0,0,0,0.5) !important;
+}
+.nosotroscontainer{
+    background-color: rgb(33, 37, 41) !important; 
+    height: auto !important; 
+    width: 60% !important; 
+    border-radius: 20px !important; 
+    border: 4px solid rgb(80, 28, 162) !important;
+}
+
+.nosotros > h1{
+    color: blueviolet;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+}
+
+.nosotros > p {
+    color: rgb(238, 238, 238) !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+}
+
+.registrarse > h1{
+    color: rgb(238, 238, 238) !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+}
+
+.registrarse > p {
+    color: rgb(238, 238, 238) !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+}

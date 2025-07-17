@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación con Cambio de Tema</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            /* Colores modo claro */
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --primary-color: #6c2eb7;
+            --secondary-color: #f8f9fa;
+            --card-bg: #ffffff;
+        }
+
+        [data-theme="dark"] {
+            /* Colores modo oscuro */
+            --bg-color: #121212;
+            --text-color: #f8f9fa;
+            --primary-color: #8e44ad;
+            --secondary-color: #1e1e1e;
+            --card-bg: #1e1e1e;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .theme-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .primary-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .primary-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .light-icon { display: none; }
+        .dark-icon { display: inline-block; }
+
+        [data-theme="dark"] .light-icon { display: inline-block; }
+        [data-theme="dark"] .dark-icon { display: none; }
+
+        h1 {
+            color: var(--primary-color);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema">
+        <i class="bi bi-moon-fill dark-icon"></i>
+        <i class="bi bi-sun-fill light-icon"></i>
+        <span class="theme-text">Modo Oscuro</span>
+    </button>
+    
+    <main>
+        <h1>Bienvenido a Mi Aplicación</h1>
+        
+        <div class="card">
+            <h2>Características Principales</h2>
+            <p>Esta aplicación incluye un sistema de cambio de tema que se adapta a tus preferencias.</p>
+            <button class="primary-btn">Ver Más</button>
+        </div>
+        
+        <div class="card">
+            <h2>Personalización</h2>
+            <p>El tema se guardará en tu navegador para futuras visitas.</p>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const htmlElement = document.documentElement;
+            const themeText = document.querySelector('.theme-text');
+            
+            // 1. Verificar preferencias guardadas o del sistema
+            const savedTheme = localStorage.getItem('theme') || 
+                             (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            
+            // 2. Aplicar tema inicial
+            applyTheme(savedTheme);
+            
+            // 3. Configurar evento del botón
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                applyTheme(newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+            
+            // 4. Escuchar cambios en las preferencias del sistema
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                const newTheme = e.matches ? 'dark' : 'light';
+                applyTheme(newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+            
+            function applyTheme(theme) {
+                htmlElement.setAttribute('data-theme', theme);
+                themeText.textContent = theme === 'dark' ? 'Modo Claro' : 'Modo Oscuro';
+                themeToggle.setAttribute('aria-pressed', theme === 'dark');
+            }
+        });
+    </script>
+</body>
+</html>
