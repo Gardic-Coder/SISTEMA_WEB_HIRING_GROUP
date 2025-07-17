@@ -13,7 +13,7 @@ try {
     echo "Error al crear la tabla de usuarios: " . $e->getMessage() . "\n";
 }
 // Prueba de inserción de usuario
-try { 
+/*try { 
     $userId = Usuario::insert([
         'nombre_usuario' => 'testuser',
         'contraseña' => password_hash('password123', PASSWORD_BCRYPT),
@@ -101,7 +101,19 @@ try {
     }
 } catch (Exception $e) {
     echo "Error al eliminar usuario: " . $e->getMessage() . "\n";
-}
+}*/
 
+// test_crear_usuario.php
+
+Usuario::create([
+    'nombre_usuario' => 'testuser',
+    'contraseña' => 'clave123', // el modelo debe hashearla
+    'correo' => 'test@correo.com',
+    'tipo_usuario' => 'postulante'
+]);
+
+echo "Usuario creado";
+
+//http://localhost/SISTEMA_WEB_HIRING_GROUP/public/login.php
 
 ?>

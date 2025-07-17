@@ -11,6 +11,7 @@ define('MODELS_DIR', PROJECT_ROOT . '/models/');
 define('CONFIG_DIR', PROJECT_ROOT . '/config/');
 define('DB_FOLDER', PROJECT_ROOT . '/db/');
 define('PUBLIC_DIR', PROJECT_ROOT . '/public/');
+define('CONTROLLERS_DIR', PROJECT_ROOT . '/controllers/');
 
 // === 🗃️ Base de datos ===
 define('DB_PATH', DB_FOLDER . 'database.sqlite');
