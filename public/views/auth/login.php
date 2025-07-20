@@ -1,220 +1,194 @@
 <?php
+// public/views/auth/login.php
 require_once __DIR__ . '/../../../utils/config.php';
-require_once CORE_DIR . 'Auth.php';
-
 ?>
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en"><!--Metadatos-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - Sistema de Empleo</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #1e5799, #207cca);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .login-container {
-            width: 100%;
-            max-width: 450px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-        }
-        
-        .logo {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .logo h1 {
-            color: white;
-            font-size: 2.5rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-        }
-        
-        .login-form .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .login-form label {
-            display: block;
-            margin-bottom: 8px;
-            color: white;
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
-        
-        .login-form input {
-            width: 100%;
-            padding: 15px;
-            border-radius: 12px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .login-form input:focus {
-            outline: none;
-            border-color: rgba(255, 255, 255, 0.4);
-            background: rgba(255, 255, 255, 0.2);
-        }
-        
-        .login-form input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .btn-login {
-            width: 100%;
-            padding: 15px;
-            border-radius: 12px;
-            background: #ff6b6b;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-        }
-        
-        .btn-login:hover {
-            background: #ff5252;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .forgot-password {
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        .forgot-password a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-        }
-        
-        .forgot-password a:hover {
-            color: white;
-            text-decoration: underline;
-        }
-        
-        .register-link {
-            text-align: center;
-            margin-top: 30px;
-            color: white;
-            font-size: 1.1rem;
-        }
-        
-        .register-link a {
-            color: #ffdd59;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-        
-        .register-link a:hover {
-            color: #ffcc00;
-            text-decoration: underline;
-        }
-        
-        .error-message {
-            background: rgba(231, 76, 60, 0.3);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            text-align: center;
-            border: 1px solid rgba(231, 76, 60, 0.5);
-        }
-        
-        .user-type-selector {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-        
-        .user-type-btn {
-            flex: 1;
-            padding: 12px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 2px solid transparent;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-        
-        .user-type-btn.active {
-            background: rgba(255, 107, 107, 0.3);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-        
-        @media (max-width: 480px) {
-            .login-container {
-                padding: 30px 20px;
-            }
-            
-            .logo h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <title>Login - Hiring Group</title>
+    <link rel="stylesheet" href="../../assets/css/styles-login.css">
+    <link rel="icon" href="../../assets/images/Icono.png">
+    <link rel="stylesheet" href="../../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/navbar.css">
 </head>
-<body>
-    <div class="login-container">
-        <div class="logo">
-            <h1>Sistema de Empleo</h1>
+<body><!--Cuerpo de la Pagina-->
+    <header style="position: fixed; width: 100%; z-index: 2; top: 0; left: 0;"><!--Barra de Navegacion-->
+        <nav class="navbar navbar-expand-lg color_barra custom-border">
+        <div class="container-fluid">
+            <div class="px-2 py-1 animacionlogo">
+                <a class="navbar-brand" href="Home - Hiring Group.html"><img src="../../assets/images/logo3.png" width="150" height="80"></a>
+            </div>
+            <!--Boton para Tlf-->
+            <!--navbarSupportedContet, opciones que se colapsaran llegado a cierta posicion dada por el expand-md-->
+            <button class="navbar-toggler btn btn-outline-light border-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--Menu colapsable-->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!--Opciones del Menu de Navegacion-->
+                <ul class="navbar-nav mx-auto flex-lg-row gap-lg-5 menu">
+                    <li class="nav-item">
+                    <a class="nav-link active px-lg-4" aria-current="page" href="<?= APP_URL ?>/">
+                         <i class="bi bi-house-door me-1"></i> Inicio
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active px-lg-4" aria-current="page" href="<?= APP_URL ?>/#service">
+                        <i class="bi bi-gear me-1"></i> Servicios
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active px-lg-4" aria-current="page" href="User - Hiring Group.html"> <!--Enlace a la pagina de Uusario de prueba-->
+                        <i class="bi bi-globe me-1"></i> Registrarse
+                    </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle px-lg-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Menu
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                Nintendo Switch <i class="bi bi-nintendo-switch me-1"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                Twitter <i class="bi bi-twitter me-1"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active px-lg-4" aria-current="page" href="#">
+                        <i class="bi bi-paypal me-1"></i> Rutinas
+                    </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!--Boton solo visible en movil-->
+
+             <div class="d-lg-none mt-3 mb-3 py-2 px-3 BotonSesion">
+                    <a href="#" class="btn w-100 ">
+                        <i class="bi bi-universal-access me-1"></i> Iniciar Sesión
+                    </a>
+            </div>
+
+            <!--Boton solo visible en Desktop-->
+
+            <div class="d-none d-lg-flex ms-lg-3 py-2 px-3 BotonSesion">
+                    <a href="#" class="btn w-100 ">
+                        <i class="bi bi-universal-access me-1"></i> Iniciar Sesión
+
+                    </a>
+            </div>
+
         </div>
-        
-        <?php if (isset($_SESSION['error'])): ?>
-            <div class="error-message">
-                <?= htmlspecialchars($_SESSION['error']) ?>
-                <?php unset($_SESSION['error']); ?>
-            </div>
-        <?php endif; ?>
-        
-        <form action="<?= APP_URL ?>/auth" method="post" class="login-form">
-            <div class="form-group">
-                <label for="identifier">Usuario o Correo Electrónico</label>
-                <input type="text" id="identifier" name="identifier" required placeholder="Ingresa tu usuario o correo">
+        </nav>
+    </header>
+
+    <!--Inicio Sesion-->
+    <div class="container-fluid g-0" style="padding-top: 87px;"> <!--Contenedor Principal-->
+        <div class="row g-0"> <!--Fila Principal-->
+            <!-- Sección Negro (50%) -->
+            <div class="col-md-6 d-flex align-items-center justify-content-center" style="background-color: rgb(33, 37, 41)">
+                <div class="text-white p-4 text-start">
+                    <h1><strong>Inicio de Sesion</strong></h1>
+                    <form class="mt-5" method="post" action="<?= APP_URL ?>/auth">
+                        <div class="mb-3">
+                            <label for="identifier" class="form-label"><h5>Usuario <i class="bi bi-person-fill me-3"></i></h5></i></label>
+                            <input type="text" class="form-control barrasesion" id="identifier" name="identifier" placeholder="Ingrese su Usuario o Correo" required>
+                        </div>
+                        <div class="mb-3">
+                             <label for="password" class="form-label"><h5>Contraseña <i class="bi bi-lock-fill me-3"></i></h5></i></label>
+                            <input type="password" class="form-control barrasesion" id="password" name="password" placeholder="Ingrese su Contraseña" style="color: white !important;" required>
+                        </div>
+                        <div class="text-center">
+                           <button type="submit" class="btn btn-outline-blueviolet px-5 mt-3"><strong>Login</strong></button> 
+                        </div>
+                        
+                    </form>
+                    <p class="mt-3 text-center" >¿No tienes una Cuenta? <a href="<?= APP_URL ?>/registro/postulante" style="color: blueviolet !important; text-decoration: none;"><strong>¡Registrate!</strong></a></p>
+                </div>
+                
             </div>
             
-            <div class="form-group">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" required placeholder="Ingresa tu contraseña">
+            <!-- Sección Morada (50%) -->
+            <div class="col-md-6 d-flex align-items-center justify-content-center" style="background-color: #6c2eb7 !important;">
+                <div class="d-flex flex-column align-items-center justify-content-center" style="width: 100%; height: 100%; position: relative;">
+                    <!--Video Placeholder-->
+                    <div class="mb-2 mt-4 justify-content-center" style="border-radius: 10px; overflow: hidden; z-index: 0;">
+                        <video autoplay muted loop style="width: 95%; height: auto; max-height: 300px; object-fit: cover; border-radius: 20px;">
+                            <source src="../../assets/video/placeholder.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div> 
+                    <!--Texto de Bienvenida-->
+                    <div class="text-white px-4 text-end" style="margin-top: 10px;">
+                        <h1><strong>WELCOME</strong></h1>
+                        <h1><strong>BACK!</strong></h1>
+                        <p class="mt-3" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit<br>, sed do eiusmod tempor<br>
+                            incididunt ut labore et dolore magna aliqua. Ut<br>
+                            ullamco laboris nisi ut aliquip ex ea
+                        </p>
+                    </div>
+                </div>
             </div>
-            
-            <button type="submit" class="btn-login">Iniciar Sesión</button>
-            
-            <div class="forgot-password">
-                <a href="#">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+<!--Final de la pagina-->
+<footer style="background-color: rgb(29, 29, 29);">
+    <div class="container py-4">
+        <div class="row">
+            <!-- Tarjeta 1 -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 bg-dark text-white border-0">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Nosotros</strong> </h5>
+                        <p class="card-text">Somos Hiring Group, conectando talento con oportunidades laborales. Nuestro objetivo es facilitar el proceso de contratación.</p>
+                    </div>
+                </div>
             </div>
-        </form>
-        
-        <div class="register-link">
-            <p>¿No tienes una cuenta? <a href="<?= APP_URL ?>/registro/postulante">Regístrate ahora</a></p>
+            <!-- Tarjeta 2 -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 bg-dark text-white border-0">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Contacto</strong></h5>
+                        <p class="card-text">
+                            <i class="bi bi-envelope me-2"></i> contacto@hiringgroup.com<br>
+                            <i class="bi bi-telephone me-2"></i> +1 234 567 890<br>
+                            <i class="bi bi-geo-alt me-2"></i> Av. Principal 123, Ciudad XXXX, País YYYY
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Tarjeta 3 -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 bg-dark text-white border-0">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Síguenos</strong></h5>
+                        <p class="card-text">
+                            <a href="#" class="text-white me-2" style="text-decoration: none !important;"><i class="bi bi-twitter"></i> <strong>Twitter</strong></a><br>
+                            <a href="#" class="text-white me-2" style="text-decoration: none !important;"><i class="bi bi-facebook"></i> <strong>Facebook</strong></a><br>
+                            <a href="#" class="text-white me-2" style="text-decoration: none !important;"><i class="bi bi-instagram"></i> <strong>Instagram</strong> </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-white mt-3" style="font-size: 0.9rem;">
+            &copy; 2025 Hiring Group. All rights reserved to <strong>Alejandro González</strong>.
         </div>
     </div>
-</body>
+</footer>
 </html>
