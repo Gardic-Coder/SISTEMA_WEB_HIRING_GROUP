@@ -10,7 +10,7 @@ class RegistroInicioSesion {
     public static function createTable() {
         $sql = "CREATE TABLE IF NOT EXISTS RegistroInicioSesion (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            usuario_id INTEGER NOT NULL,
+            usuario_id INTEGER,
             fecha_hora DATETIME NOT NULL,
             ip_usuario TEXT NOT NULL,
             exito BOOLEAN NOT NULL,
@@ -26,7 +26,7 @@ class RegistroInicioSesion {
                 VALUES (:usuario_id, :fecha_hora, :ip_usuario, :exito)";
         
         $params = [
-            ':usuario_id' => $data['usuario_id'],
+            ':usuario_id' => $data['usuario_id'] ?? null, // Permite null
             ':fecha_hora' => $data['fecha_hora'] ?? date('Y-m-d H:i:s'),
             ':ip_usuario' => $data['ip_usuario'],
             ':exito' => $data['exito'] ? 1 : 0

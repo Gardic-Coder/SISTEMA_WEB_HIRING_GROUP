@@ -56,26 +56,46 @@ Desarrollar una plataforma web que permita a Hiring Group y sus empresas cliente
 │   └── Auth.php
 ├── 📁models/              # Modelos de datos
 │   ├── Banco.php
-│   ├── CuentaBanco.php
+│   ├── Categoria.php
+│   ├── CategoriaOfertaLaboral.php
+│   ├── Contratacion.php
+│   ├── CuentaBancaria.php
+│   ├── DetalleNomina.php
+│   ├── DocumentoUsuario.php
 │   ├── Empresa.php
 │   ├── ExperienciaLaboral.php
 │   ├── FormacionAcademica.php
+│   ├── NominaMensual.php
+│   ├── OfertaLaboral.php
+│   ├── Postulacion.php
 │   ├── ProfesionUsuario.php
+│   ├── RegistroInicioSesion.php
+│   ├── ReporteActividad.php
 │   ├── Telefono.php
 │   ├── Usuario.php
-│   └── UsuarioEmpresa.php
+│   ├── UsuarioEmpresa.php
+│   └── UsuarioPostulante.php
 ├── 📁public/              # Punto de entrada y recursos públicos
 │   ├── index.php
-│   └── 📁assets/
+│   ├── .htaccess
+│   ├── 📁assets/
 │       ├── 📁css/
+│       ├── 📁docs/
+│       ├── 📁font/
+│       ├── 📁images/
 │       ├── 📁js/
-│       └── 📁docs/
+│       └── 📁video/
+│   ├── 📁uploads/
+│       ├── 📁documents/
+│       └── 📁perfiles/
+│   └── 📁views/
 ├── 📁test/                # Pruebas unitarias
 │   └── UsuarioTest.php
 ├── 📁uploads/             # Archivos subidos por usuarios
 │   └── 📁perfiles/
 ├── 📁utils/               # Utilidades y configuración
 │   ├── config.php
+│   ├── DocumentHandler.php
 │   └── ImageHandler.php
 └── README.md            # Documentación del proyecto
 ```
