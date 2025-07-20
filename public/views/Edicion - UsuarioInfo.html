@@ -227,7 +227,7 @@
 
                          <div class="mt-3">
                             <label for="Confirm-password" class="form-label"><h5>Confirmar Contraseña <i class="bi bi-file-plus me-1"></i></h5></label>
-                            <input type="password" value="" class="form-control w-75 mx-auto" id="confirm-password" minlength="8" maxlength="32" required>
+                            <input type="password" value="" class="form-control w-75 mx-auto" id="confirm-password" minlength="8" maxlength="32" required oninput="checkPasswordMatch()">
                         </div>
                         <hr>
                     </div>
@@ -254,6 +254,32 @@
 
 
         </div>
+
+        <!--Funcion CheckPasswordMatch-->
+    <script>
+        function checkPasswordMatch() {
+            const password = document.getElementById("new-password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+            if (password !== confirmPassword) {
+                confirmPassword.setCustomValidity("Las contraseñas no coinciden");
+                confirmPassword.classList.add('is-invalid');
+            } else {
+                confirmPassword.setCustomValidity("");
+                confirmPassword.classList.remove('is-invalid');
+            }
+             confirmPassword.reportValidity();
+        }
+
+        // Validación al enviar 
+        document.querySelector('form').addEventListener('submit', function(e) {
+            if (document.getElementById("new-password").value !== 
+                document.getElementById("password2").value) {
+                e.preventDefault();
+                document.getElementById("confirm-password").focus();
+            }
+        });
+    </script>
+    
 
 
 
