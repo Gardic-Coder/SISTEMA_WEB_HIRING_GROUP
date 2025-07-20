@@ -43,11 +43,7 @@ require_once __DIR__ . '/../../../utils/config.php';
                     </a>
                     </li>
                     <li class="nav-item">
-<<<<<<<< HEAD:public/views/Login - Hiring Group.html
-                    <a class="nav-link active px-lg-4" aria-current="page" href="UserContratado - Hiring Group.html"> <!--Enlace a la pagina de Uusario de prueba-->
-========
                     <a class="nav-link active px-lg-4" aria-current="page" href="<?= APP_URL ?>/registro/postulante"> <!--Enlace a la pagina de Uusario de prueba-->
->>>>>>>> feature-controllers:public/views/auth/login.php
                         <i class="bi bi-globe me-1"></i> Registrarse
                     </a>
                     </li>

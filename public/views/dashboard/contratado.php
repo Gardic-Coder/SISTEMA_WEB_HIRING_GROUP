@@ -1,8 +1,9 @@
 <?php
-// public/views/dashboard/dashboardContratado.php
+// public/views/dashboard/contratado.php
 require_once __DIR__ . '/../../../utils/config.php';
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@ require_once __DIR__ . '/../../../utils/config.php';
         <nav class="navbar navbar-expand-lg color_barra custom-border">
         <div class="container-fluid">
             <div class="px-5 py-1 animacionlogo">
-                <a class="navbar-brand" href="<?= APP_URL ?>/"><img src="../../assets/images/Icono.png" width="70" height="65"></a>
+                <a class="navbar-brand" href="<?= APP_URL ?>/dashboard/contratado"><img src="../../assets/images/Icono.png" width="70" height="65"></a>
             </div>
             <!--Boton para Tlf-->
             <!--navbarSupportedContet, opciones que se colapsaran llegado a cierta posicion dada por el expand-md-->
@@ -43,7 +44,7 @@ require_once __DIR__ . '/../../../utils/config.php';
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="Recibo de Pago - Hiring Group (Contratado).html">
                         <i class="bi bi-clipboard-data me-1"></i> Mis Recibos
                     </a>
                     </li>
@@ -58,7 +59,7 @@ require_once __DIR__ . '/../../../utils/config.php';
             <!--Boton solo visible en movil-->
 
              <div class="d-lg-none mt-3 mb-3 py-2 px-3  animacionlogo">
-                    <a href="Hiring Group.html" class="btn btn-outline-sesion w-100 ">
+                    <a href="Edicion - UsuarioInfo.html" class="btn btn-outline-sesion w-100 ">
                         <i class="bi bi-person-badge-fill me-1"></i> Username Here
                     </a>
             </div>
@@ -66,7 +67,7 @@ require_once __DIR__ . '/../../../utils/config.php';
             <!--Boton solo visible en Desktop-->
 
             <div class="d-none d-lg-flex ms-lg-3 py-2 px-3 animacionlogo">
-                    <a href="Hiring Group.html" class="btn btn-outline-sesion w-100 ">
+                    <a href="Edicion - Hiring Group.html" class="btn btn-outline-sesion w-100 ">
                         <i class="bi bi-person-badge-fill me-1"></i> Username Here
 
                     </a>
@@ -76,41 +77,105 @@ require_once __DIR__ . '/../../../utils/config.php';
         </nav>
     </header>
 
+    <!--Parte principal del Perfil-->
+
     <main class="container-fluid mt-5 px-0" style="height: auto; padding-top: 90px;">
-        <div class="row align-items-center" style="height: 100%; background-color:  blueviolet;">
-            <div class="col-xl-6 col-12 text-center py-3 px-5 textocentral">
-                <h1 class="text-center text-white fw-bold">Bienvenido, Username Here</h1>
-                <p class="text-center text-white fw-semibold" style="font-size: large;">Username Job goes here Juan</p>
-            </div>
-
-            <div class="col-xl-6 col-12 py-3 px-5 justify-content-center align-items-center d-flex">
-                <div class="d-flex flex-lg-row align-items-center justify-content-center  mx-auto infousuario">
-                    
-                    
-                    <div class="d-flex flex-column text-center justify-content-center align-items-center  w-lg-50 w-100 py-2 px-3">
-                        <p class="text-white fw-bold letra" style="font-size: large;">Fecha de contratación</p>
-                        <p class="text-white fw-semibold letra">Fecha va aqui</p>
+    <div class="row align-items-center" style="height: 100%; background-color: blueviolet;">
+        <!-- Columna izquierda con nombre y foto -->
+        <div class="col-xl-6 col-12 text-center py-3 px-5 textocentral">
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
+                <!-- Foto de perfil -->
+                <div class="me-md-4 mb-3 mb-md-0 position-relative">
+                    <div class="rounded-circle border border-4  d-flex align-items-center justify-content-center" style="width: 100px; height: 100px; overflow: hidden; background-color: rgb(95, 35, 192) !important; border-color: rgb(33, 37, 41) !important;">
+                        <span class="fw-bold fs-4 text-dark">YOU</span>
+                        <!-- La imagen real se cargaría aquí desde el backend -->
+                        <img id="profile-image" src="" alt="Foto de perfil" 
+                             class="w-100 h-100 d-none" style="object-fit: cover;">
                     </div>
-
-                       <!-- Separador vertical -->
-                    <div class="border-start border-white opacity-50 mx-2 justify-content-center align-items-center" style="height: 50px;"></div>
-
-                    <div class="d-flex flex-column text-center justify-content-center align-items-center  w-lg-50 w-100 py-2 px-3">
-                        <p class="text-white fw-bold letra" style="font-size: large;" >Salario Mensual</p>
-                        <p class="text-white fw-semibold letra">No se que tantos dolares</p>
-                    </div>
-
-                    
-                    
+                </div>
+                
+                <!-- Texto de bienvenida -->
+                <div class=" text-center textocentral px-1">
+                    <h1 class="text-center text-white fw-bold">Bienvenido, Username Here</h1>
+                    <p class="text-center text-white fw-semibold" style="font-size: large;">Username Job goes here Juan</p>
                 </div>
             </div>
         </div>
-        <!-- Aquí puedes agregar más contenido específico para el usuario -->
-    </main>
-    
+
+
+        <!--Info del Usuario-->
+        <div class="col-xl-6 col-12 py-3 px-5 justify-content-center align-items-center d-flex">
+            <div class="d-flex flex-lg-row align-items-center justify-content-center mx-auto infousuario">
+                <div class="d-flex flex-column text-center justify-content-center align-items-center w-lg-50 w-100 py-2 px-3">
+                    <p class="fw-bold letra pmayus" style="font-size: large;">Fecha de contratación</p>
+                    <p id="userDate" class="fw-semibold letra pminus">Fecha va aqui</p>
+                </div>
+
+                <div class="border-start border-white opacity-50 mx-2 justify-content-center align-items-center" style="height: 50px;"></div>
+
+                <div class="d-flex flex-column text-center justify-content-center align-items-center w-lg-50 w-100 py-2 px-3">
+                    <p class="fw-bold letra pmayus" style="font-size: large;">Salario Mensual</p>
+                    <p id="userSalary" class="fw-semibold letra pminus">No se que tantos dolares</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+    <!--Informacion Personal-->
+    <div class=" row mt-5 justify-content-center mx-5 gx-5">
+        <div class="col-lg-5 col-md-6 mb-4">
+            <div class="card h-100 custom-card ">
+                <div class="card-body">
+                    <h5> <i class="bi bi-geo-alt text-primary me-2"></i>Información de Contacto</h5>
+                    <div class="row">
+                        <div class="col-md">
+                            <h6>Cedula de Identidad</h6><p id="userCI" class="mb-0 fw-bold">V/E XX-XXX-XXX</p>
+                            <hr>
+                            <h6>Fecha de Nacimiento</h6><p id="userBirth" class="mb-0 fw-bold">20XX / XX / XX</p>
+                            <hr>
+                            <h6>Genero</h6><p id="userGender" class="mb-0 fw-bold">XXXXXX</p> 
+                            <hr>
+                            <h6>Telefono</h6><p id="userPhone" class="mb-0 fw-bold">+58 4XX-XXXXXXX</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-5 col-md-6 mb-4">
+            <div class="card h-100 custom-card " >
+                <div class="card-body">
+                    <h5 class="card-title"> <i class="bi bi-briefcase text-primary me-2"></i>Información Laboral</h5>
+                    <div class="row">
+                        <div class="col-md">
+                            <h6>Correo Electrónico</h6><p id="userEmail" class="mb-0 fw-bold">XXX@hotmail/gmail.com</p>
+                            <hr>
+                            <h6>Estado de Residencia</h6><p id="userState" class="mb-0 fw-bold">XXXX YYYY ZZZZ</p>
+                            <hr>
+                            <h6>Ciudad de Residencia</h6><p id="userPlace" class="mb-0 fw-bold">XXXX YYYY ZZZZ</p> 
+                            <hr>
+                            <h6>Tipo de Sangre</h6><p id="userBlood" class="mb-0 fw-bold">OH+/A/B/AB/O</p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   <!--Final de la pagina-->
+<footer style="background-color: rgb(29, 29, 29);">
+    <div class="container py-4">
+       
+        <div class="text-center text-white mt-3" style="font-size: 0.9rem;">
+            &copy; 2025 Hiring Group. All rights reserved to <strong>Alejandro González</strong>.
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
