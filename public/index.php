@@ -33,9 +33,6 @@ $router->add('GET', '/', function() {
 $router->add('GET', '/login', function() {
     require VIEWS_DIR . 'auth/login.php';
 });
-/*$router->add('GET', '/registro/postulante', function() {
-    require VIEWS_DIR . 'auth/register.php';
-});*/
 
 $router->add('POST', '/auth', 'AuthController@login');
 $router->add('GET', '/logout', 'AuthController@logout');
@@ -45,6 +42,7 @@ $router->add('POST', '/registro/postulante', 'RegistroController@registrarPostul
 // ======= RUTAS PROTEGIDAS =======
 $router->add('GET', '/dashboard', 'DashboardController@redirectToDashboard');
 $router->add('GET', '/dashboard/postulante', 'PostulanteController@dashboard');
+$router->add('GET', '/dashboard/contratado', 'ContratadoController@mostrarDashboard');
 $router->add('GET', '/dashboard/empresa', 'EmpresaController@dashboard');
 $router->add('GET', '/perfil', 'PerfilController@showProfile');
 

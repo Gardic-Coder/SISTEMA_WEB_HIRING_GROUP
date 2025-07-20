@@ -2,6 +2,7 @@
 // controllers/DashboardController.php
 require_once __DIR__ . '/../utils/config.php';
 require_once CORE_DIR . 'Auth.php';
+require_once MODELS_DIR . 'UsuarioPostulante.php';
 
 
 class DashboardController {
@@ -11,9 +12,18 @@ class DashboardController {
             exit;
         }
         
-        switch (Auth::user()['tipo_usuario']) {
+        $usuario = Auth::user();
+
+        switch ($usuario['tipo_usuario']) {
             case 'postulante':
-                header('Location: ' . APP_URL . '/dashboard/postulante');
+                // Verificar si está contratado
+                $postulante = UsuarioPostulante::getByField('usuario_id', $usuario['id']);
+                
+                if ($postulante && !empty($postulante['contratado']) && $postulante['contratado'] == 1) {
+                    header('Location: ' . APP_URL . '/dashboard/contratado');
+                } else {
+                    header('Location: ' . APP_URL . '/dashboard/postulante');
+                }
                 break;
             case 'empresa':
                 header('Location: ' . APP_URL . '/dashboard/empresa');
