@@ -72,23 +72,7 @@ require_once __DIR__ . '/../../../utils/config.php';
                 </ul>
             </div>
 
-            <!--Boton solo visible en movil-->
-
-             <div class="d-lg-none mt-3 mb-3 py-2 px-3 BotonSesion">
-                    <a href="#" class="btn w-100 ">
-                        <i class="bi bi-universal-access me-1"></i> Iniciar Sesión
-                    </a>
-            </div>
-
-            <!--Boton solo visible en Desktop-->
-
-            <div class="d-none d-lg-flex ms-lg-3 py-2 px-3 BotonSesion">
-                    <a href="#" class="btn w-100 ">
-                        <i class="bi bi-universal-access me-1"></i> Iniciar Sesión
-
-                    </a>
-            </div>
-
+        
         </div>
         </nav>
     </header>

@@ -51,4 +51,98 @@ html{
     border-radius: 8px; 
     width: 80%; 
     height: auto;
+    border-left: 9px solid rgba(255, 255, 255, 0.5); 
+    border-right: 9px solid rgba(255, 255, 255, 0.5); 
+    border-left-color: 0.3s ease; 
+    border-right-color: 0.3s ease;
 }
+
+.pminus{
+   color: rgb(161, 161, 161) !important; 
+   transition: color 0.3s ease !important;
+}
+
+.pmayus{
+    color:rgb(161, 161, 161) !important;
+    transition: color 0.3s ease !important;
+}
+
+.infousuario:hover .pminus{
+   color:rgb(255, 255, 255) !important; 
+}
+
+.infousuario:hover .pmayus{
+   color: rgb(33, 37, 41) !important; 
+}
+
+
+.infousuario:hover{
+    transform: scale(1.01);
+  transition: transform 0.3s ease;
+  border-left: 9px solid rgba(255, 255, 255);
+  border-right: 9px solid rgba(255, 255, 255);
+}
+
+/*Contenido Activo e Inactivo*/
+
+
+/*CSS Informacion Personal*/
+
+.custom-card{
+  background-color: rgba(138, 99, 246, 0.8);
+  border-left: 9px solid rgba(255, 255, 255, 0.5); 
+  border-radius: 10px;
+  box-shadow: 0ch 0ch 10px rgba(0, 0, 0, 0.4);
+  border-left-color: 0.3s ease; 
+}
+
+.custom-card:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+  border-left: 9px solid rgba(255, 255, 255);
+}
+
+.custom-card h5 {
+  color: rgb(202, 202, 202);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.custom-card h5 > i {
+  color: rgb(255, 255, 255) !important;
+  transition: color 0.3s ease !important;
+}
+
+
+.custom-card:hover h5{
+  color: rgb(255, 255, 255);
+}
+
+.custom-card:hover hr {
+  border-color: rgba(255, 255, 255);
+}
+
+.custom-card h6{
+    color: rgb(161, 161, 161) !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+    font-weight: 700;
+    transition: color 0.3s ease !important;
+}
+
+.custom-card:hover h6{
+    color: rgb(33, 37, 41) !important;
+}
+
+.custom-card p{
+    color: rgb(161, 161, 161) !important;
+    transition: color 0.3s ease !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif !important;
+}
+
+.custom-card:hover p{
+    color: rgba(255, 255, 255) !important;
+}
+
+/*Informacion Editar*/
+
