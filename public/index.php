@@ -33,14 +33,13 @@ $router->add('GET', '/', function() {
 $router->add('GET', '/login', function() {
     require VIEWS_DIR . 'auth/login.php';
 });
-$router->add('GET', '/registro/postulante', function() {
+/*$router->add('GET', '/registro/postulante', function() {
     require VIEWS_DIR . 'auth/register.php';
-});
+});*/
 
-//$router->add('GET', '/login', 'AuthController@showLogin');
 $router->add('POST', '/auth', 'AuthController@login');
 $router->add('GET', '/logout', 'AuthController@logout');
-//$router->add('GET', '/registro/postulante', 'RegistroController@showRegistroForm');
+$router->add('GET', '/registro/postulante', 'RegistroController@showRegistroPostulante');
 $router->add('POST', '/registro/postulante', 'RegistroController@registrarPostulante');
 
 // ======= RUTAS PROTEGIDAS =======
@@ -52,6 +51,9 @@ $router->add('GET', '/perfil', 'PerfilController@showProfile');
 // Manejar la ruta solicitada
 $request_uri = $_SERVER['REQUEST_URI'];
 $base_path = parse_url(APP_URL, PHP_URL_PATH);
+if (!$base_path) {
+    $base_path = '';
+}
 $path = str_replace($base_path, '', $request_uri);
 $path = explode('?', $path)[0]; // Eliminar parámetros GET
 

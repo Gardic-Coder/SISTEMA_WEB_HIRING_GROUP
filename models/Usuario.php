@@ -239,18 +239,21 @@ class Usuario {
             throw new InvalidArgumentException("El identificador y la contraseña son obligatorios");
         }
 
-        if ($user = self::findBy('correo', $identifier)) {
-            if (password_verify($password, $user['contraseña'])) {
-                return $user;
-            }
-        } elseif ($user = self::findBy('nombre_usuario', $identifier)) {
-            if (password_verify($password, $user['contraseña'])) {
-                return $user;
-            }
-        } else {
+        $user = self::findBy('correo', $identifier);
+        if (!$user) {
+            $user = self::findBy('nombre_usuario', $identifier);
+        }
+
+        if (!$user) {
             throw new Exception("Usuario no encontrado");
         }
-        return false;
+
+        if (!password_verify($password, $user['contraseña'])) {
+            throw new Exception("Contraseña incorrecta");
+        }
+
+        return $user;
+
     }
 
     /**

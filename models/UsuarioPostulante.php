@@ -50,7 +50,7 @@ class UsuarioPostulante {
             ':contratado' => $data['contratado'] ?? 0,
             ':tipo_sangre' => $data['tipo_sangre'] ?? null,
             ':fecha_nacimiento' => $data['fecha_nacimiento'],
-            ':genero' => $data['genero'] ?? null
+            ':genero' => $data['genero']
         ];
 
         $db = Database::getInstance();

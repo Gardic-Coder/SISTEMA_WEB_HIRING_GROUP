@@ -10,7 +10,7 @@ class RegistroInicioSesion {
     public static function createTable() {
         $sql = "CREATE TABLE IF NOT EXISTS RegistroInicioSesion (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            usuario_id INTEGER NOT NULL,
+            usuario_id INTEGER,
             fecha_hora DATETIME NOT NULL,
             ip_usuario TEXT NOT NULL,
             exito BOOLEAN NOT NULL,

@@ -1,22 +1,26 @@
+<?php
+// public/views/dashboard/dashboardContratado.php
+require_once __DIR__ . '/../../utils/config.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User - Hiring Group</title>
-    <link rel="stylesheet" href="../assets/styles.css"> <!--este css no existe de lo que ale me paso, asi que supongo que aun no esta creado o esta en otro lado-->
-    <link rel="stylesheet" href="../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/navbar.css">
-    <link rel="stylesheet" href="../assets/css/Styles-usercontratado.css">
-    <link rel="icon" href="../assets/images/Icono.png">
+    <link rel="stylesheet" href="../../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/navbar.css">
+    <link rel="stylesheet" href="../../assets/css/Styles-usercontratado.css">
+    <link rel="icon" href="../../assets/images/Icono.png">
 </head>
 <body style="background-color: rgb(33, 37, 41)">
     <header style="position: fixed; width: 100%; z-index: 2; top: 0; left: 0;"><!--Barra de Navegacion-->
         <nav class="navbar navbar-expand-lg color_barra custom-border">
         <div class="container-fluid">
             <div class="px-5 py-1 animacionlogo">
-                <a class="navbar-brand" href="Home - Hiring Group.html"><img src="../assets/images/Icono.png" width="70" height="65"></a>
+                <a class="navbar-brand" href="<?= APP_URL ?>/"><img src="../../assets/images/Icono.png" width="70" height="65"></a>
             </div>
             <!--Boton para Tlf-->
             <!--navbarSupportedContet, opciones que se colapsaran llegado a cierta posicion dada por el expand-md-->
@@ -29,7 +33,7 @@
                 <!--Opciones del Menu de Navegacion-->
                 <ul class="navbar-nav mx-auto flex-lg-row gap-lg menu">
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="Home - Hiring Group.html">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/logout">
                          <i class="bi bi-house me-1"></i> Cerrar Sesión
                     </a>
                     </li>

@@ -48,20 +48,21 @@ class AuthController {
                     'username' => $usuario['username'],
                     'tipo_usuario' => $usuario['tipo_usuario']
                 ]);
-                
-                // Redirigir al dashboard
-                header('Location: ' . APP_URL . '/dashboard');
-                exit;
+                $_SESSION['login_redirect'] = APP_URL . '/dashboard';
+            } else {
+                throw new Exception("Credenciales inválidas");
             }
-            
-            throw new Exception("Credenciales inválidas");
             
         } catch (Exception $e) {
             $_SESSION['error'] = $e->getMessage();
+            $_SESSION['login_redirect'] = APP_URL . '/login';
+
         } finally {
             // Registrar el intento (éxito o fracaso)
             RegistroInicioSesion::add($loginAttempt);
-            header('Location: ' . APP_URL . '/login');
+            $destino = $_SESSION['login_redirect'] ?? (APP_URL . '/login');
+            unset($_SESSION['login_redirect']);
+            header("Location: $destino");
             exit;
         }
     }
