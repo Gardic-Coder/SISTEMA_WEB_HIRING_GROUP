@@ -26,12 +26,22 @@ if (!file_exists(DB_PATH)) {
 $router = new Router();
 
 // ======= RUTAS PÚBLICAS =======
-$router->add('GET', '/', 'AuthController@showLogin');
-$router->add('GET', '/login', 'AuthController@showLogin');
+//$router->add('GET', '/', 'AuthController@showLogin');
+$router->add('GET', '/', function() {
+    require VIEWS_DIR . 'home.php';
+});
+$router->add('GET', '/login', function() {
+    require VIEWS_DIR . 'auth/login.php';
+});
+$router->add('GET', '/registro/postulante', function() {
+    require VIEWS_DIR . 'auth/register.php';
+});
+
+//$router->add('GET', '/login', 'AuthController@showLogin');
 $router->add('POST', '/auth', 'AuthController@login');
 $router->add('GET', '/logout', 'AuthController@logout');
-$router->add('GET', '/registro/postulante', 'RegistroController@showPostulanteForm');
-$router->add('POST', '/registro/postulante', 'RegistroController@registerPostulante');
+//$router->add('GET', '/registro/postulante', 'RegistroController@showRegistroForm');
+$router->add('POST', '/registro/postulante', 'RegistroController@registrarPostulante');
 
 // ======= RUTAS PROTEGIDAS =======
 $router->add('GET', '/dashboard', 'DashboardController@redirectToDashboard');

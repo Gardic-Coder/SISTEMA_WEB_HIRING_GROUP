@@ -13,6 +13,7 @@ define('PUBLIC_DIR', PROJECT_ROOT . '/public/');
 define('CONTROLLERS_DIR', PROJECT_ROOT . '/controllers/');
 define('VIEWS_DIR', PUBLIC_DIR . 'views/');
 define('ASSETS_DIR', PUBLIC_DIR . 'assets/');
+define('CONFIG_DIR', UTILS_DIR . 'config/');
 
 // === 🗃️ Base de datos ===
 define('DB_PATH', DB_FOLDER . 'database.sqlite');
@@ -33,7 +34,7 @@ define('DOCUMENTS_DIR', PUBLIC_DIR . 'uploads/documents/');
 define('DOCUMENTS_URL', '/uploads/documents/');
 
 // === 🌐 Configuración de la aplicación ===
-define('APP_URL', 'http://localhost/proyecto');
+define('APP_URL', 'http://localhost:8000');
 define('UPLOADS_URL', APP_URL . '/uploads/perfiles/');
 
 // === 📦 Rutas comunes para require_once ===

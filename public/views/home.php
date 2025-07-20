@@ -1,3 +1,7 @@
+<?php
+// public/views/home.php
+require_once __DIR__ . '/../../utils/config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,7 +32,7 @@
                 <!--Opciones del Menu de Navegacion-->
                 <ul class="navbar-nav mx-auto flex-lg-row gap-lg-5 menu">
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-4" aria-current="page" href="Home - Hiring Group.html">
+                    <a class="nav-link active px-lg-4" aria-current="page" href="<?= APP_URL ?>/">
                          <i class="bi bi-house-door me-1"></i> Inicio
                     </a>
                     </li>
@@ -38,7 +42,7 @@
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-4" aria-current="page" href="Register-Hiring Group.html">
+                    <a class="nav-link active px-lg-4" aria-current="page" href="<?= APP_URL ?>/registro/postulante">
                         <i class="bi bi-globe me-1"></i> Registrarse
                     </a>
                     </li>
@@ -70,7 +74,7 @@
             <!--Boton solo visible en movil-->
 
              <div class="d-lg-none mt-3 mb-3 py-2 px-3 BotonSesion">
-                    <a href="Hiring Group.html" class="btn w-100 ">
+                    <a href="<?= APP_URL ?>/login" class="btn w-100 ">
                         <i class="bi bi-universal-access me-1"></i> Iniciar Sesión
                     </a>
             </div>
@@ -78,7 +82,7 @@
             <!--Boton solo visible en Desktop-->
 
             <div class="d-none d-lg-flex ms-lg-3 py-2 px-3 BotonSesion">
-                    <a href="Hiring Group.html" class="btn w-100 ">
+                    <a href="<?= APP_URL ?>/login" class="btn w-100 ">
                         <i class="bi bi-universal-access me-1"></i> Iniciar Sesión
 
                     </a>
@@ -241,7 +245,7 @@
                         </div>
 
                         <div class="d-flex flex-column justify-content-center align-items-center mt-3">
-                            <a href="Hiring Group.html" class="btn btn-outline-light btn-lg px-4 fw-bold">Buscar Empleo</a>
+                            <a href="<?= APP_URL ?>/login" class="btn btn-outline-light btn-lg px-4 fw-bold">Buscar Empleo</a>
                         </div>
                     </div>
             </div>
