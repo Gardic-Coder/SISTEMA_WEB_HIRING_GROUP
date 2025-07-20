@@ -5,6 +5,7 @@
 
 require_once __DIR__ . '/../utils/config.php';
 require_once CORE_DIR . 'Database.php';
+require_once MODELS_DIR . 'UsuarioPostulante.php';
 
 class Contratacion {
     public static function createTable() {
@@ -41,6 +42,8 @@ class Contratacion {
             ':activo' => isset($data['activo']) ? $data['activo'] : 1,
             ':salario' => $data['salario']
         ];
+
+        UsuarioPostulante::update($data['usuario_id'], ['contratado' => 1]);
 
         $db = Database::getInstance();
         if ($db->preparedQuery($sql, $params)) {

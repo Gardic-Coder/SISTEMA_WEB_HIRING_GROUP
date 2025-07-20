@@ -1,21 +1,26 @@
+<?php
+// public/views/auth/registroPostulante.php
+require_once __DIR__ . '/../../../utils/config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - Hiring Group</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/styles-register.css">
-    <link rel="stylesheet" href="../assets/css/navbar.css">
-    <link rel="icon" href="../assets/images/Icono.png">
+    <link rel="stylesheet" href="../../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/styles-register.css">
+    <link rel="stylesheet" href="../../assets/css/navbar.css">
+    <link rel="icon" href="../../assets/images/Icono.png">
 </head>
 <body>
     <header style="position: fixed; width: 100%; z-index: 2; top: 0; left: 0;"><!--Barra de Navegacion-->
         <nav class="navbar navbar-expand-lg color_barra custom-border">
         <div class="container-fluid">
             <div class="px-2 py-1 animacionlogo">
-                <a class="navbar-brand" href="Home - Hiring Group.html"><img src="../assets/images/logo3.png" width="150" height="80"></a>
+                <a class="navbar-brand" href="<?= APP_URL ?>/"><img src="../../assets/images/logo3.png" width="150" height="80"></a>
             </div>
             <!--Boton para Tlf-->
             <!--navbarSupportedContet, opciones que se colapsaran llegado a cierta posicion dada por el expand-md-->
@@ -28,17 +33,17 @@
                 <!--Opciones del Menu de Navegacion-->
                 <ul class="navbar-nav mx-auto flex-lg-row gap-lg-5 menu">
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-4" aria-current="page" href="Home - Hiring Group.html">
+                    <a class="nav-link active px-lg-4" aria-current="page" href="<?= APP_URL ?>/">
                          <i class="bi bi-house-door me-1"></i> Inicio
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-4" aria-current="page" href="Home - Hiring Group.html#service">
+                    <a class="nav-link active px-lg-4" aria-current="page" href="<?= APP_URL ?>/#service">
                         <i class="bi bi-gear me-1"></i> Servicios
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-4" aria-current="page" href="Register-Hiring Group.html">
+                    <a class="nav-link active px-lg-4" aria-current="page" href="<?= APP_URL ?>/registro/postulante">
                         <i class="bi bi-globe me-1"></i> Registrarse
                     </a>
                     </li>
@@ -70,7 +75,7 @@
             <!--Boton solo visible en movil-->
 
              <div class="d-lg-none mt-3 mb-3 py-2 px-3 BotonSesion">
-                    <a href="Login - Hiring Group.html" class="btn w-100 ">
+                    <a href="<?= APP_URL ?>/login" class="btn w-100 ">
                         <i class="bi bi-universal-access me-1"></i> Iniciar Sesión
                     </a>
             </div>
@@ -78,7 +83,7 @@
             <!--Boton solo visible en Desktop-->
 
             <div class="d-none d-lg-flex ms-lg-3 py-2 px-3 BotonSesion">
-                    <a href="Login - Hiring Group.html" class="btn w-100 ">
+                    <a href="<?= APP_URL ?>/login" class="btn w-100 ">
                         <i class="bi bi-universal-access me-1"></i> Iniciar Sesión
 
                     </a>
@@ -94,40 +99,40 @@
         <div class="container-fluid d-flex justify-content-center align-items-center" style="background-color: rgb(33, 37, 41); min-height: 165vh; padding-top: 140px;" 
             id="main-container">
             <div class="text-center formulariocontainer mb-3">
-                <img src="../assets/images/Icono.png" width="120" height="120" style="padding-top: 8px ;">
+                <img src="../../assets/images/Icono.png" width="120" height="120" style="padding-top: 8px ;">
                 <h1>¡Bienvenido!</h1>
                 <p>Complete el formulario para registrarse</p>
                 <hr>
-                <form class="row g-3 needs-validation" novalidate>
+                <form class="row g-3 needs-validation" method="post" action="<?= APP_URL ?>/registro/postulante" novalidate>
                     <div class="col-md-6 mb-3">
                         <div class="mt-3">
-                            <label for="Name" class="form-label"><h5>Nombre <i class="bi bi-person-fill me-1"></i></h5></label>
-                            <input type="text" class="form-control w-75 mx-auto" id="Name" name="Name" placeholder="Ingrese su Nombre"  minlength="3" maxlength="30" pattern="[A-Za-zÁ-ú\s]+"  required>
+                            <label for="nombres" class="form-label"><h5>Nombre </h5><i class="bi bi-person-fill me-1"></i></label>
+                            <input type="text" class="form-control w-75 mx-auto" id="nombres" name="nombres" placeholder="Ingrese su Nombre"  minlength="3" maxlength="30" pattern="[A-Za-zÁ-ú\s]+"  required>
                         </div>
 
                         <div class="mt-3">
-                            <label for="Name2" class="form-label"><h5>Apellido <i class="bi bi-person-fill-check me-1"></i></h5></label>
-                            <input type="text" class="form-control w-75 mx-auto" id="Name2" name="Name2" placeholder="Ingrese su Apellido" minlength="3" maxlength="30" pattern="[A-Za-zÁ-ú\s]+" required>
+                            <label for="apellidos" class="form-label"><h5>Apellido </h5><i class="bi bi-person-fill-check me-1"></i></label>
+                            <input type="text" class="form-control w-75 mx-auto" id="apellidos" name="apellidos" placeholder="Ingrese su Apellido" minlength="3" maxlength="30" pattern="[A-Za-zÁ-ú\s]+" required>
                         </div>
 
                         <div class="mt-3">
-                            <label for="CI" class="form-label"><h5>Cedula de Identidad <i class="bi bi-person-vcard me-1"></i></h5> </label>
-                            <input type="text" class="form-control w-75 mx-auto" id="CI" name="Name2" placeholder="V\E-XX-XXX-XXX" maxlength="12" pattern="[VE]-\d{2}-\d{3}-\d{3}" required>
+                            <label for="cedula" class="form-label"><h5>Cedula de Identidad </h5> <i class="bi bi-person-vcard me-1"></i></label>
+                            <input type="text" class="form-control w-75 mx-auto" id="cedula" name="cedula" placeholder="V\E-XX.XXX.XXX" maxlength="12" pattern="[VE]-\d{2}.\d{3}.\d{3}" required>
                         </div>
 
                         <div class="mt-3">
-                            <label for="phone" class="form-label"><h5>Teléfono <i class="bi bi-telephone-fill me-1"></i></h5></label>
-                            <input type="tel" class="form-control w-75 mx-auto" id="phone" placeholder="Ej. +58 XXX-XXXXXXX" minlength="10" maxlength="15" pattern="\+58[\s-]\d{3}[\s-]\d{7}" required>
+                            <label for="telefono" class="form-label"><h5>Teléfono </h5><i class="bi bi-telephone-fill me-1"></i></label>
+                            <input type="tel" class="form-control w-75 mx-auto" id="telefono" name="telefono" placeholder="Ej. +58 XXX-XXXXXXX" minlength="10" maxlength="15" pattern="\+58[\s-]\d{3}[\s-]\d{7}" required>
                         </div>
 
                         <div class="mt-3">
-                            <label for="birthdate" class="form-label"><h5>Fecha de Nacimiento <i class="bi bi-cake2-fill me-1"></i></h5> </label>
-                            <input type="date" class="form-control w-75 mx-auto" id="birthdate" required>
+                            <label for="fecha_nacimiento" class="form-label"><h5>Fecha de Nacimiento</h5> <i class="bi bi-cake2-fill me-1"></i></label>
+                            <input type="date" class="form-control w-75 mx-auto" id="fecha_nacimiento" name="fecha_nacimiento" required>
                         </div>
 
                         <div class="mt-3">
-                            <label for="bloodType" class="form-label"><h5>Tipo de Sangre <i class="bi bi-droplet-fill me-1"></i></h5> </label>
-                            <select class="form-select w-75 mx-auto" id="bloodType" name="bloodType" required>
+                            <label for="tipo_sangre" class="form-label"><h5>Tipo de Sangre</h5> <i class="bi bi-droplet-fill me-1"></i></label>
+                            <select class="form-select w-75 mx-auto" id="tipo_sangre" name="tipo_sangre" required>
                                 <option value="" selected disabled>Seleccione su tipo de sangre</option>
                                 <option value="A+">A+</option>
                                 <option value="A-">A-</option>
@@ -141,12 +146,12 @@
                         </div>
 
                         <div class="mt-3">
-                            <label for="gender" class="form-label"><h5>Genero <i class="bi bi-person-arms-up me-1"></i></h5> </label>
-                            <select class="form-select w-75 mx-auto" id="gender" name="gender" required>
+                            <label for="genero" class="form-label"><h5>Genero</h5> <i class="bi bi-person-arms-up me-1"></i></label>
+                            <select class="form-select w-75 mx-auto" id="genero" name="genero" required>
                                 <option value="" selected disabled>Seleccione su Genero</option>
-                                <option value="Hombre">Hombre</option>
-                                <option value="Mujer">Mujer</option>
-                                <option value="Otro">Otro</option>
+                                <option value="masculino">Hombre</option>
+                                <option value="femenino">Mujer</option>
+                                <option value="otro">Otro</option>
                             </select>
                         </div>
                         
@@ -154,28 +159,28 @@
 
                     <div class="col-md-6 mb-3">
                         <div class="mt-3">
-                            <label for="username" class="form-label"><h5>Usuario <i class="bi bi-person-circle me-1"></i></h5> </label>
-                            <input type="text" class="form-control w-75 mx-auto" id="user" placeholder="Ingrese su Usuario" minlength="4" maxlength="20"required>
+                            <label for="username" class="form-label"><h5>Usuario</h5> <i class="bi bi-person-circle me-1"></i></label>
+                            <input type="text" class="form-control w-75 mx-auto" id="username" name="username" placeholder="Ingrese su Usuario" minlength="4" maxlength="20"required>
                         </div>
 
                         <div class="mt-3">
-                            <label for="Contraseña" class="form-label"><h5>Contraseña <i class="bi bi-clipboard-data-fill me-1"></i></h5> </label>
-                            <input type="password" class="form-control w-75 mx-auto" id="password" placeholder="Ingrese su Contraseña" minlength="8" maxlength="32" required>
+                            <label for="password" class="form-label"><h5>Contraseña</h5> <i class="bi bi-clipboard-data-fill me-1"></i></label>
+                            <input type="password" class="form-control w-75 mx-auto" id="password" name="password" placeholder="Ingrese su Contraseña" minlength="8" maxlength="32" required>
                         </div>
 
                         <div class="mt-3"> <!--Confirmacion de Contrasena, usamos JS-->
-                            <label for="Contraseña2" class="form-label"><h5>Confirme Contraseña <i class="bi bi-clipboard-check-fill me-1"></i></h5> </label>
-                            <input type="password" class="form-control w-75 mx-auto" id="password2" placeholder="***************"   required oninput="checkPasswordMatch()">
+                            <label for="confirm_password" class="form-label"><h5>Confirme Contraseña</h5> <i class="bi bi-clipboard-check-fill me-1"></i></label>
+                            <input type="password" class="form-control w-75 mx-auto" id="confirm_password" name="confirm_password" placeholder="***************"   required oninput="checkPasswordMatch()">
                         </div>
 
                         <div class="mt-3">
-                            <label for="email" class="form-label"><h5>Correo Electrónico <i class="bi bi-envelope-at-fill me-1"></i></h5> </label>
-                            <input type="email" class="form-control w-75 mx-auto" id="email" placeholder="Ingrese su Correo Electrónico" minlength="5" maxlength="254" required>
+                            <label for="email" class="form-label"><h5>Correo Electrónico</h5> <i class="bi bi-envelope-at-fill me-1"></i></label>
+                            <input type="email" class="form-control w-75 mx-auto" id="email" name= "email" placeholder="Ingrese su Correo Electrónico" minlength="5" maxlength="254" required>
                         </div>
 
                         <div class="mt-3">
-                            <label for="state" class="form-label"><h5>Estado de Residencia <i class="bi bi-house-fill me-1"></i></h5> </label>
-                            <select class="form-select w-75 mx-auto" id="state" name="state" required>
+                            <label for="estado_residencia" class="form-label"><h5>Estado de Residencia</h5> <i class="bi bi-house-fill me-1"></i></label>
+                            <select class="form-select w-75 mx-auto" id="estado_residencia" name="estado_residencia" required>
                                 <option value="" selected disabled>Seleccione el Estado en el que reside</option>
                                 <option value="Amazonas">Amazonas</option>
                                 <option value="Anzoátegui">Anzoátegui</option>
@@ -203,18 +208,17 @@
                         </div>
 
                         <div class="mt-3">
-                            <label for="City" class="form-label"><h5>Ciudad de Residencia <i class="bi bi-house-gear-fill me-1"></i></h5> </label>
-                            <input type="text" class="form-control w-75 mx-auto" id="City" placeholder="Ingrese la Ciudad en el que Reside" minlength="3" maxlength="50" required>
+                            <label for="ciudad_residencia" class="form-label"><h5>Ciudad de Residencia</h5> <i class="bi bi-house-gear-fill me-1"></i></label>
+                            <input type="text" class="form-control w-75 mx-auto" id="ciudad_residencia" name="ciudad_residencia" placeholder="Ingrese la Ciudad en el que Reside" minlength="3" maxlength="50" required>
                         </div>
                     </div>
-
 
                     <hr>
 
                     <div class="col justify-content-center text-center">
                         <button type="submit" class="btn btn-outline-blueviolet px-5 mt-3"><strong>Registrarse</strong></button> 
                     </div>
-                    <p class="mt-3 text-center">¿Ya tienes una Cuenta? <a href="Login - Hiring Group.html" style="color: blueviolet !important; text-decoration: none;"><strong>¡Inicia Sesión!</strong></a></p>
+                    <p class="mt-3 text-center">¿Ya tienes una Cuenta? <a href="<?= APP_URL ?>/login" style="color: blueviolet !important; text-decoration: none;"><strong>¡Inicia Sesión!</strong></a></p>
                 </form>
             </div>
 
@@ -222,11 +226,11 @@
         </div>
     </main>
 
-    <script src="css/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/scripts.js"></script>
+    <script src="../../assets/css/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <!--<script src="../../assets/js/scripts.js"></script>-->
 
     <!--Funcion CheckPasswordMatch-->
-    <script>
+    <!--<script>
         function checkPasswordMatch() {
             const password = document.getElementById("password").value;
             const confirmPassword = document.getElementById("password2").value;
@@ -247,6 +251,42 @@
                 e.preventDefault();
                 document.getElementById("password2").focus();
             }
+        });
+    </script>-->
+
+    <script>
+        function checkPasswordMatch() {
+            const password = document.getElementById("password");
+            const confirmPassword = document.getElementById("confirm_password");
+
+            if (password.value !== confirmPassword.value) {
+                confirmPassword.setCustomValidity("Las contraseñas no coinciden");
+                confirmPassword.classList.add('is-invalid');
+            } else {
+                confirmPassword.setCustomValidity("");
+                confirmPassword.classList.remove('is-invalid');
+            }
+
+            confirmPassword.reportValidity();
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+            const password = document.getElementById("password");
+            const confirmPassword = document.getElementById("confirm_password");
+
+            form.addEventListener('submit', function (e) {
+                if (password.value !== confirmPassword.value) {
+                    confirmPassword.setCustomValidity("Las contraseñas no coinciden");
+                    confirmPassword.classList.add('is-invalid');
+                    confirmPassword.reportValidity();
+                    confirmPassword.focus();
+                    e.preventDefault(); // Evita el envío del formulario
+                } else {
+                    confirmPassword.setCustomValidity("");
+                    confirmPassword.classList.remove('is-invalid');
+                }
+            });
         });
     </script>
     

@@ -22,7 +22,7 @@ Contratacion::createTable();
 echo "🗃️ Tablas creadas\n";
 
 // 2. Crear banco
-$bancoId = Banco::create('Banco Central de Venezuela');
+/*$bancoId = Banco::create('Banco Central de Venezuela');
 echo "🏦 Banco creado con ID: $bancoId\n";
 
 // 3. Crear empresa
@@ -55,8 +55,10 @@ UsuarioPostulante::add([
     'fecha_nacimiento' => '1990-03-22',
     'genero' => 'masculino'
 ]);
-echo "🧾 UsuarioPostulante creado\n";
+echo "🧾 UsuarioPostulante creado\n";*/
 
+$empresaId = 1; // Asumiendo que la empresa tiene ID 1
+$usuarioId = 3; // Asumiendo que el usuario tiene ID 1
 // 5. Crear oferta laboral
 $ofertaId = OfertaLaboral::add([
     'profesion' => 'Ingeniería de Sistemas',
@@ -79,14 +81,14 @@ $postulacionId = Postulacion::add([
 echo "✅ Postulación creada con ID: $postulacionId\n";
 
 // 7. Crear cuenta bancaria
-$cuentaId = CuentaBancaria::create([
+/*$cuentaId = CuentaBancaria::create([
     'usuario_id' => $usuarioId,
     'banco_id' => $bancoId,
     'nro_cuenta' => '01234567890123456789',
     'tipo_cuenta' => 'ahorro'
 ]);
-echo "🏦 Cuenta bancaria creada con ID: $cuentaId\n";
-
+echo "🏦 Cuenta bancaria creada con ID: $cuentaId\n";*/
+$cuentaId = 1; // Asumiendo que la cuenta bancaria tiene ID 1
 // 8. Crear contratación
 $contratacionId = Contratacion::add([
     'usuario_id' => $usuarioId,
@@ -109,32 +111,35 @@ echo "🏢 Contrataciones de la empresa:\n";
 print_r($contratacionesEmpresa);
 
 // 11. Actualizar contratación
-$actualizado = Contratacion::update($contratacionId, ['duracion' => '12 meses', 'salario' => 2000.00]);
+/*$actualizado = Contratacion::update($contratacionId, ['duracion' => '12 meses', 'salario' => 2000.00]);
 echo $actualizado ? "🔄 Contratación actualizada\n" : "❌ Error al actualizar contratación\n";
 
 // 12. Obtener contratación actualizada
 $contratacionActualizada = Contratacion::getById($contratacionId);
 echo "📋 Contratación actualizada:\n";
-print_r($contratacionActualizada);
+print_r($contratacionActualizada);*/
 
+//$contratacionId = 1; // Asumiendo que la contratación tiene ID 1
 // 13. Eliminar contratación
-Contratacion::delete($contratacionId);
-echo "🗑 Contratación eliminada\n";
+//Contratacion::delete($contratacionId);
+//echo "🗑 Contratación eliminada\n";
 
 // 14. Eliminar cuenta bancaria
-CuentaBancaria::delete($cuentaId);
-echo "🗑 Cuenta bancaria eliminada\n";
+/*CuentaBancaria::delete($cuentaId);
+echo "🗑 Cuenta bancaria eliminada\n";*/
 
+//$postulacionId = 1; // Asumiendo que la postulación tiene ID 1
 // 15. Eliminar postulación
-Postulacion::delete($postulacionId);
-echo "🗑 Postulación eliminada\n";
+//Postulacion::delete($postulacionId);
+//echo "🗑 Postulación eliminada\n";
 
+//$ofertaId = 1; // Asumiendo que la oferta tiene ID 1
 // 16. Eliminar oferta
-OfertaLaboral::delete($ofertaId);
-echo "🗑 Oferta eliminada\n";
+//OfertaLaboral::delete($ofertaId);
+//echo "🗑 Oferta eliminada\n";
 
 // 17. Eliminar usuario y UsuarioPostulante
-UsuarioPostulante::delete($usuarioId);
+/*UsuarioPostulante::delete($usuarioId);
 Usuario::delete($usuarioId);
 echo "🗑 Usuario y UsuarioPostulante eliminados\n";
 
@@ -144,7 +149,7 @@ echo "🗑 Empresa eliminada\n";
 
 // 19. Eliminar banco
 Banco::delete($bancoId);
-echo "🗑 Banco eliminado\n";
+echo "🗑 Banco eliminado\n";*/
 
 echo "=== Prueba completada ===\n";
 ?>

@@ -42,4 +42,20 @@ function crearTablas() {
     ProfesionUsuario::createTable();
 }
 
+// Autoload para controladores
+spl_autoload_register(function ($className) {
+    $file = CONTROLLERS_DIR . $className . '.php';
+    if (file_exists($file)) {
+        require $file;
+    }
+});
+
+// Manejo básico de errores
+set_exception_handler(function ($e) {
+    error_log($e->getMessage());
+    http_response_code(500);
+    require VIEWS_DIR . 'errors/500.php';
+    exit;
+});
+
 ?>
