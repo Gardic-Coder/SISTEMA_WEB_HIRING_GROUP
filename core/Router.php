@@ -1,4 +1,7 @@
 <?php
+// core/Router.php
+require_once __DIR__ . '/../utils/config.php';
+
 class Router {
     private $routes = [];
 

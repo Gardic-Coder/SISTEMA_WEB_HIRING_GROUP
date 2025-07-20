@@ -26,7 +26,7 @@ class RegistroInicioSesion {
                 VALUES (:usuario_id, :fecha_hora, :ip_usuario, :exito)";
         
         $params = [
-            ':usuario_id' => $data['usuario_id'],
+            ':usuario_id' => $data['usuario_id'] ?? null, // Permite null
             ':fecha_hora' => $data['fecha_hora'] ?? date('Y-m-d H:i:s'),
             ':ip_usuario' => $data['ip_usuario'],
             ':exito' => $data['exito'] ? 1 : 0

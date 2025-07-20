@@ -1,4 +1,7 @@
 <?php
+// core/Auth.php
+require_once __DIR__ . '/../utils/config.php';
+
 class Auth {
     public static function login($user) {
         $_SESSION['user'] = $user;

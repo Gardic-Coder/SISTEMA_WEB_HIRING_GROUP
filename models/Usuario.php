@@ -228,6 +228,32 @@ class Usuario {
     }
 
     /**
+     * Verifica credenciales de usuario por correo o nombre de usuario
+     * @param string $identifier Puede ser correo o nombre de usuario
+     * @param string $password Contraseña del usuario
+     * @return array|false Retorna los datos del usuario si las credenciales son válidas, o false si no lo son
+     * @throws Exception Si el usuario no existe o las credenciales son incorrectas
+     */
+    public static function authenticate($identifier, $password) {
+        if (empty($identifier) || empty($password)) {
+            throw new InvalidArgumentException("El identificador y la contraseña son obligatorios");
+        }
+
+        if ($user = self::findBy('correo', $identifier)) {
+            if (password_verify($password, $user['contraseña'])) {
+                return $user;
+            }
+        } elseif ($user = self::findBy('nombre_usuario', $identifier)) {
+            if (password_verify($password, $user['contraseña'])) {
+                return $user;
+            }
+        } else {
+            throw new Exception("Usuario no encontrado");
+        }
+        return false;
+    }
+
+    /**
      * Obtiene todos los usuarios (opcionalmente filtrados por tipo)
      */
     public static function getAll($tipo = null) {
