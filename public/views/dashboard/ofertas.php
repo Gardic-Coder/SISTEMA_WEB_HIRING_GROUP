@@ -68,7 +68,7 @@ require_once MODELS_DIR . 'Empresa.php';
                         <?php endif; ?>
                     <?php elseif($tipoUsuario == 'hiring_group'): ?>
                         <li class="nav-item">
-                        <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                        <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/registro/empresa">
                             <i class="bi bi-clipboard-data me-1"></i> Registrar Clientes
                         </a>
                         </li>

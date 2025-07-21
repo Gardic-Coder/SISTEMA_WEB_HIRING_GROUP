@@ -372,4 +372,55 @@ class RegistroController {
         }
     }
 
+    public function showRegistroEmpresa() {
+        if (!Auth::check() || Auth::user()['tipo_usuario'] !== 'hiring_group') {
+            header('Location: ' . APP_URL . '/login');
+            exit;
+        }
+        
+        require VIEWS_DIR . 'auth/registroEmpresa.php';
+    }
+
+    public function registrarEmpresa() {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header('Location: ' . APP_URL . '/registro/empresa');
+            exit;
+        }
+
+        $usuario = [
+            'nombre_usuario' => $_POST['user'],
+            'contraseña' => $_POST['new-password'],
+            'correo' => $_POST['correo'],
+            'tipo_usuario' => 'empresa',
+        ];
+
+        $usuarioId = Usuario::create($usuario); // Asumiendo que Usuario::add() ya hashea la contraseña
+        if (!$usuarioId) {
+            $_SESSION['error'] = "No se pudo crear el usuario.";
+            header('Location: ' . APP_URL . '/registro/empresa');
+            exit;
+        }
+
+        $empresaData = [
+            'razon_social' => $_POST['razon-social'],
+            'sector' => $_POST['sector'],
+            'persona_contacto' => $_POST['phone'],
+            'RIF' => $_POST['rif'],
+        ];
+
+        $empresaId = Empresa::create($empresaData);
+        if (!$empresaId) {
+            $_SESSION['error'] = "No se pudo registrar la empresa.";
+            Usuario::delete($usuarioId); // Rollback básico
+            header('Location: ' . APP_URL . '/registro/empresa');
+            exit;
+        }
+
+        UsuarioEmpresa::associate($usuarioId, $empresaId);
+
+        $_SESSION['success'] = "Empresa registrada correctamente.";
+        header('Location: ' . APP_URL . '/dashboard');
+        exit;
+    }
+
 }

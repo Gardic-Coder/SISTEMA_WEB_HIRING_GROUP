@@ -43,7 +43,7 @@ require_once __DIR__ . '/../../../utils/config.php';
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/registro/empresa">
                         <i class="bi bi-clipboard-data me-1"></i> Registrar Clientes
                     </a>
                     </li>

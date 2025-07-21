@@ -46,6 +46,8 @@ $router->add('GET', '/dashboard/contratado', 'ContratadoController@mostrarDashbo
 $router->add('GET', '/dashboard/hiring', 'HiringController@mostrarDashboard');
 $router->add('GET', '/dashboard/ofertas', 'UserController@mostrarOfertas');
 $router->add('POST', '/postular', 'PostulanteController@postularOferta');
+$router->add('GET', '/registro/empresa', 'RegistroController@showRegistroEmpresa');
+$router->add('POST', '/registro/empresa', 'RegistroController@registrarEmpresa');
 //$router->add('GET', '/dashboard/empresa', 'EmpresaController@dashboard');
 //$router->add('GET', '/perfil', 'PerfilController@showProfile');
 $router->add('GET', '/perfil/postulante/editar', 'RegistroController@mostrarEdicionPostulante');

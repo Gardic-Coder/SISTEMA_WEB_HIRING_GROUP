@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../models/Usuario.php';
+require_once __DIR__ . '/../models/UsuarioEmpresa.php';
 /**
  * Pruebas unitarias para la clase Usuario
  */
@@ -12,6 +13,8 @@ try {
 } catch (Exception $e) {
     echo "Error al crear la tabla de usuarios: " . $e->getMessage() . "\n";
 }
+
+UsuarioEmpresa::createTable();
 // Prueba de inserción de usuario
 /*try { 
     $userId = Usuario::insert([
@@ -105,14 +108,14 @@ try {
 
 // test_crear_usuario.php
 
-Usuario::create([
+/*Usuario::create([
     'nombre_usuario' => 'testuserhiring',
     'contraseña' => 'clave123', // el modelo debe hashearla
     'correo' => 'testhiring@correo.com',
     'tipo_usuario' => 'hiring_group'
 ]);
 
-echo "Usuario creado";
+echo "Usuario creado";*/
 
 /*Usuario::update(1, [
     'contraseña' => 'clave123', // el modelo debe hashearla

@@ -1,16 +1,19 @@
-@ -0,0 +1,259 @@
+<?php
+// public/views/auth/registroEmpresa.php
+require_once __DIR__ . '/../../../utils/config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Empresa - Hiring Group</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
-    <link rel="icon" href="../assets/images/Icono.png">
-    <link rel="stylesheet" href="../assets/css/navbar.css">
-    <link rel="stylesheet" href="../assets/css/Styles-usercontratado.css">
-    <link rel="stylesheet" href="../assets/css/Styles-Configuracion-Perfil.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
+    <link rel="icon" href="../../assets/images/Icono.png">
+    <link rel="stylesheet" href="../../assets/css/navbar.css">
+    <link rel="stylesheet" href="../../assets/css/Styles-usercontratado.css">
+    <link rel="stylesheet" href="../../assets/css/Styles-Configuracion-Perfil.css">
 </head>
 
 
@@ -23,7 +26,7 @@
         <nav class="navbar navbar-expand-lg color_barra custom-border">
         <div class="container-fluid">
             <div class="px-4 py-1 animacionlogo">
-                <a class="navbar-brand" href="Home - Hiring Group.html"><img src="../assets/images/Icono.png" width="70" height="65"></a>
+                <a class="navbar-brand" href="<?= APP_URL ?>/dashboard"><img src="../../assets/images/Icono.png" width="70" height="65"></a>
             </div>
             <!--Boton para Tlf-->
             <!--navbarSupportedContet, opciones que se colapsaran llegado a cierta posicion dada por el expand-md-->
@@ -36,17 +39,17 @@
                 <!--Opciones del Menu de Navegacion-->
                 <ul class="navbar-nav mx-auto flex-lg-row gap-lg menu">
                      <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="Home - Hiring Group.html">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/logout">
                          <i class="bi bi-house me-1"></i> Cerrar Sesión
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/dashboard/ofertas">
                         <i class="bi bi-search me-1"></i> Ofertas Publicadas
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/registro/empresa">
                         <i class="bi bi-clipboard-data me-1"></i> Registrar Clientes
                     </a>
                     </li>
@@ -73,7 +76,7 @@
                 <hr>
                 
                 
-                <form id="profile-form" class="row g-3 needs-validation" novalidate>
+                <form id="profile-form" class="row g-3 needs-validation" method="post" action="<?= APP_URL ?>/registro/empresa" novalidate>
                     <div class="col-md-6 mb-3">
                         <div class="mt-3">
                             <label for="razon-social" class="form-label"><h5>Nombre de la Empresa <i class="bi bi-building-gear me-1"></i></h5></label>
@@ -91,7 +94,7 @@
                         
                         <div class="mt-3">
                             <label for="phone" class="form-label"><h5>Teléfono de Contacto <i class="bi bi-telephone-fill me-1"></i></h5></label>
-                            <input type="tel" class="form-control w-75 mx-auto" id="phone" placeholder="Ej. +58 XXX-XXXXXXX" minlength="10" maxlength="15" pattern="\+58[\s-]\d{3}[\s-]\d{7}" required>
+                            <input type="tel" class="form-control w-75 mx-auto" id="phone" name="phone" placeholder="Ej. +58 XXX-XXXXXXX" minlength="10" maxlength="15" pattern="\+58[\s-]\d{3}[\s-]\d{7}" required>
                         </div>
                         
                         <div class="mt-3">
@@ -107,6 +110,12 @@
                         <h1 class="text-center contrasena">Datos Principales del Perfil</h1>   
                         
                         <hr>
+                        <div class="mt-3">
+                            <label for="correo" class="form-label">
+                            <h5>Correo Electrónico <i class="bi bi-envelope-at-fill me-1"></i></h5></label>
+                            <input type="email" class="form-control w-75 mx-auto" id="correo" name="correo" placeholder="correo@ejemplo.com" minlength="5" maxlength="254" required>
+                        </div>
+
 
                         <div class="mt-3">
                             <label for="user" class="form-label"><h5>Usuario <i class="bi bi-person-badge-fill me-1"></i></h5> </label>
@@ -115,7 +124,7 @@
 
                         <div class="mt-3">
                             <label for="new-password" class="form-label"><h5>Contraseña <i class="bi bi-card-checklist me-1"></i> </h5></label>
-                            <input type="password" value="" class="form-control w-75 mx-auto" id="new-password" placeholder="Ingrese su Contraseña" minlength="8" maxlength="32" required>
+                            <input type="password" value="" class="form-control w-75 mx-auto" id="new-password" name="new-password" placeholder="Ingrese su Contraseña" minlength="8" maxlength="32" required>
                         </div>
 
                          <div class="mt-3">
