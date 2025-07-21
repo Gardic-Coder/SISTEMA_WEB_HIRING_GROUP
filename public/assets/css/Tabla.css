@@ -8,6 +8,11 @@
     transition: border-color 0.3s ease !important;
 }
 
+.Pago p{
+  color: rgb(102, 113, 123) !important;
+  transition: color 0.3s ease !important;
+}
+
 .Pago:hover {
     border-left-color: blueviolet !important;
     border-right-color: blueviolet !important;
@@ -32,6 +37,10 @@
 .Pago:hover .btn-outline-blueviolet:not(:hover){
   color: blueviolet !important;
   border: 2px solid blueviolet !important;
+}
+
+.Pago:hover p{
+  color: rgb(33, 37, 41) !important;
 }
 
 .titulo{
