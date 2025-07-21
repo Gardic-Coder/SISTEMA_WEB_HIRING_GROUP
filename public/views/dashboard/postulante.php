@@ -20,7 +20,7 @@ require_once __DIR__ . '/../../../utils/config.php';
         <nav class="navbar navbar-expand-lg color_barra custom-border">
         <div class="container-fluid">
             <div class="px-5 py-1 animacionlogo">
-                <a class="navbar-brand" href="#"><img src="../../assets/images/Icono.png" width="70" height="65"></a>
+                <a class="navbar-brand" href="<?= APP_URL ?>/dashboard"><img src="../../assets/images/Icono.png" width="70" height="65"></a>
             </div>
             <!--Boton para Tlf-->
             <!--navbarSupportedContet, opciones que se colapsaran llegado a cierta posicion dada por el expand-md-->

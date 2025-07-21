@@ -29,8 +29,10 @@ class DashboardController {
                 header('Location: ' . APP_URL . '/dashboard/empresa');
                 break;
             case 'administrador':
-            case 'hiring_group':
                 header('Location: ' . APP_URL . '/dashboard/admin');
+                break;
+            case 'hiring_group':
+                header('Location: ' . APP_URL . '/dashboard/hiring');
                 break;
             default:
                 header('Location: ' . APP_URL . '/logout');
