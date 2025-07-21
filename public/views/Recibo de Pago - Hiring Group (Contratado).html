@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="../assets/css/Styles-usercontratado.css">
     <link rel="icon" href="../assets/images/Icono.png">
     <link rel="stylesheet" href="../assets/css/navbar.css">
-    <link rel="stylesheet" href="../assets/css/Styles-usercontratado.css">
-    <link rel="stylesheet" href="../assets/css/Styles - ReciboPago.css">
+    <link rel="stylesheet" href="../assets/css/Tabla.css">
 </head>
 <body style="background-color: rgb(33, 37, 41)">
      <header style="position: fixed; width: 100%; z-index: 2; top: 0; left: 0;"><!--Barra de Navegacion-->
@@ -35,7 +34,7 @@
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="Ofertas Laborales - Hiring Group (Contratado).html">
                         <i class="bi bi-search me-1"></i> Ver Ofertas
                     </a>
                     </li>
@@ -120,7 +119,7 @@
     </main>
 
     
-    <div class="container px-5 Pago mt-5"> 
+    <div class="container px-5 Pago mt-5 mb-5"> 
         <div class="container px-5 w-100">
             <div class="row justify-content-center align-items-center mt-4">
                 <div class="w-100">
@@ -128,7 +127,7 @@
                         <h1 class="mb-0" style="color: white; text-shadow: (5px 5px 5px black) ;">Recibos de Pago</h1> 
                     </div>
                     <div class="text-center mb-3 p-3">
-                        <a href="job_offers.html" class="btn btn-outline-blueviolet">Ver Ofertas de Trabajo</a> 
+                        <a href="Ofertas Laborales - Hiring Group (Contratado).html" class="btn btn-outline-blueviolet">Ver Ofertas de Trabajo</a> 
                     </div>
                 </div> 
             </div>
@@ -211,6 +210,116 @@
        <hr>
   
     </div>
+
+    <script>
+        // Datos de ejemplo
+        const sampleReceipts = [
+            { id: 1001, date: '2023-05-15', amount: 1500.00, status: 'Pagado', description: 'Pago quincenal' },
+            { id: 1002, date: '2023-05-30', amount: 1500.00, status: 'Pagado', description: 'Pago quincenal' },
+            // Más datos...
+        ];
+        
+        let currentPage = 1;
+        const itemsPerPage = 10;
+        
+        // Cargar recibos en la tabla
+        function loadReceipts(receipts = sampleReceipts) {
+            const tbody = document.getElementById('receiptsTableBody');
+            tbody.innerHTML = '';
+            
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const paginatedReceipts = receipts.slice(startIndex, startIndex + itemsPerPage);
+            
+            if (paginatedReceipts.length === 0) {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td colspan="5" class="text-center py-4 text-muted">No se encontraron recibos</td>`;
+                tbody.appendChild(row);
+                return;
+            }
+            
+            paginatedReceipts.forEach(receipt => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${receipt.id}</td>
+                    <td>${receipt.date}</td>
+                    <td>$${receipt.amount.toFixed(2)}</td>
+                    <td><span class="badge bg-success">${receipt.status}</span></td>
+                    <td>${receipt.description}</td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            setupPagination(receipts.length);
+        }
+        
+        // Configurar paginación
+        function setupPagination(totalItems) {
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+            
+            const pageCount = Math.ceil(totalItems / itemsPerPage);
+            
+            // Botón Anterior
+            const prevLi = document.createElement('li');
+            prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+            prevLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(${currentPage - 1})">&laquo;</a>`;
+            pagination.appendChild(prevLi);
+            
+            // Páginas
+            for (let i = 1; i <= pageCount; i++) {
+                const li = document.createElement('li');
+                li.className = `page-item ${i === currentPage ? 'active' : ''}`;
+                li.innerHTML = `<a class="page-link" style="background-color: blueviolet !important" href="#" onclick="changePage(${i})">${i}</a>`;
+                pagination.appendChild(li);
+            }
+            
+            // Botón Siguiente
+            const nextLi = document.createElement('li');
+            nextLi.className = `page-item ${currentPage === pageCount ? 'disabled' : ''}`;
+            nextLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(${currentPage + 1})">&raquo;</a>`;
+            pagination.appendChild(nextLi);
+        }
+        
+        // Cambiar página
+        function changePage(page) {
+            currentPage = page;
+            loadReceipts();
+            window.scrollTo(0, 0);
+        }
+        
+        // Filtrar recibos
+        function filterReceipts() {
+            const period = document.getElementById('period').value;
+            const month = document.getElementById('month').value;
+            const year = document.getElementById('year').value;
+            
+            // Filtrar (en producción sería una llamada API)
+            const filtered = sampleReceipts.filter(receipt => {
+                const date = new Date(receipt.date);
+                return (!period || receipt.description.toLowerCase().includes(period)) &&
+                       (!month || (date.getMonth() + 1) == month) &&
+                       (!year || date.getFullYear() == year);
+            });
+            
+            currentPage = 1;
+            loadReceipts(filtered);
+        }
+        
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', loadReceipts);
+    </script>
+
+
+   <!--Final de la pagina-->
+<footer style="background-color: rgb(29, 29, 29);">
+    <div class="container py-4">
+       
+        <div class="text-center text-white mt-3" style="font-size: 0.9rem;">
+            &copy; 2025 Hiring Group. All rights reserved to <strong>Alejandro González</strong>.
+        </div>
+    </div>
+</footer>
+
 
    
 
