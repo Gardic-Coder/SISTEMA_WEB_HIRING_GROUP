@@ -1,21 +1,26 @@
+<?php
+// public/views/auth/login.php
+require_once __DIR__ . '/../../../utils/config.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en"><!--Metadatos-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Hiring Group</title>
-    <link rel="stylesheet" href="../assets/css/styles-login.css">
-    <link rel="icon" href="../assets/images/Icono.png">
-    <link rel="stylesheet" href="../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../../assets/css/styles-login.css">
+    <link rel="icon" href="../../assets/images/Icono.png">
+    <link rel="stylesheet" href="../../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../assets/css/navbar.css">
 </head>
 <body><!--Cuerpo de la Pagina-->
     <header style="position: fixed; width: 100%; z-index: 2; top: 0; left: 0;"><!--Barra de Navegacion-->
         <nav class="navbar navbar-expand-lg color_barra custom-border">
         <div class="container-fluid">
             <div class="px-2 py-1 animacionlogo">
-                <a class="navbar-brand" href="Home - Hiring Group.html"><img src="../assets/images/logo3.png" width="150" height="80"></a>
+                <a class="navbar-brand" href="<?= APP_URL ?>/"><img src="../../assets/images/logo3.png" width="150" height="80"></a>
             </div>
             <!--Boton para Tlf-->
             <!--navbarSupportedContet, opciones que se colapsaran llegado a cierta posicion dada por el expand-md-->
@@ -28,17 +33,17 @@
                 <!--Opciones del Menu de Navegacion-->
                 <ul class="navbar-nav mx-auto flex-lg-row gap-lg-5 menu">
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-4" aria-current="page" href="Home - Hiring Group.html">
+                    <a class="nav-link active px-lg-4" aria-current="page" href="<?= APP_URL ?>/">
                          <i class="bi bi-house-door me-1"></i> Inicio
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-4" aria-current="page" href="Home - Hiring Group.html#service">
+                    <a class="nav-link active px-lg-4" aria-current="page" href="<?= APP_URL ?>/#service">
                         <i class="bi bi-gear me-1"></i> Servicios
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-4" aria-current="page" href="UserContratado - Hiring Group.html"> <!--Enlace a la pagina de Uusario de prueba-->
+                    <a class="nav-link active px-lg-4" aria-current="page" href="<?= APP_URL ?>/registro/postulante"> <!--Enlace a la pagina de Uusario de prueba-->
                         <i class="bi bi-globe me-1"></i> Registrarse
                     </a>
                     </li>
@@ -76,24 +81,24 @@
     <div class="container-fluid g-0" style="padding-top: 87px;"> <!--Contenedor Principal-->
         <div class="row g-0"> <!--Fila Principal-->
             <!-- Sección Negro (50%) -->
-              <div class="col-md-6 d-flex align-items-center justify-content-center" style="background-color: rgb(33, 37, 41)">
+            <div class="col-md-6 d-flex align-items-center justify-content-center" style="background-color: rgb(33, 37, 41)">
                 <div class="text-white p-4 text-start">
                     <h1><strong>Inicio de Sesion</strong></h1>
-                    <form class="mt-5">
+                    <form class="mt-5" method="post" action="<?= APP_URL ?>/auth">
                         <div class="mb-3">
-                            <label for="username" class="form-label"><h5>Usuario <i class="bi bi-person-fill me-3"></i></h5></i></label>
-                            <input type="text" class="form-control barrasesion" id="username" placeholder="Ingrese su Usuario" required>
+                            <label for="identifier" class="form-label"><h5>Usuario <i class="bi bi-person-fill me-3"></i></h5></i></label>
+                            <input type="text" class="form-control barrasesion" id="identifier" name="identifier" placeholder="Ingrese su Usuario o Correo" required>
                         </div>
                         <div class="mb-3">
                              <label for="password" class="form-label"><h5>Contraseña <i class="bi bi-lock-fill me-3"></i></h5></i></label>
-                            <input type="password" class="form-control barrasesion" id="username" placeholder="Ingrese su Contraseña" style="color: white !important;" required>
+                            <input type="password" class="form-control barrasesion" id="password" name="password" placeholder="Ingrese su Contraseña" style="color: white !important;" required>
                         </div>
                         <div class="text-center">
                            <button type="submit" class="btn btn-outline-blueviolet px-5 mt-3"><strong>Login</strong></button> 
                         </div>
                         
                     </form>
-                    <p class="mt-3 text-center" >¿No tienes una Cuenta? <a href="Register-Hiring Group.html" style="color: blueviolet !important; text-decoration: none;"><strong>¡Registrate!</strong></a></p>
+                    <p class="mt-3 text-center" >¿No tienes una Cuenta? <a href="<?= APP_URL ?>/registro/postulante" style="color: blueviolet !important; text-decoration: none;"><strong>¡Registrate!</strong></a></p>
                 </div>
                 
             </div>
@@ -104,7 +109,7 @@
                     <!--Video Placeholder-->
                     <div class="mb-2 mt-4 justify-content-center" style="border-radius: 10px; overflow: hidden; z-index: 0;">
                         <video autoplay muted loop style="width: 95%; height: auto; max-height: 300px; object-fit: cover; border-radius: 20px;">
-                            <source src="../assets/video/placeholder.mp4" type="video/mp4">
+                            <source src="../../assets/video/placeholder.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div> 

@@ -1,28 +1,59 @@
 <?php
-session_start();
+// public/index.php
 require_once __DIR__ . '/../utils/config.php';
 require_once CORE_DIR . 'setup.php';
 require_once CORE_DIR . 'Auth.php';
+require_once CORE_DIR . 'Router.php'; // Agregamos el enrutador mejorado
 
-// Crear tablas si no existen
-crearTablas();
+// Iniciar sesión
+session_start();
 
-// Redirigir según sesión
-if (Auth::isLoggedIn()) {
-    $rol = Auth::getCurrentUserRole();
-    switch ($rol) {
-        case 'administrador':
-            header('Location: /views/admin/dashboard.php'); break;
-        case 'empresa':
-            header('Location: /views/empresa/panel.php'); break;
-        case 'postulante':
-            header('Location: /views/postulante/perfil.php'); break;
-        case 'hiring_group':
-            header('Location: /views/hiring/dashboard.php'); break;
-        default:
-            header('Location: /views/login.php');
+// Verificar y actualizar actividad de sesión
+if (isset($_SESSION['LAST_ACTIVITY'])) {
+    $inactive_time = time() - $_SESSION['LAST_ACTIVITY'];
+    if ($inactive_time > SESSION_TIMEOUT) {
+        Auth::logout();
     }
-} else {
-    header('Location: /views/login.php');
 }
-exit;
+$_SESSION['LAST_ACTIVITY'] = time();
+
+// Inicializar la base de datos si es necesario
+if (!file_exists(DB_PATH)) {
+    crearTablas();
+}
+
+// Crear instancia del enrutador
+$router = new Router();
+
+// ======= RUTAS PÚBLICAS =======
+//$router->add('GET', '/', 'AuthController@showLogin');
+$router->add('GET', '/', function() {
+    require VIEWS_DIR . 'home.php';
+});
+$router->add('GET', '/login', function() {
+    require VIEWS_DIR . 'auth/login.php';
+});
+
+$router->add('POST', '/auth', 'AuthController@login');
+$router->add('GET', '/logout', 'AuthController@logout');
+$router->add('GET', '/registro/postulante', 'RegistroController@showRegistroPostulante');
+$router->add('POST', '/registro/postulante', 'RegistroController@registrarPostulante');
+
+// ======= RUTAS PROTEGIDAS =======
+$router->add('GET', '/dashboard', 'DashboardController@redirectToDashboard');
+$router->add('GET', '/dashboard/postulante', 'PostulanteController@dashboard');
+$router->add('GET', '/dashboard/contratado', 'ContratadoController@mostrarDashboard');
+$router->add('GET', '/dashboard/empresa', 'EmpresaController@dashboard');
+$router->add('GET', '/perfil', 'PerfilController@showProfile');
+
+// Manejar la ruta solicitada
+$request_uri = $_SERVER['REQUEST_URI'];
+$base_path = parse_url(APP_URL, PHP_URL_PATH);
+if (!$base_path) {
+    $base_path = '';
+}
+$path = str_replace($base_path, '', $request_uri);
+$path = explode('?', $path)[0]; // Eliminar parámetros GET
+
+$router->dispatch($path);
+?>
