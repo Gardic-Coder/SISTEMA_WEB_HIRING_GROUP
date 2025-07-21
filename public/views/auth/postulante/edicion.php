@@ -1,15 +1,22 @@
+ <?php
+// public/views/auth/postulante/edicion.php
+require_once __DIR__ . '/../../../../utils/config.php';
+ ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configuracion - Hiring Group</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
-    <link rel="stylesheet" href="../assets/css/navbar.css">
-    <link rel="stylesheet" href="../assets/css/Styles-usercontratado.css">
-    <link rel="icon" href="../assets/images/Icono.png">
-    <link rel="stylesheet" href="../assets/css/Styles-Configuracion-Perfil.css">
+    <link rel="stylesheet" href="../../../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../../assets/css/navbar.css">
+    <link rel="stylesheet" href="../../../assets/css/Styles-usercontratado.css">
+    <link rel="icon" href="../../../assets/images/Icono.png">
+    <link rel="stylesheet" href="../../../assets/css/Styles-Configuracion-Perfil.css">
 </head>
 
 
@@ -22,7 +29,7 @@
         <nav class="navbar navbar-expand-lg color_barra custom-border">
         <div class="container-fluid">
             <div class="px-5 py-1 animacionlogo">
-                <a class="navbar-brand" href="Home - Hiring Group.html"><img src="../assets/images/Icono.png" width="70" height="65"></a>
+                <a class="navbar-brand" href="<?= APP_URL ?>/dashboard"><img src="../../../assets/images/Icono.png" width="70" height="65"></a>
             </div>
             <!--Boton para Tlf-->
             <!--navbarSupportedContet, opciones que se colapsaran llegado a cierta posicion dada por el expand-md-->
@@ -35,7 +42,7 @@
                 <!--Opciones del Menu de Navegacion-->
                 <ul class="navbar-nav mx-auto flex-lg-row gap-lg menu">
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="Home - Hiring Group.html">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/logout">
                          <i class="bi bi-house me-1"></i> Cerrar Sesión
                     </a>
                     </li>
@@ -61,16 +68,16 @@
             <!--Segun si es contratado o no, aqui deberia redirigir a una pagina u otra-->
 
              <div class="d-lg-none mt-3 mb-3 py-2 px-3  animacionlogo">
-                    <a href="UserContratado - Hiring Group.html" class="btn btn-outline-sesion w-100 ">
-                        <i class="bi bi-person-badge-fill me-1"></i> Username Here
+                    <a href="<?= APP_URL ?>/dashboard" class="btn btn-outline-sesion w-100 ">
+                        <i class="bi bi-person-badge-fill me-1"></i> <?= htmlspecialchars($usuario['nombre_usuario']) ?>
                     </a>
             </div>
 
             <!--Boton solo visible en Desktop-->
 
             <div class="d-none d-lg-flex ms-lg-3 py-2 px-3 animacionlogo">
-                    <a href="UserContratado - Hiring Group.html" class="btn btn-outline-sesion w-100 ">
-                        <i class="bi bi-person-badge-fill me-1"></i> Username Here
+                    <a href="<?= APP_URL ?>/dashboard" class="btn btn-outline-sesion w-100 ">
+                        <i class="bi bi-person-badge-fill me-1"></i> <?= htmlspecialchars($usuario['nombre_usuario']) ?>
 
                     </a>
             </div>
@@ -93,36 +100,36 @@
                 <hr>
                 
                 
-                <form id="profile-form" class="row g-3 needs-validation" novalidate>
+                <form id="profile-form" method="post" action="<?= APP_URL ?>/perfil/actualizar" enctype="multipart/form-data"  class="row g-3 needs-validation" novalidate>
                     <div class="col-md-6 mb-3">
                         <div class="mt-3">
-                            <label for="Name" class="form-label"><h5>Nombre <i class="bi bi-person-fill me-1"></i></h5></label>
-                            <input type="text" value=""  class="form-control w-75 mx-auto" id="Name" name="Name" placeholder="Ingrese su Nombre"  minlength="3" maxlength="30" pattern="[A-Za-zÁ-ú\s]+"  required>
+                            <label for="nombres" class="form-label"><h5>Nombre <i class="bi bi-person-fill me-1"></i></h5></label>
+                            <input type="text" value=""  class="form-control w-75 mx-auto" id="nombres" name="nombres" placeholder="Ingrese su Nombre"  minlength="3" maxlength="30" pattern="[A-Za-zÁ-ú\s]+"  required>
                         </div>
 
                         <div class="mt-3">
-                            <label for="Name2" class="form-label"><h5>Apellido <i class="bi bi-person-fill-check me-1"></i></h5></label>
-                            <input type="text" value="" class="form-control w-75 mx-auto" id="Name2" name="Name2" placeholder="Ingrese su Apellido" minlength="3" maxlength="30" pattern="[A-Za-zÁ-ú\s]+" required>
+                            <label for="apellidos" class="form-label"><h5>Apellido <i class="bi bi-person-fill-check me-1"></i></h5></label>
+                            <input type="text" value="" class="form-control w-75 mx-auto" id="apellidos" name="apellidos" placeholder="Ingrese su Apellido" minlength="3" maxlength="30" pattern="[A-Za-zÁ-ú\s]+" required>
                         </div>
 
                         <div class="mt-3">
-                            <label for="CI" class="form-label"><h5>Cedula de Identidad <i class="bi bi-person-vcard me-1"></i></h5> </label>
-                            <input type="text" value="" class="form-control w-75 mx-auto" id="CI" name="Name2" placeholder="V\E-XX-XXX-XXX" maxlength="12" pattern="[VE]-\d{2}-\d{3}-\d{3}" required>
+                            <label for="cedula" class="form-label"><h5>Cedula de Identidad <i class="bi bi-person-vcard me-1"></i></h5> </label>
+                            <input type="text" value="" class="form-control w-75 mx-auto" id="cedula" name="cedula" placeholder="V\E-XX.XXX.XXX" maxlength="12" pattern="[VE]-\d{2}.\d{3}.\d{3}" required>
                         </div>
 
                         <div class="mt-3">
-                            <label for="phone" class="form-label"><h5>Teléfono <i class="bi bi-telephone-fill me-1"></i></h5></label>
-                            <input type="tel" value="" class="form-control w-75 mx-auto" id="phone" placeholder="Ej. +58 XXX-XXXXXXX" minlength="10" maxlength="15" pattern="\+58[\s-]\d{3}[\s-]\d{7}" required>
+                            <label for="telefono" class="form-label"><h5>Teléfono <i class="bi bi-telephone-fill me-1"></i></h5></label>
+                            <input type="tel" value="" class="form-control w-75 mx-auto" id="telefono" name="telefono" placeholder="Ej. +58 XXX-XXXXXXX" minlength="10" maxlength="15" pattern="\+58[\s-]\d{3}[\s-]\d{7}" required>
                         </div>
 
 
                         <div class="mt-3">
-                            <label for="gender" class="form-label"><h5>Genero <i class="bi bi-person-arms-up me-1"></i></h5> </label>
-                            <select class="form-select w-75 mx-auto" id="gender" name="gender" required>
+                            <label for="genero" class="form-label"><h5>Genero <i class="bi bi-person-arms-up me-1"></i></h5> </label>
+                            <select class="form-select w-75 mx-auto" id="genero" name="genero" required>
                                 <option value="" selected disabled>Seleccione su Genero</option>
-                                <option value="Hombre">Hombre</option>
-                                <option value="Mujer">Mujer</option>
-                                <option value="Otro">Otro</option>
+                                <option value="masculino">Hombre</option>
+                                <option value="femenino">Mujer</option>
+                                <option value="otro">Otro</option>
                             </select>
                         </div>
                         
@@ -132,12 +139,12 @@
 
                         <div class="mt-3">
                             <label for="email" value="" class="form-label"><h5>Correo Electrónico <i class="bi bi-envelope-at-fill me-1"></i></h5> </label>
-                            <input type="email" class="form-control w-75 mx-auto" id="email" placeholder="Ingrese su Correo Electrónico" minlength="5" maxlength="254" required>
+                            <input type="email" class="form-control w-75 mx-auto" id="email" name="email" placeholder="Ingrese su Correo Electrónico" minlength="5" maxlength="254" required>
                         </div>
 
                         <div class="mt-3">
-                            <label for="state" class="form-label"><h5>Estado de Residencia <i class="bi bi-house-fill me-1"></i></h5> </label>
-                            <select class="form-select w-75 mx-auto" id="state" name="state" required>
+                            <label for="estado_residencia" class="form-label"><h5>Estado de Residencia <i class="bi bi-house-fill me-1"></i></h5> </label>
+                            <select class="form-select w-75 mx-auto" id="estado_residencia" name="estado_residencia" required>
                                 <option value="" selected disabled>Seleccione el Estado en el que reside</option>
                                 <option value="Amazonas">Amazonas</option>
                                 <option value="Anzoátegui">Anzoátegui</option>
@@ -165,18 +172,18 @@
                         </div>
 
                         <div class="mt-3">
-                            <label for="City" class="form-label"><h5>Ciudad de Residencia <i class="bi bi-house-gear-fill me-1"></i></h5> </label>
-                            <input type="text" class="form-control w-75 mx-auto" id="City" placeholder="Ingrese la Ciudad en el que Reside" minlength="3" maxlength="50" required>
+                            <label for="ciudad_residencia" class="form-label"><h5>Ciudad de Residencia <i class="bi bi-house-gear-fill me-1"></i></h5> </label>
+                            <input type="text" class="form-control w-75 mx-auto" id="ciudad_residencia" name="ciudad_residencia" placeholder="Ingrese la Ciudad en el que Reside" minlength="3" maxlength="50" required>
                         </div>
 
                         <div class="mt-3">
-                            <label for="birthdate" class="form-label"><h5>Fecha de Nacimiento <i class="bi bi-cake2-fill me-1"></i></h5> </label>
-                            <input type="date" class="form-control w-75 mx-auto" id="birthdate" required>
+                            <label for="fecha_nacimiento" class="form-label"><h5>Fecha de Nacimiento <i class="bi bi-cake2-fill me-1"></i></h5> </label>
+                            <input type="date" class="form-control w-75 mx-auto" id="fecha_nacimiento" name="fecha_nacimiento" required>
                         </div>
 
                          <div class="mt-3">
-                            <label for="bloodType" class="form-label"><h5>Tipo de Sangre <i class="bi bi-droplet-fill me-1"></i></h5> </label>
-                            <select class="form-select w-75 mx-auto" id="bloodType" name="bloodType" required>
+                            <label for="tipo_sangre" class="form-label"><h5>Tipo de Sangre <i class="bi bi-droplet-fill me-1"></i></h5> </label>
+                            <select class="form-select w-75 mx-auto" id="tipo_sangre" name="tipo_sangre" required>
                                 <option value="" selected disabled>Seleccione su tipo de sangre</option>
                                 <option value="A+">A+</option>
                                 <option value="A-">A-</option>
@@ -197,14 +204,22 @@
                         <hr>
                         
                         <!--Curriculum Actual-->
+                        
 
                         <div class="mt-3">
-                            <a href="#" id="current-cv-link" target="_blank" class="btn btn-outline-blueviolet btn-sm"><i class="bi bi-download"></i> Descargar Curriculum actual</a>
+                            <?php if (!empty($cvUrl)): ?>
+                                <a href="<?= htmlspecialchars($cvUrl) ?>" target="_blank" class="btn btn-outline-blueviolet btn-sm">
+                                    <i class="bi bi-download"></i> Descargar Curriculum actual
+                                </a>
+                            <?php else: ?>
+                                <p class="text-muted">No se ha subido ningún currículum todavía.</p>
+                            <?php endif; ?>
+                            <!--<a href="#" id="current-cv-link" target="_blank" class="btn btn-outline-blueviolet btn-sm"><i class="bi bi-download"></i> Descargar Curriculum actual</a>-->
                         </div>
 
                         <div class="mt-3">
-                            <label for="cv-upload" class="btn btn-outline-blueviolet btn-sm w-100"> <i class="bi bi-upload"></i> Subir nuevo CV (PDF)</label>
-                                <input type="file" id="cv-upload" accept=".pdf" class="d-none">
+                            <label for="curriculum" class="btn btn-outline-blueviolet btn-sm w-100"> <i class="bi bi-upload"></i> Subir nuevo CV (PDF)</label>
+                                <input type="file" id="curriculum" name="curriculum" accept=".pdf" class="d-none">
                         </div>
                     </div>
 
@@ -216,25 +231,25 @@
                         
                         <hr>
                         <div class="mt-3">
-                            <label for="Current-password" class="form-label"><h5>Contraseña Actual <i class="bi bi-file me-1"></i></h5> </label>
-                            <input type="password" value="" class="form-control w-75 mx-auto" id="current-password" >
+                            <label for="actual_password" class="form-label"><h5>Contraseña Actual <i class="bi bi-file me-1"></i></h5> </label>
+                            <input type="password" value="" class="form-control w-75 mx-auto" id="actual_password" name="actual_password" required>
                         </div>
 
                          <div class="mt-3">
-                            <label for="new-password" class="form-label"><h5>Nueva Contraseña </h5></label>
-                            <input type="password" value="" class="form-control w-75 mx-auto" id="new-password" minlength="8" maxlength="32" required>
+                            <label for="new_password" class="form-label"><h5>Nueva Contraseña </h5></label>
+                            <input type="password" value="" class="form-control w-75 mx-auto" id="new_password" name="new_password" minlength="8" maxlength="32" required>
                         </div>
 
                          <div class="mt-3">
-                            <label for="Confirm-password" class="form-label"><h5>Confirmar Contraseña <i class="bi bi-file-plus me-1"></i></h5></label>
-                            <input type="password" value="" class="form-control w-75 mx-auto" id="confirm-password" minlength="8" maxlength="32" required oninput="checkPasswordMatch()">
+                            <label for="Confirm_password" class="form-label"><h5>Confirmar Contraseña <i class="bi bi-file-plus me-1"></i></h5></label>
+                            <input type="password" value="" class="form-control w-75 mx-auto" id="confirm_password" name="confirm_password" minlength="8" maxlength="32" required oninput="checkPasswordMatch()">
                         </div>
                         <hr>
                     </div>
 
                     <div class="col-md-6 justify-content-center">
                         <div class="d-flex justify-content-center">
-                           <a href="UserContratado - Hiring Group.html"><button type="button" class="btn btn-outline-blueviolet py-2 px-4"> <i class="bi bi-arrow-left"></i> Cancelar</button></a> 
+                           <a href="<?= APP_URL ?>/dashboard"><button type="button" class="btn btn-outline-blueviolet py-2 px-4"> <i class="bi bi-arrow-left"></i> Cancelar</button></a> 
                         </div>
                     </div>
 
@@ -258,8 +273,8 @@
         <!--Funcion CheckPasswordMatch-->
     <script>
         function checkPasswordMatch() {
-            const password = document.getElementById("new-password").value;
-            const confirmPassword = document.getElementById("confirm-password").value;
+            const password = document.getElementById("new_password").value;
+            const confirmPassword = document.getElementById("confirm_password").value;
             if (password !== confirmPassword) {
                 confirmPassword.setCustomValidity("Las contraseñas no coinciden");
                 confirmPassword.classList.add('is-invalid');
@@ -272,10 +287,10 @@
 
         // Validación al enviar 
         document.querySelector('form').addEventListener('submit', function(e) {
-            if (document.getElementById("new-password").value !== 
+            if (document.getElementById("new_password").value !== 
                 document.getElementById("password2").value) {
                 e.preventDefault();
-                document.getElementById("confirm-password").focus();
+                document.getElementById("confirm_password").focus();
             }
         });
     </script>
