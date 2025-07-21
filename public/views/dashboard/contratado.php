@@ -60,7 +60,7 @@ require_once __DIR__ . '/../../../utils/config.php';
 
              <div class="d-lg-none mt-3 mb-3 py-2 px-3  animacionlogo">
                     <a href="Edicion - UsuarioInfo.html" class="btn btn-outline-sesion w-100 ">
-                        <i class="bi bi-person-badge-fill me-1"></i> Username Here
+                        <i class="bi bi-person-badge-fill me-1"></i> <?= htmlspecialchars($usuario['nombre_usuario']) ?>
                     </a>
             </div>
 
@@ -68,7 +68,7 @@ require_once __DIR__ . '/../../../utils/config.php';
 
             <div class="d-none d-lg-flex ms-lg-3 py-2 px-3 animacionlogo">
                     <a href="Edicion - Hiring Group.html" class="btn btn-outline-sesion w-100 ">
-                        <i class="bi bi-person-badge-fill me-1"></i> Username Here
+                        <i class="bi bi-person-badge-fill me-1"></i> <?= htmlspecialchars($usuario['nombre_usuario']) ?>
 
                     </a>
             </div>
@@ -96,7 +96,7 @@ require_once __DIR__ . '/../../../utils/config.php';
                 
                 <!-- Texto de bienvenida -->
                 <div class=" text-center textocentral px-1">
-                    <h1 class="text-center text-white fw-bold">Bienvenido, Username Here</h1>
+                    <h1 class="text-center text-white fw-bold">Bienvenido, <?= htmlspecialchars($usuario['nombre_usuario']) ?></h1>
                     <p class="text-center text-white fw-semibold" style="font-size: large;">Username Job goes here Juan</p>
                 </div>
             </div>
@@ -108,14 +108,14 @@ require_once __DIR__ . '/../../../utils/config.php';
             <div class="d-flex flex-lg-row align-items-center justify-content-center mx-auto infousuario">
                 <div class="d-flex flex-column text-center justify-content-center align-items-center w-lg-50 w-100 py-2 px-3">
                     <p class="fw-bold letra pmayus" style="font-size: large;">Fecha de contratación</p>
-                    <p id="userDate" class="fw-semibold letra pminus">Fecha va aqui</p>
+                    <p id="userDate" class="fw-semibold letra pminus"><?= htmlspecialchars($contratacion[0]['fecha_inicio']) ?></p>
                 </div>
 
                 <div class="border-start border-white opacity-50 mx-2 justify-content-center align-items-center" style="height: 50px;"></div>
 
                 <div class="d-flex flex-column text-center justify-content-center align-items-center w-lg-50 w-100 py-2 px-3">
                     <p class="fw-bold letra pmayus" style="font-size: large;">Salario Mensual</p>
-                    <p id="userSalary" class="fw-semibold letra pminus">No se que tantos dolares</p>
+                    <p id="userSalary" class="fw-semibold letra pminus"><?= htmlspecialchars($contratacion[0]['salario']) ?></p>
                 </div>
             </div>
         </div>
@@ -130,13 +130,13 @@ require_once __DIR__ . '/../../../utils/config.php';
                     <h5> <i class="bi bi-geo-alt text-primary me-2"></i>Información de Contacto</h5>
                     <div class="row">
                         <div class="col-md">
-                            <h6>Cedula de Identidad</h6><p id="userCI" class="mb-0 fw-bold">V/E XX-XXX-XXX</p>
+                            <h6>Cedula de Identidad</h6><p id="userCI" class="mb-0 fw-bold"><?= htmlspecialchars($postulante['cedula']) ?></p>
                             <hr>
-                            <h6>Fecha de Nacimiento</h6><p id="userBirth" class="mb-0 fw-bold">20XX / XX / XX</p>
+                            <h6>Fecha de Nacimiento</h6><p id="userBirth" class="mb-0 fw-bold"><?= htmlspecialchars($postulante['fecha_nacimiento']) ?></p>
                             <hr>
-                            <h6>Genero</h6><p id="userGender" class="mb-0 fw-bold">XXXXXX</p> 
+                            <h6>Genero</h6><p id="userGender" class="mb-0 fw-bold"><?= htmlspecialchars($postulante['genero']) ?></p> 
                             <hr>
-                            <h6>Telefono</h6><p id="userPhone" class="mb-0 fw-bold">+58 4XX-XXXXXXX</p>
+                            <h6>Telefono</h6><p id="userPhone" class="mb-0 fw-bold"><?= htmlspecialchars($telefonos['telefono']) ?></p>
 
                         </div>
                     </div>
@@ -150,13 +150,13 @@ require_once __DIR__ . '/../../../utils/config.php';
                     <h5 class="card-title"> <i class="bi bi-briefcase text-primary me-2"></i>Información Laboral</h5>
                     <div class="row">
                         <div class="col-md">
-                            <h6>Correo Electrónico</h6><p id="userEmail" class="mb-0 fw-bold">XXX@hotmail/gmail.com</p>
+                            <h6>Correo Electrónico</h6><p id="userEmail" class="mb-0 fw-bold"><?= htmlspecialchars($usuario['correo']) ?></p>
                             <hr>
-                            <h6>Estado de Residencia</h6><p id="userState" class="mb-0 fw-bold">XXXX YYYY ZZZZ</p>
+                            <h6>Estado de Residencia</h6><p id="userState" class="mb-0 fw-bold"><?= htmlspecialchars($postulante['estado_residencia']) ?></p>
                             <hr>
-                            <h6>Ciudad de Residencia</h6><p id="userPlace" class="mb-0 fw-bold">XXXX YYYY ZZZZ</p> 
+                            <h6>Ciudad de Residencia</h6><p id="userPlace" class="mb-0 fw-bold"><?= htmlspecialchars($postulante['ciudad_residencia']) ?></p> 
                             <hr>
-                            <h6>Tipo de Sangre</h6><p id="userBlood" class="mb-0 fw-bold">OH+/A/B/AB/O</p> 
+                            <h6>Tipo de Sangre</h6><p id="userBlood" class="mb-0 fw-bold"><?= htmlspecialchars($postulante['tipo_sangre']) ?></p> 
                         </div>
                     </div>
                 </div>
