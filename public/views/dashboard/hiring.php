@@ -1,22 +1,26 @@
+<?php
+// public/views/dashboard/hiring.php
+require_once __DIR__ . '/../../../utils/config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hiring Group User - Hiring Group</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
-    <link rel="icon" href="../assets/images/Icono.png">
-    <link rel="stylesheet" href="../assets/css/navbar.css">
-    <link rel="stylesheet" href="../assets/css/Styles-usercontratado.css">
-    <link rel="stylesheet" href="../assets/css/styles-home.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
+    <link rel="icon" href="../../assets/images/Icono.png">
+    <link rel="stylesheet" href="../../assets/css/navbar.css">
+    <link rel="stylesheet" href="../../assets/css/Styles-usercontratado.css">
+    <link rel="stylesheet" href="../../assets/css/styles-home.css">
 </head>
 <body style="background-color: rgb(33, 37, 41)">
    <header style="position: fixed; width: 100%; z-index: 2; top: 0; left: 0;"><!--Barra de Navegacion-->
         <nav class="navbar navbar-expand-lg color_barra custom-border">
         <div class="container-fluid">
             <div class="px-4 py-1 animacionlogo">
-                <a class="navbar-brand" href="Home - Hiring Group.html"><img src="../assets/images/Icono.png" width="70" height="65"></a>
+                <a class="navbar-brand" href="<?= APP_URL ?>/dashboard"><img src="../../assets/images/Icono.png" width="70" height="65"></a>
             </div>
             <!--Boton para Tlf-->
             <!--navbarSupportedContet, opciones que se colapsaran llegado a cierta posicion dada por el expand-md-->
@@ -29,12 +33,12 @@
                 <!--Opciones del Menu de Navegacion-->
                 <ul class="navbar-nav mx-auto flex-lg-row gap-lg menu">
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="Home - Hiring Group.html">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/logout">
                          <i class="bi bi-house me-1"></i> Cerrar Sesión
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/dashboard/ofertas">
                         <i class="bi bi-search me-1"></i> Ofertas Publicadas
                     </a>
                     </li>
@@ -68,7 +72,7 @@
                 
                 <!-- Texto de bienvenida -->
                 <div class=" text-center textocentral px-1">
-                    <h1 class="text-center text-white fw-bold">Bienvenido, Hiring Group User</h1>
+                    <h1 class="text-center text-white fw-bold">Bienvenido, <?= htmlspecialchars($usuario['nombre_usuario']) ?></h1>
                     <p class="text-center text-white fw-semibold" style="font-size: large;">Contamos con usted nuevamente el dia de hoy.</p>
                 </div>
             </div>
@@ -90,7 +94,7 @@
                                             type="video/mp4"></video>
                                     </div>
                                     <div class="carousel-item w-100 h-100">
-                                        <video autoplay loop muted src="../assets/video/HG2.mp4"
+                                        <video autoplay loop muted src="../../assets/video/HG2.mp4"
                                             class="d-block w-100 h-100 object-fit-cover"
                                             style="max-height: 100%;"
                                             type="video/mp4"></video>

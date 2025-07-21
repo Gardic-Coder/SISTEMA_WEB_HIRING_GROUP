@@ -42,7 +42,7 @@ require_once MODELS_DIR . 'Empresa.php';
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/dashboard/ofertas">
                         <i class="bi bi-search me-1"></i> Ver Ofertas
                     </a>
                     </li>
@@ -54,7 +54,7 @@ require_once MODELS_DIR . 'Empresa.php';
                             </a>
                             </li>
                             <li class="nav-item">
-                            <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                            <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/constancia/trabajo">
                                 <i class="bi bi-building-gear me-1"></i> Constancia
                             </a>
                             </li>

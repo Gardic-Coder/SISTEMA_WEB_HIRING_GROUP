@@ -21,7 +21,7 @@ require_once __DIR__ . '/../../../utils/config.php';
         <nav class="navbar navbar-expand-lg color_barra custom-border">
         <div class="container-fluid">
             <div class="px-5 py-1 animacionlogo">
-                <a class="navbar-brand" href="<?= APP_URL ?>/dashboard/contratado"><img src="../../assets/images/Icono.png" width="70" height="65"></a>
+                <a class="navbar-brand" href="<?= APP_URL ?>/dashboard"><img src="../../assets/images/Icono.png" width="70" height="65"></a>
             </div>
             <!--Boton para Tlf-->
             <!--navbarSupportedContet, opciones que se colapsaran llegado a cierta posicion dada por el expand-md-->
@@ -49,7 +49,7 @@ require_once __DIR__ . '/../../../utils/config.php';
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/constancia/trabajo">
                         <i class="bi bi-building-gear me-1"></i> Constancia
                     </a>
                     </li>
