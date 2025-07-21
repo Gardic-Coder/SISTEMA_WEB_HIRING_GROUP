@@ -27,6 +27,8 @@ class UserController {
         // 📌 ADMINISTRADOR / HIRING GROUP
         if ($tipoUsuario === 'administrador' || $tipoUsuario === 'hiring_group') {
             // No necesitas cargar más datos
+            $ofertas = OfertaLaboral::getAll();
+
             require VIEWS_DIR . 'dashboard/ofertas.php';
             return;
         }
@@ -35,6 +37,7 @@ class UserController {
         if ($tipoUsuario === 'empresa') {
             $usuarioEmpresa = UsuarioEmpresa::getByField('usuario_id', $usuarioId);
             $empresa = Empresa::getById($usuarioEmpresa['empresa_id'] ?? null);
+            $ofertas = OfertaLaboral::getAll(['estatus' => 1]); // Solo ofertas activas
 
             require VIEWS_DIR . 'dashboard/ofertas.php';
             return;
@@ -45,6 +48,7 @@ class UserController {
             $postulante = UsuarioPostulante::getByField('usuario_id', $usuarioId);
             $telefonos = Telefono::getByUsuario($usuarioId);
             $telefono = !empty($telefonos) ? $telefonos[0]['telefono'] : 'No disponible';
+            $ofertas = OfertaLaboral::getAll(['estatus' => 1]); // Solo ofertas activas
 
             // Verificar si está contratado
             if (!empty($postulante['contratado'])) {

@@ -32,4 +32,50 @@ class PostulanteController {
         require VIEWS_DIR . 'dashboard/postulante.php';
     }
 
+    public function postularOferta() {
+        if (!Auth::check() || Auth::user()['tipo_usuario'] !== 'postulante') {
+            header('Location: ' . APP_URL . '/login');
+            exit;
+        }
+
+        $usuarioId = Auth::user()['id'];
+        $ofertaId = $_POST['oferta_id'] ?? null;
+
+        if (empty($ofertaId)) {
+            $_SESSION['error'] = "La oferta no fue especificada.";
+            header('Location: ' . APP_URL . '/dashboard/ofertas');
+            exit;
+        }
+
+        try {
+            // Verificar si ya existe la postulación (evita duplicados por UNIQUE)
+            $postulaciones = Postulacion::getByUsuario($usuarioId);
+            $yaPostulado = array_filter($postulaciones, function($p) use ($ofertaId) {
+                return $p['oferta_id'] == $ofertaId;
+            });
+
+            if (!empty($yaPostulado)) {
+                $_SESSION['error'] = "Ya te has postulado a esta oferta.";
+                header('Location: ' . APP_URL . '/dashboard/ofertas');
+                exit;
+            }
+
+            // Registrar postulación
+            Postulacion::add([
+                'usuario_id' => $usuarioId,
+                'oferta_id' => $ofertaId,
+            ]);
+
+            $_SESSION['success'] = "¡Postulación realizada con éxito!";
+            header('Location: ' . APP_URL . '/dashboard/ofertas');
+            exit;
+
+        } catch (Exception $e) {
+            $_SESSION['error'] = "Error al postularse: " . $e->getMessage();
+            header('Location: ' . APP_URL . '/dashboard/ofertas');
+            exit;
+        }
+    }
+
+
 }

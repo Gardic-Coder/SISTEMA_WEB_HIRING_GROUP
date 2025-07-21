@@ -1,6 +1,7 @@
 <?php
 // public/views/dashboard/ofertas.php
 require_once __DIR__ . '/../../../utils/config.php';
+require_once MODELS_DIR . 'Empresa.php';
 
 ?>
 
@@ -15,7 +16,6 @@ require_once __DIR__ . '/../../../utils/config.php';
     <link rel="icon" href="../../assets/images/Icono.png">
     <link rel="stylesheet" href="../../assets/css/navbar.css">
     <link rel="stylesheet" href="../../assets/css/Styles-usercontratado.css">
-    <link rel="stylesheet" href="../../assets/css/Styles - OfertasLaborales.css">
     <link rel="stylesheet" href="../../assets/css/Tabla.css">
 
 </head>
@@ -246,7 +246,7 @@ require_once __DIR__ . '/../../../utils/config.php';
     <script>
         //No se absultamente nada de JavaScript
         // Datos de ejemplo para ofertas de trabajo (ahora más completos)
-const sampleOffers = [
+/*const sampleOffers = [
     { 
         id: 'OF-1001', 
         profesion: 'Ingeniero de Sistemas', 
@@ -286,13 +286,35 @@ const sampleOffers = [
         empresa: 'Finance Corp', 
         fecha: '2023-05-20' 
     }
-];
+];*/
+
+    const tipoUsuario = <?= json_encode($tipoUsuario) ?>;
+    const contratado = <?= json_encode($postulante['contratado'] ?? 0) ?>;
+
+    const ofertas = <?= json_encode(array_map(function($oferta) {
+        return [
+            'id' => 'OF-' . str_pad($oferta['id'], 4, '0', STR_PAD_LEFT),
+            'profesion' => $oferta['profesion'],
+            'cargo' => $oferta['cargo'],
+            'descripcion' => $oferta['descripcion'],
+            'salario' => '$ ' . number_format($oferta['salario'], 2, ',', '.'),
+            'modalidad' => $oferta['modalidad'],
+            'estado' => $oferta['estado'],
+            'ciudad' => $oferta['ciudad'],
+            'estatus' => $oferta['estatus'] ? 'Activa' : 'Inactiva',
+            'empresa' => Empresa::getById($oferta['empresa_id'])['nombre_empresa'] ?? 'Empresa desconocida',
+            'fecha' => date('Y-m-d', strtotime($oferta['fecha_creacion']))
+        ];
+    }, $ofertas)) ?>;
+
+    //loadOffers(ofertas);
+
 
 let currentPage = 1;
 const itemsPerPage = 10;
 
 // Función para cargar ofertas con botones de postulación
-function loadOffers(offers = sampleOffers) {
+function loadOffers(offers = ofertas) {
     const tbody = document.getElementById('receiptsTableBody');
     tbody.innerHTML = '';
     
@@ -321,12 +343,12 @@ function loadOffers(offers = sampleOffers) {
             <td>${offer.empresa}</td>
             <td>${offer.fecha}</td>
             <td>
-                <?php if($tipoUsuario == 'postulante' && $postulante['contratado'] == 0): ?>
-                    <button class="btn btn-sm btn-outline-blueviolet" 
-                            data-offer-id="${offer.id}">
-                        <i class="bi bi-send-check"></i> Postularse
-                    </button>
-                <?php endif; ?>
+            <?php if($tipoUsuario == 'postulante' && $postulante['contratado'] == 0): ?>
+                <button class="btn btn-sm btn-outline-blueviolet btn-postular" 
+                    data-offer-id="${offer.id}">
+                    <i class="bi bi-send-check"></i> Postularse
+                </button>
+            <?php endif; ?>
             </td>
         `;
         tbody.appendChild(row);
@@ -340,28 +362,33 @@ function loadOffers(offers = sampleOffers) {
     setupPagination(offers.length);
 }
 
-//Por si lo necesitas Juan, todo lo demas que me dio DeepSeek con respecto a las acciones del boton Postularse
-
-/*
-// Función para manejar el clic en Postularse
 function handlePostulacion(event) {
+    console.log("Botón clickeado");
+
     const button = event.currentTarget;
-    const offerId = button.getAttribute('data-offer-id');
-    
-    // Deshabilitar botón temporalmente para evitar múltiples clics
+    const ofertaId = button.getAttribute('data-offer-id');
+
+    // Animación: deshabilitar y mostrar spinner
     button.disabled = true;
     button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...';
-    
-    // Simular envío al backend (en tu implementación real, aquí iría el fetch)
-    setTimeout(() => {
-        // Cambiar aspecto del botón después de "éxito"
-        button.innerHTML = '<i class="bi bi-check-circle"></i> Postulado';
-        button.classList.remove('btn-primary');
-        button.classList.add('btn-success');
-        
-        // Mostrar notificación
-        showToast('Postulación enviada con éxito');
-    }, 1000);
+
+    // Crear formulario oculto dinámicamente
+    const form = document.createElement('form');
+    form.method = 'post';
+    form.action = '<?= APP_URL ?>/postular';
+
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'oferta_id';
+    input.value = ofertaId;
+    form.appendChild(input);
+
+    document.body.appendChild(form);
+
+    // Opcional: mostrar toast antes de enviar
+    showToast('Enviando postulación...');
+
+    form.submit();
 }
 
 // Función para mostrar notificación toast
@@ -386,17 +413,6 @@ function showToast(message) {
         toast.remove();
     }, 5000);
 }
-*/
-
-
-
-
-
-
-
-
-
-
 
 // Configurar paginación (mejorada con estilos)
 function setupPagination(totalItems) {
@@ -484,7 +500,7 @@ function filterOffers() {
     const ubicacion = document.getElementById('state').value;
     
     // 2. Filtrar las ofertas
-    const filtered = sampleOffers.filter(offer => {
+    const filtered = ofertas.filter(offer => {
         // Filtro por área de conocimiento
         const matchesArea = !areaConocimiento || 
                           normalizeText(offer.profesion).includes(normalizeText(areaConocimiento)) || 
