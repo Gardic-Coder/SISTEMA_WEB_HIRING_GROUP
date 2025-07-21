@@ -161,6 +161,7 @@
                         <th>Estatus</th>
                         <th>Empresa</th>
                         <th>Fecha</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="receiptsTableBody">
@@ -230,7 +231,7 @@ const sampleOffers = [
 let currentPage = 1;
 const itemsPerPage = 10;
 
-// Cargar ofertas en la tabla
+// Función para cargar ofertas con botones de postulación
 function loadOffers(offers = sampleOffers) {
     const tbody = document.getElementById('receiptsTableBody');
     tbody.innerHTML = '';
@@ -240,18 +241,18 @@ function loadOffers(offers = sampleOffers) {
     
     if (paginatedOffers.length === 0) {
         const row = document.createElement('tr');
-        row.innerHTML = `<td colspan="11" class="text-center py-4 text-muted">No se encontraron ofertas</td>`;
+        row.innerHTML = `<td colspan="12" class="text-center py-4 text-muted">No se encontraron ofertas</td>`;
         tbody.appendChild(row);
         return;
     }
-    
+    //Aqui muestro en pantalla cada uno de los Registros, eso incluye el boton Postularse
     paginatedOffers.forEach(offer => {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${offer.id}</td>
             <td>${offer.profesion}</td>
             <td>${offer.cargo}</td>
-            <td>${offer.descripcion}</td>
+            <td class="text-truncate" style="max-width: 200px;">${offer.descripcion}</td>
             <td>${offer.salario}</td>
             <td>${offer.modalidad}</td>
             <td>${offer.estado}</td>
@@ -259,13 +260,23 @@ function loadOffers(offers = sampleOffers) {
             <td><span class="badge ${offer.estatus === 'Activa' ? 'bg-success' : 'bg-secondary'}">${offer.estatus}</span></td>
             <td>${offer.empresa}</td>
             <td>${offer.fecha}</td>
+            <td>
+                <button class="btn btn-sm btn-outline-blueviolet" 
+                        data-offer-id="${offer.id}">
+                    <i class="bi bi-save"></i> Contratar
+                </button>
+            </td>
         `;
         tbody.appendChild(row);
     });
     
+    // Agregar event listeners a los nuevos botones
+    document.querySelectorAll('.btn-postular').forEach(btn => {
+        btn.addEventListener('click', handlePostulacion);
+    });
+    
     setupPagination(offers.length);
 }
-
 // Configurar paginación (mejorada con estilos)
 function setupPagination(totalItems) {
     const pagination = document.getElementById('pagination');
