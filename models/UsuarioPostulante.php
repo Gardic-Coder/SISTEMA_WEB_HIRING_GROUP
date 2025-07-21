@@ -22,6 +22,7 @@ class UsuarioPostulante {
             tipo_sangre TEXT CHECK(tipo_sangre IN ('A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-')),
             fecha_nacimiento DATE NOT NULL,
             genero TEXT CHECK(genero IN ('masculino', 'femenino', 'otro')),
+            cv_url TEXT,
             FOREIGN KEY (usuario_id) REFERENCES Usuario(id) ON DELETE CASCADE
         )";
         
@@ -36,9 +37,9 @@ class UsuarioPostulante {
     public static function add($data) {
         $sql = "INSERT INTO UsuarioPostulante 
                 (usuario_id, nombre, apellido, cedula, estado_residencia, ciudad_residencia, 
-                 contratado, tipo_sangre, fecha_nacimiento, genero) 
+                 contratado, tipo_sangre, fecha_nacimiento, genero, cv_url) 
                 VALUES (:usuario_id, :nombre, :apellido, :cedula, :estado_residencia, 
-                        :ciudad_residencia, :contratado, :tipo_sangre, :fecha_nacimiento, :genero)";
+                        :ciudad_residencia, :contratado, :tipo_sangre, :fecha_nacimiento, :genero, :cv_url)";
         
         $params = [
             ':usuario_id' => $data['usuario_id'],
@@ -50,7 +51,8 @@ class UsuarioPostulante {
             ':contratado' => $data['contratado'] ?? 0,
             ':tipo_sangre' => $data['tipo_sangre'] ?? null,
             ':fecha_nacimiento' => $data['fecha_nacimiento'],
-            ':genero' => $data['genero']
+            ':genero' => $data['genero'],
+            ':cv_url' => null
         ];
 
         $db = Database::getInstance();
@@ -59,6 +61,17 @@ class UsuarioPostulante {
         }
         return false;
     }
+
+    public static function actualizarCV($usuarioId, $cvUrl) {
+        $sql = "UPDATE UsuarioPostulante SET cv_url = :cv_url WHERE usuario_id = :usuario_id";
+        $params = [
+            ':usuario_id' => $usuarioId,
+            ':cv_url' => $cvUrl
+        ];
+
+        return Database::getInstance()->preparedQuery($sql, $params);
+    }
+
 
     /**
      * Busca un usuario postulante por cualquier campo, incluyendo campos de Usuario (JOIN).
