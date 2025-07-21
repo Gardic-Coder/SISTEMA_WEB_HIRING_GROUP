@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Hiring Group</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
+    <link rel="stylesheet" href="../assets/css/styles-register.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="icon" href="../assets/images/Icono.png">
+</head>
+<body>
+    <header style="position: fixed; width: 100%; z-index: 2; top: 0; left: 0;"><!--Barra de Navegacion-->
+        <nav class="navbar navbar-expand-lg color_barra custom-border">
+        <div class="container-fluid">
+            <div class="px-2 py-1 animacionlogo">
+                <a class="navbar-brand" href="Home - Hiring Group.html"><img src="../assets/images/logo3.png" width="150" height="80"></a>
+            </div>
+            <!--Boton para Tlf-->
+            <!--navbarSupportedContet, opciones que se colapsaran llegado a cierta posicion dada por el expand-md-->
+            <button class="navbar-toggler btn btn-outline-light border-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--Menu colapsable-->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!--Opciones del Menu de Navegacion-->
+                <ul class="navbar-nav mx-auto flex-lg-row gap-lg-5 menu">
+                    <li class="nav-item">
+                    <a class="nav-link active px-lg-4" aria-current="page" href="Home - Hiring Group.html">
+                         <i class="bi bi-house-door me-1"></i> Inicio
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active px-lg-4" aria-current="page" href="Home - Hiring Group.html#service">
+                        <i class="bi bi-gear me-1"></i> Servicios
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active px-lg-4" aria-current="page" href="Register-Hiring Group.html">
+                        <i class="bi bi-globe me-1"></i> Registrarse
+                    </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle px-lg-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Menu
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                Nintendo Switch <i class="bi bi-nintendo-switch me-1"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                Twitter <i class="bi bi-twitter me-1"></i>
+                            </a>
+                        </li>
+                    </ul>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active px-lg-4" aria-current="page" href="#">
+                        <i class="bi bi-paypal me-1"></i> Rutinas
+                    </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!--Boton solo visible en movil-->
+
+             <div class="d-lg-none mt-3 mb-3 py-2 px-3 BotonSesion">
+                    <a href="Hiring Group.html" class="btn w-100 ">
+                        <i class="bi bi-universal-access me-1"></i> Iniciar Sesión
+                    </a>
+            </div>
+
+            <!--Boton solo visible en Desktop-->
+
+            <div class="d-none d-lg-flex ms-lg-3 py-2 px-3 BotonSesion">
+                    <a href="Hiring Group.html" class="btn w-100 ">
+                        <i class="bi bi-universal-access me-1"></i> Iniciar Sesión
+
+                    </a>
+            </div>
+
+        </div>
+        </nav>
+    </header>
+
+    <!--Formulario Principal-->
+
+    <main>
+        <div class="container-fluid d-flex justify-content-center align-items-center" style="background-color: rgb(33, 37, 41); min-height: 165vh; padding-top: 140px;" 
+            id="main-container">
+            <div class="text-center formulariocontainer mb-3">
+                <img src="../assets/images/Icono.png" width="120" height="120" style="padding-top: 8px ;">
+                <h1>¡Bienvenido!</h1>
+                <p>Complete el formulario para registrarse</p>
+                <hr>
+                <form class="row g-3 needs-validation" novalidate>
+                    <div class="col-12 text-center">
+                        <h1 class="titulo-estilizado">Información Básica</h1>
+                        <p class="parrafo-estilizado">Datos esenciales para Conocerlo/a</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="mt-3">
+                            <label for="Name" class="form-label"><h5>Nombre <i class="bi bi-person-fill me-1"></i></h5></label>
+                            <input type="text" class="form-control w-75 mx-auto" id="Name" name="Name" placeholder="Ingrese su Nombre"  minlength="3" maxlength="30" pattern="[A-Za-zÁ-ú\s]+"  required>
+                        </div>
+
+                        <div class="mt-3">
+                            <label for="Name2" class="form-label"><h5>Apellido <i class="bi bi-person-fill-check me-1"></i></h5></label>
+                            <input type="text" class="form-control w-75 mx-auto" id="Name2" name="Name2" placeholder="Ingrese su Apellido" minlength="3" maxlength="30" pattern="[A-Za-zÁ-ú\s]+" required>
+                        </div>
+
+                        <div class="mt-3">
+                            <label for="CI" class="form-label"><h5>Cedula de Identidad <i class="bi bi-person-vcard me-1"></i></h5> </label>
+                            <input type="text" class="form-control w-75 mx-auto" id="CI" name="Name2" placeholder="V\E-XX-XXX-XXX" maxlength="12" pattern="[VE]-\d{2}-\d{3}-\d{3}" required>
+                        </div>
+
+                        <div class="mt-3">
+                            <label for="phone" class="form-label"><h5>Teléfono <i class="bi bi-telephone-fill me-1"></i></h5></label>
+                            <input type="tel" class="form-control w-75 mx-auto" id="phone" placeholder="Ej. +58 XXX-XXXXXXX" minlength="10" maxlength="15" pattern="\+58[\s-]\d{3}[\s-]\d{7}" required>
+                        </div>
+
+                        <div class="mt-3">
+                            <label for="birthdate" class="form-label"><h5>Fecha de Nacimiento <i class="bi bi-cake2-fill me-1"></i></h5> </label>
+                            <input type="date" class="form-control w-75 mx-auto" id="birthdate" required>
+                        </div>
+
+                        <div class="mt-3">
+                            <label for="bloodType" class="form-label"><h5>Tipo de Sangre <i class="bi bi-droplet-fill me-1"></i></h5> </label>
+                            <select class="form-select w-75 mx-auto" id="bloodType" name="bloodType" required>
+                                <option value="" selected disabled>Seleccione su tipo de sangre</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                            </select>
+                        </div>
+
+                        <div class="mt-3">
+                            <label for="gender" class="form-label"><h5>Genero <i class="bi bi-person-arms-up me-1"></i></h5> </label>
+                            <select class="form-select w-75 mx-auto" id="gender" name="gender" required>
+                                <option value="" selected disabled>Seleccione su Genero</option>
+                                <option value="Hombre">Hombre</option>
+                                <option value="Mujer">Mujer</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <div class="mt-3">
+                            <label for="username" class="form-label"><h5>Usuario <i class="bi bi-person-circle me-1"></i></h5> </label>
+                            <input type="text" class="form-control w-75 mx-auto" id="user" placeholder="Ingrese su Usuario" minlength="4" maxlength="20"required>
+                        </div>
+
+                        <div class="mt-3">
+                            <label for="Contraseña" class="form-label"><h5>Contraseña <i class="bi bi-clipboard-data-fill me-1"></i></h5> </label>
+                            <input type="password" class="form-control w-75 mx-auto" id="password" placeholder="Ingrese su Contraseña" minlength="8" maxlength="32" required>
+                        </div>
+
+                        <div class="mt-3"> <!--Confirmacion de Contrasena, usamos JS-->
+                            <label for="Contraseña2" class="form-label"><h5>Confirme Contraseña <i class="bi bi-clipboard-check-fill me-1"></i></h5> </label>
+                            <input type="password" class="form-control w-75 mx-auto" id="password2" placeholder="***************"   required oninput="checkPasswordMatch()">
+                        </div>
+
+                        <div class="mt-3">
+                            <label for="email" class="form-label"><h5>Correo Electrónico <i class="bi bi-envelope-at-fill me-1"></i></h5> </label>
+                            <input type="email" class="form-control w-75 mx-auto" id="email" placeholder="Ingrese su Correo Electrónico" minlength="5" maxlength="254" required>
+                        </div>
+
+                        <div class="mt-3">
+                            <label for="state" class="form-label"><h5>Estado de Residencia <i class="bi bi-house-fill me-1"></i></h5> </label>
+                            <select class="form-select w-75 mx-auto" id="state" name="state" required>
+                                <option value="" selected disabled>Seleccione el Estado en el que reside</option>
+                                <option value="Amazonas">Amazonas</option>
+                                <option value="Anzoátegui">Anzoátegui</option>
+                                <option value="Apure">Apure</option>
+                                <option value="Aragua">Aragua</option>
+                                <option value="Barinas">Barinas</option>
+                                <option value="Bolívar">Bolívar</option>
+                                <option value="Carabobo">Carabobo</option>
+                                <option value="Cojedes">Cojedes</option>
+                                <option value="Delta Amacuro">Delta Amacuro</option>
+                                <option value="Falcón">Falcón</option>
+                                <option value="Guárico">Guárico</option>
+                                <option value="Lara">Lara</option>
+                                <option value="Mérida">Mérida</option>
+                                <option value="Miranda">Miranda</option>
+                                <option value="Monagas">Monagas</option>
+                                <option value="Nueva Esparta">Nueva Esparta</option>
+                                <option value="Portuguesa">Portuguesa</option>
+                                <option value="Sucre">Sucre</option>
+                                <option value="Táchira">Táchira</option>
+                                <option value="Trujillo">Trujillo</option>
+                                <option value="Yaracuy">Yaracuy</option>
+                                <option value="Zulia">Zulia</option>
+                            </select>
+                        </div>
+
+                        <div class="mt-3">
+                            <label for="City" class="form-label"><h5>Ciudad de Residencia <i class="bi bi-house-gear-fill me-1"></i></h5> </label>
+                            <input type="text" class="form-control w-75 mx-auto" id="City" placeholder="Ingrese la Ciudad en el que Reside" minlength="3" maxlength="50" required>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row col-12 mb-3 text-center">
+                        <h1 class="titulo-estilizado">Cuenta Bancaria</h1>
+                        <p class="parrafo-estilizado">Requerido para llevar a cabo los pagos</p>
+                        
+                        <div class="col-md-6 mb-3">
+
+                            <div class="mt-3">
+                                <label for="bank" class="form-label"><h5>Banco <i class="bi bi-clipboard-data-fill me-1"></i></h5> </label>
+                                <select class="form-select w-75 mx-auto" id="bank" name="bank" required>
+                                    <option value="" selected disabled>Seleccione el Banco a Usar</option>
+                                    <option value="Banesco">Banesco</option>
+                                    <option value="Venezuela">Venezuela</option>
+                                    <option value="Mercantil">Mercantil</option>
+                                    <option value="Provincial">Provincial</option>
+                                    <option value="Tesoro">Tesoro</option>
+                                    <option value="Nacional de Credito">Nacional de Credito</option>
+                                    <option value="Venezolano de Credito"> Venezolano de Crédito</option>
+                                    <option value="Otro Banco"> Otro Banco</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <div class="mt-3">
+                                <label for="type" class="form-label"><h5>Tipo de Cuenta <i class="bi bi-card-heading me-1"></i></h5> </label>
+                                <select class="form-select w-75 mx-auto" id="type" name="type" required>
+                                    <option value="" selected disabled>Seleccione su tipo de Cuenta</option>
+                                    <option value="Corriente">Corriente</option>
+                                    <option value="Ahorro">Ahorro</option>
+                                </select>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row col-12 mb-3 text-center">
+                        <label for="cuenta" class="form-label"><h5>Nro. de Cuenta <i class="bi bi-123 me-1"></i></h5> </label>
+                        <div class="justify-content-center align-items-center px-5 ">
+                           <input type="text" class="form-control w-75 mx-auto" id="cuenta" placeholder="Ej. 01234567890123456789" pattern="[0-9]{10,20}">
+                        </div>
+                    </div>
+
+                    <div class="row col-12 mb-3 text-center">
+                        <label class="form-check-label ms-2" for="active"><h5>Cuenta Activa <i class="bi bi-flag me-1"></i></h5></label>
+                        <div class="justify-content-center align-items-center">
+                           <input class="form-check-input" style="background-color: blueviolet;" type="checkbox" role="switch" id="active" name="active" checked> 
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row col-12 mb-3 text-center">
+                        <h1 class="titulo-estilizado">Experiencia Laboral</h1>
+                        <p class="parrafo-estilizado">Conozcamos tus Habilidades/Aptitudes</p>
+                        
+                        <div class="col-md-6 mb-3">
+                            <div class="mt-3">
+                                <label for="userWorkplace" class="form-label"><h5>Empresa <i class="bi bi-hospital me-1"></i></h5> </label>
+                                <input type="text" class="form-control w-75 mx-auto" id="userWorkplace" placeholder="Empresa donde trabaja/trabajo" minlength="4" maxlength="20"required>
+                            </div>
+
+                            <div class="mt-3">
+                                <label for="userJob" class="form-label"><h5>Cargo <i class="bi bi-pencil-square me-1"></i></h5> </label>
+                                <input type="text" class="form-control w-75 mx-auto" id="userJob" placeholder="Cargo actual/pasado" minlength="4" maxlength="20"required>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <div class="mt-3">
+                                <label for="firstday" class="form-label"><h5>Fecha de Ingreso <i class="bi bi-calendar-friday me-1"></i></h5> </label>
+                                <input type="date" class="form-control w-75 mx-auto" id="firstday" required>
+                            </div>
+
+                            <div class="mt-3">
+                                <label for="lastday" class="form-label"><h5>Fecha de Egreso/Actual <i class="bi bi-calendar-month me-1"></i></h5> </label>
+                                <input type="date" class="form-control w-75 mx-auto" id="lastday" required>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row col-12 mb-3 text-center">
+                        <label for="info" class="form-label"><h5>Descripcion <i class="bi bi-info-circle me-1"></i></h5> </label>
+                        <div class="justify-content-center align-items-center px-5 ">
+                           <textarea class="form-control w-75 mx-auto" id="cuenta" rows="4" placeholder="Explica tu Ocupacion" style="resize: none; min-height: 38px; overflow-y: hidden"></textarea>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row ol-12 mb-3 text-center text-dark">
+                        <h1 class="titulo-estilizado">Formacion Academica</h1>
+                        <p class="parrafo-estilizado">Visualicemos tu Educación más de cerca</p>
+
+                        <div class="col-md-6 mb-3">
+                            <div class="mt-3">
+                                <label for="school" class="form-label"><h5>Institucion <i class="bi bi-buildings me-1"></i></h5> </label>
+                                <input type="text" class="form-control w-75 mx-auto" id="school" placeholder="Lugar donde Estudio" minlength="4" maxlength="20"required>
+                            </div>
+
+                            <div class="mt-3">
+                                <label for="path" class="form-label"><h5>Carrera <i class="bi bi-pen me-1"></i></h5> </label>
+                                <input type="text" class="form-control w-75 mx-auto" id="path" placeholder="Carrera que Estudio" minlength="4" maxlength="20"required>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+
+                            <div class="mt-3">
+                                <label for="level" class="form-label"><h5>Nivel Academico <i class="bi bi-mortarboard me-1"></i></h5> </label>
+                                <select class="form-select w-75 mx-auto" id="level" name="level" required>
+                                    <option value="" selected disabled>Seleccione su Nivel Academico</option>
+                                    <option value="Tecnico">Tecnico</option>
+                                    <option value="Licenciatura">Licenciatura</option>
+                                    <option value="Maestria">Maestria</option>
+                                    <option value="Doctorado">Doctorado</option>
+                                </select>
+                            </div>
+
+                            <div class="mt-3">
+                                <label for="lastdayschool" class="form-label"><h5>Fecha de Egreso <i class="bi bi-calendar-month me-1"></i></h5> </label>
+                                <input type="date" class="form-control w-75 mx-auto" id="lastdayschool" required>
+                            </div>
+
+                        </div>
+                        
+
+                    </div>
+
+                    <hr>
+
+                    <div class="col justify-content-center text-center">
+                        <button type="submit" class="btn btn-outline-blueviolet px-5 mt-3"><strong>Registrarse</strong></button> 
+                    </div>
+                    <p class="mt-3 text-center">¿Ya tienes una Cuenta? <a href="Hiring Group.html" style="color: blueviolet !important; text-decoration: none;"><strong>¡Inicia Sesión!</strong></a></p>
+                </form>
+            </div>
+
+
+        </div>
+    </main>
+
+    <script src="../assets/css/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+
+    <!--Funcion CheckPasswordMatch-->
+    <script>
+        function checkPasswordMatch() {
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("password2").value;
+            if (password !== confirmPassword) {
+                confirmPassword.setCustomValidity("Las contraseñas no coinciden");
+                confirmPassword.classList.add('is-invalid');
+            } else {
+                confirmPassword.setCustomValidity("");
+                confirmPassword.classList.remove('is-invalid');
+            }
+             confirmPassword.reportValidity();
+        }
+
+        // Validación al enviar 
+        document.querySelector('form').addEventListener('submit', function(e) {
+            if (document.getElementById("password").value !== 
+                document.getElementById("password2").value) {
+                e.preventDefault();
+                document.getElementById("password2").focus();
+            }
+        });
+    </script>
+    
+</body>
+
+<!--Final de la pagina-->
+<footer style="background-color: rgb(29, 29, 29);">
+    <div class="container py-4">
+        <div class="row">
+            <!-- Tarjeta 1 -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 bg-dark text-white border-0">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Nosotros</strong> </h5>
+                        <p class="card-text">Somos Hiring Group, conectando talento con oportunidades laborales. Nuestro objetivo es facilitar el proceso de contratación.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Tarjeta 2 -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 bg-dark text-white border-0">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Contacto</strong></h5>
+                        <p class="card-text">
+                            <i class="bi bi-envelope me-2"></i> contacto@hiringgroup.com<br>
+                            <i class="bi bi-telephone me-2"></i> +1 234 567 890<br>
+                            <i class="bi bi-geo-alt me-2"></i> Av. Principal 123, Ciudad XXXX, País YYYY
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Tarjeta 3 -->
+            <div class="col-md-4 mb-3">
+                <div class="card h-100 bg-dark text-white border-0">
+                    <div class="card-body">
+                        <h5 class="card-title"><strong>Síguenos</strong></h5>
+                        <p class="card-text">
+                            <a href="#" class="text-white me-2" style="text-decoration: none !important;"><i class="bi bi-twitter"></i> <strong>Twitter</strong></a><br>
+                            <a href="#" class="text-white me-2" style="text-decoration: none !important;"><i class="bi bi-facebook"></i> <strong>Facebook</strong></a><br>
+                            <a href="#" class="text-white me-2" style="text-decoration: none !important;"><i class="bi bi-instagram"></i> <strong>Instagram</strong> </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-white mt-3" style="font-size: 0.9rem;">
+            &copy; 2025 Hiring Group. All rights reserved to <strong>Alejandro González</strong>.
+        </div>
+    </div>
+</footer>
+
+
+</html>
