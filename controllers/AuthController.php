@@ -44,8 +44,8 @@ class AuthController {
                 
                 Auth::login([
                     'id' => $usuario['id'],
-                    'email' => $usuario['email'],
-                    'username' => $usuario['username'],
+                    'correo' => $usuario['correo'],
+                    'nombre_usuario' => $usuario['nombre_usuario'],
                     'tipo_usuario' => $usuario['tipo_usuario']
                 ]);
                 $_SESSION['login_redirect'] = APP_URL . '/dashboard';

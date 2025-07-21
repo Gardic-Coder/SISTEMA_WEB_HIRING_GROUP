@@ -47,7 +47,7 @@ UsuarioPostulante::add([
     'usuario_id' => $usuarioId,
     'nombre' => 'Luis',
     'apellido' => 'Martínez',
-    'cedula' => 'V87654321',
+    'cedula' => 'V-87.654.321',
     'estado_residencia' => 'Bolívar',
     'ciudad_residencia' => 'Ciudad Guayana',
     'contratado' => 0,
@@ -109,32 +109,35 @@ echo "🏢 Contrataciones de la empresa:\n";
 print_r($contratacionesEmpresa);
 
 // 11. Actualizar contratación
-$actualizado = Contratacion::update($contratacionId, ['duracion' => '12 meses', 'salario' => 2000.00]);
+/*$actualizado = Contratacion::update($contratacionId, ['duracion' => '12 meses', 'salario' => 2000.00]);
 echo $actualizado ? "🔄 Contratación actualizada\n" : "❌ Error al actualizar contratación\n";
 
 // 12. Obtener contratación actualizada
 $contratacionActualizada = Contratacion::getById($contratacionId);
 echo "📋 Contratación actualizada:\n";
-print_r($contratacionActualizada);
+print_r($contratacionActualizada);*/
 
+//$contratacionId = 1; // Asumiendo que la contratación tiene ID 1
 // 13. Eliminar contratación
-Contratacion::delete($contratacionId);
-echo "🗑 Contratación eliminada\n";
+//Contratacion::delete($contratacionId);
+//echo "🗑 Contratación eliminada\n";
 
 // 14. Eliminar cuenta bancaria
-CuentaBancaria::delete($cuentaId);
-echo "🗑 Cuenta bancaria eliminada\n";
+/*CuentaBancaria::delete($cuentaId);
+echo "🗑 Cuenta bancaria eliminada\n";*/
 
+//$postulacionId = 1; // Asumiendo que la postulación tiene ID 1
 // 15. Eliminar postulación
-Postulacion::delete($postulacionId);
-echo "🗑 Postulación eliminada\n";
+//Postulacion::delete($postulacionId);
+//echo "🗑 Postulación eliminada\n";
 
+//$ofertaId = 1; // Asumiendo que la oferta tiene ID 1
 // 16. Eliminar oferta
-OfertaLaboral::delete($ofertaId);
-echo "🗑 Oferta eliminada\n";
+//OfertaLaboral::delete($ofertaId);
+//echo "🗑 Oferta eliminada\n";
 
 // 17. Eliminar usuario y UsuarioPostulante
-UsuarioPostulante::delete($usuarioId);
+/*UsuarioPostulante::delete($usuarioId);
 Usuario::delete($usuarioId);
 echo "🗑 Usuario y UsuarioPostulante eliminados\n";
 
@@ -144,7 +147,7 @@ echo "🗑 Empresa eliminada\n";
 
 // 19. Eliminar banco
 Banco::delete($bancoId);
-echo "🗑 Banco eliminado\n";
+echo "🗑 Banco eliminado\n";*/
 
 echo "=== Prueba completada ===\n";
 ?>

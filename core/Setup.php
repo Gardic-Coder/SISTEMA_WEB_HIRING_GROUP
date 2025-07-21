@@ -19,6 +19,7 @@ require_once MODELS_DIR . 'ReporteActividad.php';
 require_once MODELS_DIR . 'NominaMensual.php';
 require_once MODELS_DIR . 'DetalleNomina.php';
 require_once MODELS_DIR . 'ProfesionUsuario.php';
+require_once MODELS_DIR . 'UsuarioEmpresa.php';
 
 function crearTablas() {
     Usuario::createTable();
@@ -40,6 +41,7 @@ function crearTablas() {
     NominaMensual::createTable();
     DetalleNomina::createTable();
     ProfesionUsuario::createTable();
+    UsuarioEmpresa::createTable();
 }
 
 // Autoload para controladores

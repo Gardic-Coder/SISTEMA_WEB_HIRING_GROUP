@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ofertas Laborales - Hiring Group</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
+    <link rel="icon" href="../assets/images/Icono.png">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/Styles-usercontratado.css">
+    <link rel="stylesheet" href="../assets/css/Styles - OfertasLaborales.css">
+    <link rel="stylesheet" href="../assets/css/Tabla.css">
+
+</head>
+<body style="background-color: rgb(33, 37, 41)">
+     <header style="position: fixed; width: 100%; z-index: 2; top: 0; left: 0;"><!--Barra de Navegacion-->
+        <nav class="navbar navbar-expand-lg color_barra custom-border">
+        <div class="container-fluid">
+            <div class="px-4 py-1 animacionlogo">
+                <a class="navbar-brand" href="Home - Hiring Group.html"><img src="../assets/images/Icono.png" width="70" height="65"></a>
+            </div>
+            <!--Boton para Tlf-->
+            <!--navbarSupportedContet, opciones que se colapsaran llegado a cierta posicion dada por el expand-md-->
+            <button class="navbar-toggler btn btn-outline-light border-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!--Menu colapsable-->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!--Opciones del Menu de Navegacion-->
+                <ul class="navbar-nav mx-auto flex-lg-row gap-lg menu">
+                    <li class="nav-item">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="Home - Hiring Group.html">
+                         <i class="bi bi-house me-1"></i> Cerrar Sesión
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                        <i class="bi bi-search me-1"></i> Ofertas Publicadas
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                        <i class="bi bi-clipboard-data me-1"></i> Registrar Clientes
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                        <i class="bi bi-person-badge me-1"></i> Postulantes
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                        <i class="bi bi-coin me-1"></i> Nómina Mensual
+                    </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        </nav>
+    </header>
+
+     <!--Parte principal del Perfil-->
+
+    <main class="container-fluid mt-5 px-0" style="height: auto; padding-top: 90px;">
+    <div class="row align-items-center" style="height: 100%; background-color: blueviolet;">
+        <!-- Columna izquierda con nombre y foto -->
+        <div class=" col-12 text-center py-3 px-5 textocentral">
+            <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
+                
+                <!-- Texto de bienvenida -->
+                <div class=" text-center textocentral px-1">
+                    <h1 class="text-center text-white fw-bold">Bienvenido, Hiring Group User</h1>
+                    <p class="text-center text-white fw-semibold" style="font-size: large;">Contamos con usted nuevamente el dia de hoy.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </main>
+
+    
+    <div class="container px-5 Pago mt-5 mb-5"> 
+        <div class="container px-5 w-100">
+            <div class="row justify-content-center align-items-center mt-4">
+                <div class="w-100">
+                    <div class="text-center mb-3 p-3 rounded-bottom titulo">
+                        <h1 class="mb-0" style="color: white; text-shadow: (5px 5px 5px black) ;">Postulaciones Establecidas</h1> 
+                    </div>
+                </div> 
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Filtros -->
+        <div class="filter-section">
+            <div class="row g-5 justify-content-center">
+                <div class="col-md-3">
+                    <label for="knowledge" class="form-label">Area de Conocimiento <i class="bi bi-patch-question me-3"></i></label>
+                    <select id="knowledge" class="form-select">
+                        <option value="">Todos</option>
+                        <option value="Ingenieria">Ingenieria</option>
+                        <option value="Contabilidad">Contabilidad</option>
+                        <option value="Administracion">Administracion</option>
+                        <option value="Tecnologia">Tecnologia</option>
+                        <option value="Educacion">Educacion</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="state" class="form-label">Ubicacion <i class="bi bi-geo-alt me-1"></i></label>
+                    <select id="state" class="form-select">
+                                <option value="" selected>Todos</option>
+                                <option value="Amazonas">Amazonas</option>
+                                <option value="Anzoategui">Anzoátegui</option>
+                                <option value="Apure">Apure</option>
+                                <option value="Aragua">Aragua</option>
+                                <option value="Barinas">Barinas</option>
+                                <option value="Bolívar">Bolívar</option>
+                                <option value="Carabobo">Carabobo</option>
+                                <option value="Cojedes">Cojedes</option>
+                                <option value="Delta Amacuro">Delta Amacuro</option>
+                                <option value="Falcón">Falcón</option>
+                                <option value="Guarico">Guárico</option>
+                                <option value="Lara">Lara</option>
+                                <option value="Merida">Mérida</option>
+                                <option value="Miranda">Miranda</option>
+                                <option value="Monagas">Monagas</option>
+                                <option value="Nueva Esparta">Nueva Esparta</option>
+                                <option value="Portuguesa">Portuguesa</option>
+                                <option value="Sucre">Sucre</option>
+                                <option value="Tachira">Táchira</option>
+                                <option value="Trujillo">Trujillo</option>
+                                <option value="Yaracuy">Yaracuy</option>
+                                <option value="Zulia">Zulia</option>
+                            </select>
+                </div>
+                
+                <div class="col-md-3 d-flex align-items-end">
+                    <button class="btn btn-outline-blueviolet w-100" onclick="filterOffers()">
+                        <i class="bi bi-funnel-fill"></i> Filtrar
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tabla de recibos -->
+        <div class="table-responsive">
+            <table class="table table-striped table-hover receipt-table">
+                <thead>
+                    <tr>
+                        <th>ID Oferta</th>
+                        <th>Profesíon</th>
+                        <th>Cargo</th>
+                        <th>Descripción</th>
+                        <th>Salario</th>
+                        <th>Modalidad</th>
+                        <th>Estado</th>
+                        <th>Ciudad</th>
+                        <th>Estatus</th>
+                        <th>Empresa</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="receiptsTableBody">
+                    <!-- Datos cargados por JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Paginación -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center" id="pagination">
+                <!-- Generado por JavaScript -->
+            </ul>
+        </nav>
+
+       <hr>
+  
+    </div>
+
+
+    
+    <script>
+        //No se absultamente nada de JavaScript
+        // Datos de ejemplo para ofertas de trabajo (ahora más completos)
+const sampleOffers = [
+    { 
+        id: 'OF-1001', 
+        profesion: 'Ingeniero de Sistemas', 
+        cargo: 'Desarrollador Frontend', 
+        descripcion: 'Desarrollo de interfaces con React y Bootstrap', 
+        salario: '$2,500 - $3,000', 
+        modalidad: 'Remoto', 
+        estado: 'Distrito Capital', 
+        ciudad: 'Caracas',
+        estatus: 'Activa', 
+        empresa: 'Tech Solutions', 
+        fecha: '2023-05-15' 
+    },
+    { 
+        id: 'OF-1002', 
+        profesion: 'Diseñador Gráfico', 
+        cargo: 'Diseñador UX/UI', 
+        descripcion: 'Diseño de interfaces y experiencia de usuario', 
+        salario: '$2,000 - $2,500', 
+        modalidad: 'Híbrido', 
+        estado: 'Miranda', 
+        ciudad: 'Los Teques',
+        estatus: 'Activa', 
+        empresa: 'Creative Agency', 
+        fecha: '2023-05-18' 
+    },
+    { 
+        id: 'OF-1003', 
+        profesion: 'Contador Público', 
+        cargo: 'Auditor Senior', 
+        descripcion: 'Auditoría de estados financieros', 
+        salario: '$2,800 - $3,200', 
+        modalidad: 'Presencial', 
+        estado: 'Carabobo', 
+        ciudad: 'Valencia',
+        estatus: 'Activa', 
+        empresa: 'Finance Corp', 
+        fecha: '2023-05-20' 
+    }
+];
+
+let currentPage = 1;
+const itemsPerPage = 10;
+
+// Función para cargar ofertas con botones de postulación
+function loadOffers(offers = sampleOffers) {
+    const tbody = document.getElementById('receiptsTableBody');
+    tbody.innerHTML = '';
+    
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const paginatedOffers = offers.slice(startIndex, startIndex + itemsPerPage);
+    
+    if (paginatedOffers.length === 0) {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td colspan="12" class="text-center py-4 text-muted">No se encontraron ofertas</td>`;
+        tbody.appendChild(row);
+        return;
+    }
+    //Aqui muestro en pantalla cada uno de los Registros, eso incluye el boton Postularse
+    paginatedOffers.forEach(offer => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${offer.id}</td>
+            <td>${offer.profesion}</td>
+            <td>${offer.cargo}</td>
+            <td class="text-truncate" style="max-width: 200px;">${offer.descripcion}</td>
+            <td>${offer.salario}</td>
+            <td>${offer.modalidad}</td>
+            <td>${offer.estado}</td>
+            <td>${offer.ciudad}</td>
+            <td><span class="badge ${offer.estatus === 'Activa' ? 'bg-success' : 'bg-secondary'}">${offer.estatus}</span></td>
+            <td>${offer.empresa}</td>
+            <td>${offer.fecha}</td>
+            <td>
+                <button class="btn btn-sm btn-outline-blueviolet" 
+                        data-offer-id="${offer.id}">
+                    <i class="bi bi-save"></i> Contratar
+                </button>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+    
+    // Agregar event listeners a los nuevos botones
+    document.querySelectorAll('.btn-postular').forEach(btn => {
+        btn.addEventListener('click', handlePostulacion);
+    });
+    
+    setupPagination(offers.length);
+}
+// Configurar paginación (mejorada con estilos)
+function setupPagination(totalItems) {
+    const pagination = document.getElementById('pagination');
+    pagination.innerHTML = '';
+    
+    const pageCount = Math.ceil(totalItems / itemsPerPage);
+    
+    // Botón Anterior
+    const prevLi = document.createElement('li');
+    prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+    prevLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(${currentPage - 1})">&laquo;</a>`;
+    pagination.appendChild(prevLi);
+    
+    // Páginas
+    const maxVisiblePages = 5; // Máximo de páginas visibles
+    let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages/2));
+    let endPage = Math.min(pageCount, startPage + maxVisiblePages - 1);
+    
+    // Ajustar si estamos cerca del final
+    if(endPage - startPage + 1 < maxVisiblePages) {
+        startPage = Math.max(1, endPage - maxVisiblePages + 1);
+    }
+    
+    // Primera página (si no está visible)
+    if(startPage > 1) {
+        const li = document.createElement('li');
+        li.className = 'page-item';
+        li.innerHTML = `<a class="page-link" href="#" onclick="changePage(1)">1</a>`;
+        pagination.appendChild(li);
+        if(startPage > 2) {
+            const dots = document.createElement('li');
+            dots.className = 'page-item disabled';
+            dots.innerHTML = `<span class="page-link">...</span>`;
+            pagination.appendChild(dots);
+        }
+    }
+    
+    // Páginas visibles
+    for (let i = startPage; i <= endPage; i++) {
+        const li = document.createElement('li');
+        li.className = `page-item ${i === currentPage ? 'active' : ''}`;
+        li.innerHTML = `<a class="page-link" style="background-color: blueviolet" href="#" onclick="changePage(${i})">${i}</a>`;
+        pagination.appendChild(li);
+    }
+    
+    // Última página (si no está visible)
+    if(endPage < pageCount) {
+        if(endPage < pageCount - 1) {
+            const dots = document.createElement('li');
+            dots.className = 'page-item disabled';
+            dots.innerHTML = `<span class="page-link">...</span>`;
+            pagination.appendChild(dots);
+        }
+        const li = document.createElement('li');
+        li.className = 'page-item';
+        li.innerHTML = `<a class="page-link" href="#" onclick="changePage(${pageCount})">${pageCount}</a>`;
+        pagination.appendChild(li);
+    }
+    
+    // Botón Siguiente
+    const nextLi = document.createElement('li');
+    nextLi.className = `page-item ${currentPage === pageCount ? 'disabled' : ''}`;
+    nextLi.innerHTML = `<a class="page-link" href="#" onclick="changePage(${currentPage + 1})">&raquo;</a>`;
+    pagination.appendChild(nextLi);
+}
+
+// Cambiar página
+function changePage(page) {
+    currentPage = page;
+    loadOffers();
+    window.scrollTo(0, 0);
+}
+
+
+// Función para normalizar texto (quitar acentos y convertir a minúsculas)
+function normalizeText(text) {
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
+// Función principal para filtrar las ofertas
+function filterOffers() {
+    // 1. Obtener los valores seleccionados en los filtros
+    const areaConocimiento = document.getElementById('knowledge').value;
+    const ubicacion = document.getElementById('state').value;
+    
+    // 2. Filtrar las ofertas
+    const filtered = sampleOffers.filter(offer => {
+        // Filtro por área de conocimiento
+        const matchesArea = !areaConocimiento || 
+                          normalizeText(offer.profesion).includes(normalizeText(areaConocimiento)) || 
+                          normalizeText(offer.cargo).includes(normalizeText(areaConocimiento)) ||
+                          normalizeText(offer.descripcion).includes(normalizeText(areaConocimiento));
+        
+        // Filtro por ubicación (estado o ciudad)
+        const matchesUbicacion = !ubicacion || 
+                               normalizeText(offer.estado) === normalizeText(ubicacion) ||
+                               normalizeText(offer.ciudad) === normalizeText(ubicacion);
+        
+        // La oferta debe cumplir ambos filtros
+        return matchesArea && matchesUbicacion;
+    });
+    
+    // 3. Recargar la tabla con los resultados filtrados
+    currentPage = 1;
+    loadOffers(filtered);
+}
+
+// Modificación necesaria en la inicialización
+document.addEventListener('DOMContentLoaded', () => {
+    loadOffers();
+    
+    // Asignar el evento de filtrado al botón correcto
+    document.querySelector('.btn-outline-blueviolet').addEventListener('click', filterOffers);
+});
+
+// Inicializar
+document.addEventListener('DOMContentLoaded', () => {
+    loadOffers();
+    
+    // Asignar el evento de filtrado al botón
+    document.querySelector('.btn-outline-blueviolet').addEventListener('click', filterOffers);
+});
+        
+    </script>
+
+
+   <!--Final de la pagina-->
+<footer style="background-color: rgb(29, 29, 29);">
+    <div class="container py-4">
+       
+        <div class="text-center text-white mt-3" style="font-size: 0.9rem;">
+            &copy; 2025 Hiring Group. All rights reserved to <strong>Alejandro González</strong>.
+        </div>
+    </div>
+</footer>
+
+
+   
+
+
+
+</body>
+</html>

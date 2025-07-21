@@ -33,9 +33,6 @@ $router->add('GET', '/', function() {
 $router->add('GET', '/login', function() {
     require VIEWS_DIR . 'auth/login.php';
 });
-/*$router->add('GET', '/registro/postulante', function() {
-    require VIEWS_DIR . 'auth/register.php';
-});*/
 
 $router->add('POST', '/auth', 'AuthController@login');
 $router->add('GET', '/logout', 'AuthController@logout');
@@ -44,9 +41,20 @@ $router->add('POST', '/registro/postulante', 'RegistroController@registrarPostul
 
 // ======= RUTAS PROTEGIDAS =======
 $router->add('GET', '/dashboard', 'DashboardController@redirectToDashboard');
-$router->add('GET', '/dashboard/postulante', 'PostulanteController@dashboard');
-$router->add('GET', '/dashboard/empresa', 'EmpresaController@dashboard');
-$router->add('GET', '/perfil', 'PerfilController@showProfile');
+$router->add('GET', '/dashboard/postulante', 'PostulanteController@mostrarDashboard');
+$router->add('GET', '/dashboard/contratado', 'ContratadoController@mostrarDashboard');
+$router->add('GET', '/dashboard/hiring', 'HiringController@mostrarDashboard');
+$router->add('GET', '/dashboard/ofertas', 'UserController@mostrarOfertas');
+$router->add('POST', '/postular', 'PostulanteController@postularOferta');
+$router->add('GET', '/registro/empresa', 'RegistroController@showRegistroEmpresa');
+$router->add('POST', '/registro/empresa', 'RegistroController@registrarEmpresa');
+//$router->add('GET', '/dashboard/empresa', 'EmpresaController@dashboard');
+//$router->add('GET', '/perfil', 'PerfilController@showProfile');
+$router->add('GET', '/perfil/postulante/editar', 'RegistroController@mostrarEdicionPostulante');
+$router->add('POST', '/perfil/actualizar', 'RegistroController@actualizarPerfilGeneral');
+$router->add('GET', '/constancia/trabajo', 'ContratadoController@generarConstanciaTrabajo');
+
+
 
 // Manejar la ruta solicitada
 $request_uri = $_SERVER['REQUEST_URI'];
