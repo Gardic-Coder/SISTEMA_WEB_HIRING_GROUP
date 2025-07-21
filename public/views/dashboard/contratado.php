@@ -59,7 +59,7 @@ require_once __DIR__ . '/../../../utils/config.php';
             <!--Boton solo visible en movil-->
 
              <div class="d-lg-none mt-3 mb-3 py-2 px-3  animacionlogo">
-                    <a href="Edicion - UsuarioInfo.html" class="btn btn-outline-sesion w-100 ">
+                    <a href="<?= APP_URL ?>/perfil/postulante/editar" class="btn btn-outline-sesion w-100 ">
                         <i class="bi bi-person-badge-fill me-1"></i> <?= htmlspecialchars($usuario['nombre_usuario']) ?>
                     </a>
             </div>
@@ -67,7 +67,7 @@ require_once __DIR__ . '/../../../utils/config.php';
             <!--Boton solo visible en Desktop-->
 
             <div class="d-none d-lg-flex ms-lg-3 py-2 px-3 animacionlogo">
-                    <a href="Edicion - Hiring Group.html" class="btn btn-outline-sesion w-100 ">
+                    <a href="<?= APP_URL ?>/perfil/postulante/editar" class="btn btn-outline-sesion w-100 ">
                         <i class="bi bi-person-badge-fill me-1"></i> <?= htmlspecialchars($usuario['nombre_usuario']) ?>
 
                     </a>

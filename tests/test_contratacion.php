@@ -22,7 +22,7 @@ Contratacion::createTable();
 echo "🗃️ Tablas creadas\n";
 
 // 2. Crear banco
-/*$bancoId = Banco::create('Banco Central de Venezuela');
+$bancoId = Banco::create('Banco Central de Venezuela');
 echo "🏦 Banco creado con ID: $bancoId\n";
 
 // 3. Crear empresa
@@ -47,7 +47,7 @@ UsuarioPostulante::add([
     'usuario_id' => $usuarioId,
     'nombre' => 'Luis',
     'apellido' => 'Martínez',
-    'cedula' => 'V87654321',
+    'cedula' => 'V-87.654.321',
     'estado_residencia' => 'Bolívar',
     'ciudad_residencia' => 'Ciudad Guayana',
     'contratado' => 0,
@@ -55,10 +55,8 @@ UsuarioPostulante::add([
     'fecha_nacimiento' => '1990-03-22',
     'genero' => 'masculino'
 ]);
-echo "🧾 UsuarioPostulante creado\n";*/
+echo "🧾 UsuarioPostulante creado\n";
 
-$empresaId = 1; // Asumiendo que la empresa tiene ID 1
-$usuarioId = 3; // Asumiendo que el usuario tiene ID 1
 // 5. Crear oferta laboral
 $ofertaId = OfertaLaboral::add([
     'profesion' => 'Ingeniería de Sistemas',
@@ -81,14 +79,14 @@ $postulacionId = Postulacion::add([
 echo "✅ Postulación creada con ID: $postulacionId\n";
 
 // 7. Crear cuenta bancaria
-/*$cuentaId = CuentaBancaria::create([
+$cuentaId = CuentaBancaria::create([
     'usuario_id' => $usuarioId,
     'banco_id' => $bancoId,
     'nro_cuenta' => '01234567890123456789',
     'tipo_cuenta' => 'ahorro'
 ]);
-echo "🏦 Cuenta bancaria creada con ID: $cuentaId\n";*/
-$cuentaId = 1; // Asumiendo que la cuenta bancaria tiene ID 1
+echo "🏦 Cuenta bancaria creada con ID: $cuentaId\n";
+
 // 8. Crear contratación
 $contratacionId = Contratacion::add([
     'usuario_id' => $usuarioId,

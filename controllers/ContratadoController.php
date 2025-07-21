@@ -7,6 +7,7 @@ require_once MODELS_DIR . 'UsuarioPostulante.php';
 require_once MODELS_DIR . 'Contratacion.php';
 require_once MODELS_DIR . 'Telefono.php';
 require_once MODELS_DIR . 'Usuario.php';
+require_once UTILS_DIR . 'DocumentHandler.php';
 
 class ContratadoController {
     public function mostrarDashboard() {
@@ -30,4 +31,5 @@ class ContratadoController {
 
         require VIEWS_DIR . 'dashboard/contratado.php';
     }
+
 }
