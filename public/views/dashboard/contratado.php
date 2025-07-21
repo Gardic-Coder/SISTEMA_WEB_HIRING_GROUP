@@ -49,7 +49,7 @@ require_once __DIR__ . '/../../../utils/config.php';
                     </a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/constancia/trabajo">
                         <i class="bi bi-building-gear me-1"></i> Constancia
                     </a>
                     </li>
