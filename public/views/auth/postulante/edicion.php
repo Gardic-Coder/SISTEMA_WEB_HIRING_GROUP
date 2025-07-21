@@ -51,16 +51,25 @@ require_once __DIR__ . '/../../../../utils/config.php';
                         <i class="bi bi-search me-1"></i> Ver Ofertas
                     </a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="Recibo de Pago - Hiring Group (Contratado).html">
-                        <i class="bi bi-clipboard-data me-1"></i> Mis Recibos
-                    </a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="#">
-                        <i class="bi bi-building-gear me-1"></i> Constancia
-                    </a>
-                    </li>
+                    <?php if ($postulante['contratado'] == 1): ?>
+                        <li class="nav-item">
+                        <a class="nav-link active px-lg-3" aria-current="page" href="Recibo de Pago - Hiring Group (Contratado).html">
+                            <i class="bi bi-clipboard-data me-1"></i> Mis Recibos
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                            <i class="bi bi-building-gear me-1"></i> Constancia
+                        </a>
+                        </li>
+                    <?php else: ?>
+                        <!-- Mostrar cuando NO está contratado -->
+                        <li class="nav-item">
+                        <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/postulaciones">
+                            <i class="bi bi-pencil-square me-1"></i> Postulaciones
+                        </a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
 
@@ -204,8 +213,6 @@ require_once __DIR__ . '/../../../../utils/config.php';
                         <hr>
                         
                         <!--Curriculum Actual-->
-                        
-
                         <div class="mt-3">
                             <?php if (!empty($cvUrl)): ?>
                                 <a href="<?= htmlspecialchars($cvUrl) ?>" target="_blank" class="btn btn-outline-blueviolet btn-sm">
@@ -214,7 +221,6 @@ require_once __DIR__ . '/../../../../utils/config.php';
                             <?php else: ?>
                                 <p class="text-muted">No se ha subido ningún currículum todavía.</p>
                             <?php endif; ?>
-                            <!--<a href="#" id="current-cv-link" target="_blank" class="btn btn-outline-blueviolet btn-sm"><i class="bi bi-download"></i> Descargar Curriculum actual</a>-->
                         </div>
 
                         <div class="mt-3">

@@ -41,7 +41,7 @@ $router->add('POST', '/registro/postulante', 'RegistroController@registrarPostul
 
 // ======= RUTAS PROTEGIDAS =======
 $router->add('GET', '/dashboard', 'DashboardController@redirectToDashboard');
-//$router->add('GET', '/dashboard/postulante', 'PostulanteController@dashboard');
+$router->add('GET', '/dashboard/postulante', 'PostulanteController@mostrarDashboard');
 $router->add('GET', '/dashboard/contratado', 'ContratadoController@mostrarDashboard');
 //$router->add('GET', '/dashboard/empresa', 'EmpresaController@dashboard');
 $router->add('GET', '/perfil', 'PerfilController@showProfile');
