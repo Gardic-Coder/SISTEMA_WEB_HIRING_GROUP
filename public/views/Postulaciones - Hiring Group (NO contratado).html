@@ -41,8 +41,13 @@
                     </a>
                     </li>
                     <li class="nav-item">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="Recibo de Pago - Hiring Group (Contratado).html">
+                        <i class="bi bi-clipboard-data me-1"></i> Mis Recibos
+                    </a>
+                    </li>
+                    <li class="nav-item">
                     <a class="nav-link active px-lg-3" aria-current="page" href="#">
-                        <i class="bi bi-pencil-square me-1"></i> Postulaciones
+                        <i class="bi bi-building-gear me-1"></i> Constancia
                     </a>
                     </li>
                 </ul>
@@ -75,7 +80,7 @@
     <main class="container-fluid mt-5 px-0" style="height: auto; padding-top: 90px;">
     <div class="row align-items-center" style="height: 100%; background-color: blueviolet;">
         <!-- Columna izquierda con nombre y foto -->
-        <div class="col-12 text-center py-3 px-5 textocentral">
+        <div class="col-xl-6 col-12 text-center py-3 px-5 textocentral">
             <div class="d-flex flex-column flex-md-row align-items-center justify-content-center">
                 <!-- Foto de perfil -->
                 <div class="me-md-4 mb-3 mb-md-0 position-relative">
@@ -91,6 +96,24 @@
                 <div class=" text-center textocentral px-1">
                     <h1 class="text-center text-white fw-bold">Bienvenido, Username Here</h1>
                     <p class="text-center text-white fw-semibold" style="font-size: large;">Username Job goes here Juan</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Info del Usuario-->
+        <div class="col-xl-6 col-12 py-3 px-5 justify-content-center align-items-center d-flex">
+            <div class="d-flex flex-lg-row align-items-center justify-content-center mx-auto infousuario">
+                <div class="d-flex flex-column text-center justify-content-center align-items-center w-lg-50 w-100 py-2 px-3">
+                    <p class="fw-bold letra pmayus" style="font-size: large;">Fecha de contratación</p>
+                    <p id="userDate" class="fw-semibold letra pminus">Fecha va aqui</p>
+                </div>
+
+                <div class="border-start border-white opacity-50 mx-2 justify-content-center align-items-center" style="height: 50px;"></div>
+
+                <div class="d-flex flex-column text-center justify-content-center align-items-center w-lg-50 w-100 py-2 px-3">
+                    <p class="fw-bold letra pmayus" style="font-size: large;">Salario Mensual</p>
+                    <p id="userSalary" class="fw-semibold letra pminus">No se que tantos dolares</p>
                 </div>
             </div>
         </div>
@@ -180,7 +203,6 @@
                         <th>Estatus</th>
                         <th>Empresa</th>
                         <th>Fecha</th>
-                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="receiptsTableBody">
@@ -250,7 +272,7 @@ const sampleOffers = [
 let currentPage = 1;
 const itemsPerPage = 10;
 
-// Función para cargar ofertas con botones de postulación
+// Cargar ofertas en la tabla
 function loadOffers(offers = sampleOffers) {
     const tbody = document.getElementById('receiptsTableBody');
     tbody.innerHTML = '';
@@ -260,18 +282,18 @@ function loadOffers(offers = sampleOffers) {
     
     if (paginatedOffers.length === 0) {
         const row = document.createElement('tr');
-        row.innerHTML = `<td colspan="12" class="text-center py-4 text-muted">No se encontraron ofertas</td>`;
+        row.innerHTML = `<td colspan="11" class="text-center py-4 text-muted">No se encontraron ofertas</td>`;
         tbody.appendChild(row);
         return;
     }
-    //Aqui muestro en pantalla cada uno de los Registros, eso incluye el boton Postularse
+    
     paginatedOffers.forEach(offer => {
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${offer.id}</td>
             <td>${offer.profesion}</td>
             <td>${offer.cargo}</td>
-            <td class="text-truncate" style="max-width: 200px;">${offer.descripcion}</td>
+            <td>${offer.descripcion}</td>
             <td>${offer.salario}</td>
             <td>${offer.modalidad}</td>
             <td>${offer.estado}</td>
@@ -279,81 +301,12 @@ function loadOffers(offers = sampleOffers) {
             <td><span class="badge ${offer.estatus === 'Activa' ? 'bg-success' : 'bg-secondary'}">${offer.estatus}</span></td>
             <td>${offer.empresa}</td>
             <td>${offer.fecha}</td>
-            <td>
-                <button class="btn btn-sm btn-outline-blueviolet" 
-                        data-offer-id="${offer.id}">
-                    <i class="bi bi-send-check"></i> Postularse
-                </button>
-            </td>
         `;
         tbody.appendChild(row);
     });
     
-    // Agregar event listeners a los nuevos botones
-    document.querySelectorAll('.btn-postular').forEach(btn => {
-        btn.addEventListener('click', handlePostulacion);
-    });
-    
     setupPagination(offers.length);
 }
-
-//Por si lo necesitas Juan, todo lo demas que me dio DeepSeek con respecto a las acciones del boton Postularse
-
-/*
-// Función para manejar el clic en Postularse
-function handlePostulacion(event) {
-    const button = event.currentTarget;
-    const offerId = button.getAttribute('data-offer-id');
-    
-    // Deshabilitar botón temporalmente para evitar múltiples clics
-    button.disabled = true;
-    button.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...';
-    
-    // Simular envío al backend (en tu implementación real, aquí iría el fetch)
-    setTimeout(() => {
-        // Cambiar aspecto del botón después de "éxito"
-        button.innerHTML = '<i class="bi bi-check-circle"></i> Postulado';
-        button.classList.remove('btn-primary');
-        button.classList.add('btn-success');
-        
-        // Mostrar notificación
-        showToast('Postulación enviada con éxito');
-    }, 1000);
-}
-
-// Función para mostrar notificación toast
-function showToast(message) {
-    const toast = document.createElement('div');
-    toast.className = 'position-fixed bottom-0 end-0 p-3';
-    toast.innerHTML = `
-        <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header bg-success text-white">
-                <strong class="me-auto">Hiring Group</strong>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            <div class="toast-body">
-                ${message}
-            </div>
-        </div>
-    `;
-    document.body.appendChild(toast);
-    
-    // Eliminar el toast después de 5 segundos
-    setTimeout(() => {
-        toast.remove();
-    }, 5000);
-}
-*/
-
-
-
-
-
-
-
-
-
-
 
 // Configurar paginación (mejorada con estilos)
 function setupPagination(totalItems) {
