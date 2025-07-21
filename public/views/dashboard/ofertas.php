@@ -1,16 +1,22 @@
+<?php
+// public/views/dashboard/ofertas.php
+require_once __DIR__ . '/../../../utils/config.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ofertas Laborales - Hiring Group</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
-    <link rel="icon" href="../assets/images/Icono.png">
-    <link rel="stylesheet" href="../assets/css/navbar.css">
-    <link rel="stylesheet" href="../assets/css/Styles-usercontratado.css">
-    <link rel="stylesheet" href="../assets/css/Styles - OfertasLaborales.css">
-    <link rel="stylesheet" href="../assets/css/Tabla.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap-icons-1.13.1/bootstrap-icons.css">
+    <link rel="icon" href="../../assets/images/Icono.png">
+    <link rel="stylesheet" href="../../assets/css/navbar.css">
+    <link rel="stylesheet" href="../../assets/css/Styles-usercontratado.css">
+    <link rel="stylesheet" href="../../assets/css/Styles - OfertasLaborales.css">
+    <link rel="stylesheet" href="../../assets/css/Tabla.css">
 
 </head>
 <body style="background-color: rgb(33, 37, 41)">
@@ -18,7 +24,7 @@
         <nav class="navbar navbar-expand-lg color_barra custom-border">
         <div class="container-fluid">
             <div class="px-5 py-1 animacionlogo">
-                <a class="navbar-brand" href="Home - Hiring Group.html"><img src="../assets/images/Icono.png" width="70" height="65"></a>
+                <a class="navbar-brand" href="<?= APP_URL ?>/dashboard"><img src="../../assets/images/Icono.png" width="70" height="65"></a>
             </div>
             <!--Boton para Tlf-->
             <!--navbarSupportedContet, opciones que se colapsaran llegado a cierta posicion dada por el expand-md-->
@@ -31,7 +37,7 @@
                 <!--Opciones del Menu de Navegacion-->
                 <ul class="navbar-nav mx-auto flex-lg-row gap-lg menu">
                     <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="Home - Hiring Group.html">
+                    <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/logout">
                          <i class="bi bi-house me-1"></i> Cerrar Sesión
                     </a>
                     </li>
@@ -40,11 +46,43 @@
                         <i class="bi bi-search me-1"></i> Ver Ofertas
                     </a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link active px-lg-3" aria-current="page" href="#">
-                        <i class="bi bi-pencil-square me-1"></i> Postulaciones
-                    </a>
-                    </li>
+                    <?php if($tipoUsuario == 'postulante'): ?>
+                        <?php if ($postulante['contratado'] == 1): ?>
+                            <li class="nav-item">
+                            <a class="nav-link active px-lg-3" aria-current="page" href="Recibo de Pago - Hiring Group (Contratado).html">
+                                <i class="bi bi-clipboard-data me-1"></i> Mis Recibos
+                            </a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                                <i class="bi bi-building-gear me-1"></i> Constancia
+                            </a>
+                            </li>
+                        <?php else: ?>
+                            <!-- Mostrar cuando NO está contratado -->
+                            <li class="nav-item">
+                            <a class="nav-link active px-lg-3" aria-current="page" href="<?= APP_URL ?>/postulaciones">
+                                <i class="bi bi-pencil-square me-1"></i> Postulaciones
+                            </a>
+                            </li>
+                        <?php endif; ?>
+                    <?php elseif($tipoUsuario == 'hiring_group'): ?>
+                        <li class="nav-item">
+                        <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                            <i class="bi bi-clipboard-data me-1"></i> Registrar Clientes
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                            <i class="bi bi-person-badge me-1"></i> Postulantes
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link active px-lg-3" aria-current="page" href="#">
+                            <i class="bi bi-coin me-1"></i> Nómina Mensual
+                        </a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
 
@@ -52,16 +90,16 @@
             <!--Segun si es contratado o no, aqui deberia redirigir a una pagina u otra-->
 
              <div class="d-lg-none mt-3 mb-3 py-2 px-3  animacionlogo">
-                    <a href="User - Hiring Group.html" class="btn btn-outline-sesion w-100 ">
-                        <i class="bi bi-person-badge-fill me-1"></i> Username Here
+                    <a href="<?= APP_URL ?>/dashboard" class="btn btn-outline-sesion w-100 ">
+                        <i class="bi bi-person-badge-fill me-1"></i> <?= htmlspecialchars($usuario['nombre_usuario']) ?>
                     </a>
             </div>
 
             <!--Boton solo visible en Desktop-->
 
             <div class="d-none d-lg-flex ms-lg-3 py-2 px-3 animacionlogo">
-                    <a href="UserContratado - Hiring Group.html" class="btn btn-outline-sesion w-100 ">
-                        <i class="bi bi-person-badge-fill me-1"></i> Username Here
+                    <a href="<?= APP_URL ?>/dashboard" class="btn btn-outline-sesion w-100 ">
+                        <i class="bi bi-person-badge-fill me-1"></i> <?= htmlspecialchars($usuario['nombre_usuario']) ?>
 
                     </a>
             </div>
@@ -89,8 +127,7 @@
                 
                 <!-- Texto de bienvenida -->
                 <div class=" text-center textocentral px-1">
-                    <h1 class="text-center text-white fw-bold">Bienvenido, Username Here</h1>
-                    <p class="text-center text-white fw-semibold" style="font-size: large;">Username Job goes here Juan</p>
+                    <h1 class="text-center text-white fw-bold">Bienvenido, <?= htmlspecialchars($usuario['nombre_usuario']) ?></h1>
                 </div>
             </div>
         </div>
@@ -105,10 +142,12 @@
                     <div class="text-center mb-3 p-3 rounded-bottom titulo">
                         <h1 class="mb-0" style="color: white; text-shadow: (5px 5px 5px black) ;">Ofertas Disponibles</h1> 
                     </div>
-                    <div class="text-center mb-3 p-3">
-                        <p class="fw-bold" style="color: rgb(33, 37, 41)">¡Asegurate que tu Perfil este actualizado antes de continuar!</p>
-                        <a href="Edicion - Hiring Group.html" class="btn btn-outline-blueviolet">Edita tu Perfil</a> 
-                    </div>
+                    <?php if($tipoUsuario == 'postulante'): ?>
+                        <div class="text-center mb-3 p-3">
+                            <p class="fw-bold" style="color: rgb(33, 37, 41)">¡Asegurate que tu Perfil este actualizado antes de continuar!</p>
+                            <a href="<?= APP_URL ?>/perfil/postulante/editar" class="btn btn-outline-blueviolet">Edita tu Perfil</a> 
+                        </div>
+                    <?php endif; ?>
                 </div> 
             </div>
         </div>
@@ -180,7 +219,9 @@
                         <th>Estatus</th>
                         <th>Empresa</th>
                         <th>Fecha</th>
-                        <th>Acciones</th>
+                        <?php if($tipoUsuario == 'postulante' && $postulante['contratado'] == 0): ?>
+                            <th>Acciones</th>
+                        <?php endif; ?>
                     </tr>
                 </thead>
                 <tbody id="receiptsTableBody">
@@ -280,10 +321,12 @@ function loadOffers(offers = sampleOffers) {
             <td>${offer.empresa}</td>
             <td>${offer.fecha}</td>
             <td>
-                <button class="btn btn-sm btn-outline-blueviolet" 
-                        data-offer-id="${offer.id}">
-                    <i class="bi bi-send-check"></i> Postularse
-                </button>
+                <?php if($tipoUsuario == 'postulante' && $postulante['contratado'] == 0): ?>
+                    <button class="btn btn-sm btn-outline-blueviolet" 
+                            data-offer-id="${offer.id}">
+                        <i class="bi bi-send-check"></i> Postularse
+                    </button>
+                <?php endif; ?>
             </td>
         `;
         tbody.appendChild(row);

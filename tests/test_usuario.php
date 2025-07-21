@@ -105,18 +105,18 @@ try {
 
 // test_crear_usuario.php
 
-/*Usuario::create([
-    'nombre_usuario' => 'testuser',
+Usuario::create([
+    'nombre_usuario' => 'testuserhiring',
     'contraseña' => 'clave123', // el modelo debe hashearla
-    'correo' => 'test@correo.com',
-    'tipo_usuario' => 'postulante'
+    'correo' => 'testhiring@correo.com',
+    'tipo_usuario' => 'hiring_group'
 ]);
 
-echo "Usuario creado";*/
+echo "Usuario creado";
 
-Usuario::update(1, [
+/*Usuario::update(1, [
     'contraseña' => 'clave123', // el modelo debe hashearla
-]);
+]);*/
 
 //http://localhost/SISTEMA_WEB_HIRING_GROUP/public/login.php
 
